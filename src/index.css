@@ -1,0 +1,23 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap'); 
+
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+html,
+body,
+#root,
+.App {
+  height: 100%;
+}
+
+.active  {
+    background-color:#00c52a ;
+    color: white;
+    border-radius: 6px;
+    padding: 10px 24px;
+}   
+
+
