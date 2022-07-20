@@ -2,11 +2,13 @@ import React from 'react';
 import MainLayout from './Screens/MainLayout';
 import DashboardLayout from "./Screens/DashboardLayout";
 
+
+
 const App = () => {
 
   if( document.URL.includes("/home/") ) {
       return (
-        <DashboardLayout />
+          <DashboardLayout />
       );
   }
   else {

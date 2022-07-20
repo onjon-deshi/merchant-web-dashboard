@@ -183,16 +183,8 @@ const home=()=>{
                                     </span>
                                 </p>
                                 <hr style={{"border":"1px solid #DDDDDD","borderRadius":"5px"}} />
-                                
-                                <div className="w-2/3 float-left">
-                                    <p className="font-normal text-base px-4 pb-0 pl-0 pt-4">Account Balance</p>
-                                    <h2 style={{"fontSize":"24px","fontWeight":"600", "marginTop":"-4px"}} className="font-bold px-4 pl-0 pt-0">0.00 BDT</h2>
-                                </div>
-                                <div className="w-1/3 float-right text-right">
-                                    <a href="#" className="h-[54px] w-[136px] bg-[#1A202C] ">
-                                        Upload KYB
-                                    </a>
-                                </div>
+                                <p className="font-normal text-base px-4 pb-0 pl-0 pt-4">Account Balance</p>
+                                <h2 style={{"fontSize":"24px","fontWeight":"600", "marginTop":"-4px"}} className="font-bold px-4 pl-0 pt-0">0.00 BDT</h2>
                             </div>
                             
                             
@@ -202,7 +194,7 @@ const home=()=>{
                             
                             <div className="w-full flex overflow-hidden text-left ">
                                 
-                                <div className="box hover-black-green w-[32%] h-[200px] mr-[1%] bg-[#FFFFFF] border-2 border-[#F5F5F5] text-[#222222] rounded-[5px] pt-10 pl-5 pr-5">
+                                <div className="box middle-box w-[32%] h-[200px] mr-[1%] bg-[#FFFFFF] border-2 border-[#F5F5F5] text-[#222222] rounded-[5px] pt-10 pl-5 pr-5">
                                     
                                     <svg width="50" height="50" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <g clipPath="url(#clip0_2513_20291)">
@@ -229,7 +221,7 @@ const home=()=>{
 
                                 </div>
 
-                                <div className="box hover-black-green w-[32%] h-[200px] ml-[1%] mr-[1%] bg-[#FFFFFF] border-2 border-[#F5F5F5] text-[#222222] rounded-[5px] pt-10 pl-5  pr-5">
+                                <div className="box middle-box w-[32%] h-[200px] ml-[1%] mr-[1%] bg-[#FFFFFF] border-2 border-[#F5F5F5] text-[#222222] rounded-[5px] pt-10 pl-5  pr-5">
                                     <svg width="50" height="50" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <g clipPath="url(#clip0_2513_20291)">
                                     <path d="M27.7657 13C28.2813 13.2012 28.4347 13.5865 28.4335 14.124C28.4228 21.4105 28.4259 28.697 28.4259 35.9835C28.4259 36.5398 28.1857 36.8824 27.728 36.9723C27.6292 36.9918 27.5261 36.9912 27.4249 36.9918C25.8077 36.9931 24.1911 36.9931 22.5738 36.9925C21.8985 36.9918 21.5741 36.6643 21.5741 35.9829C21.5735 28.6964 21.5772 21.4099 21.5665 14.1234C21.5653 13.5853 21.7187 13.2005 22.2343 13C24.0779 13 25.9221 13 27.7657 13Z" fill="#DDDDDD"/>
@@ -254,7 +246,7 @@ const home=()=>{
                                     <h3 style={{"fontSize":"22px"}} className="text-[#999999] font-semibold  opacity-70">No sales yet today</h3>
                                 </div>
                                 
-                                <div className="box hover-black-green w-[32%] h-[200px] ml-[1%] bg-[#FFFFFF] border-2 border-[#F5F5F5] text-[#222222] rounded-[5px]  pt-10 pl-5  pr-5">
+                                <div className="box middle-box w-[32%] h-[200px] ml-[1%] bg-[#FFFFFF] border-2 border-[#F5F5F5] text-[#222222] rounded-[5px]  pt-10 pl-5  pr-5">
                                     <svg width="50" height="50" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <g clipPath="url(#clip0_2513_20315)">
                                     <path d="M21.9606 34.7966C22.2865 33.3704 21.1962 31.9896 19.6161 32.0525C19.6285 31.3957 19.4101 30.8232 18.9369 30.3599C18.4687 29.9016 17.9036 29.6939 17.2129 29.7527C17.2162 28.8526 16.8555 28.1486 16.0853 27.6886C15.3358 27.2411 14.5432 27.3188 13.8003 27.8979C13.6365 27.706 13.4719 27.5141 13.2916 27.3031C13.7846 26.6603 14.2793 26.0151 14.7749 25.3698C16.0696 23.6846 17.3667 22.0003 18.6565 20.311C18.7698 20.1629 18.8782 20.1356 19.0643 20.1315C19.9296 20.1116 20.795 20.0686 21.6578 20.0082C22.5422 19.9462 23.424 19.8394 24.3084 19.7832C24.9164 19.7443 25.5146 19.8303 26.1119 20.0843C25.5228 20.2969 24.9653 20.4963 24.4093 20.6998C23.7227 20.9513 23.0435 21.2268 22.3486 21.4518C21.9407 21.5833 21.5081 21.6454 21.0837 21.7215C20.2349 21.8729 19.7857 22.3221 19.8006 23.0468C19.8097 23.52 19.9999 23.9295 20.3184 24.2736C21.1011 25.1191 22.0979 25.2937 23.1825 25.1572C23.97 25.0579 24.7543 24.9321 25.5402 24.8246C26.0035 24.7609 26.4304 24.8974 26.7968 25.1605C27.3917 25.5865 27.9683 26.039 28.5407 26.4949C30.163 27.7871 31.7795 29.0867 33.3985 30.3822C33.9081 30.7901 34.0562 31.2327 33.8659 31.7903C33.6699 32.3619 33.1462 32.7822 32.5712 32.7731C32.3826 32.7698 32.165 32.6829 32.0136 32.5654C31.1086 31.8639 30.2193 31.1417 29.3233 30.4286C29.2357 30.3582 29.1331 30.2449 29.0446 30.2507C28.8907 30.2606 28.6897 30.3061 28.602 30.4137C28.4489 30.5998 28.5407 30.8033 28.7236 30.9497C29.32 31.4271 29.9165 31.9028 30.513 32.3793C30.9969 32.7664 31.1326 33.2165 30.9341 33.7757C30.7289 34.354 30.2127 34.7668 29.6609 34.7196C29.4218 34.699 29.1629 34.5831 28.9668 34.4384C28.3712 33.9958 27.802 33.516 27.2204 33.0543C26.94 32.8318 26.7356 32.8268 26.5735 33.0295C26.4113 33.2322 26.4593 33.4398 26.7307 33.6607C27.1228 33.9801 27.5215 34.2911 27.9137 34.6096C28.372 34.9827 28.4787 35.556 28.1991 36.1169C27.9112 36.6944 27.2626 37.041 26.7257 36.8921C26.6215 36.8631 26.5222 36.7961 26.4345 36.7274C26.0209 36.4023 25.613 36.0698 25.2002 35.743C24.8982 35.5031 24.6931 35.4898 24.5276 35.6925C24.3539 35.906 24.4126 36.1111 24.7253 36.3643C25.0141 36.5976 25.292 36.8482 25.5989 37.055C25.848 37.223 25.8844 37.4372 25.8447 37.6962C25.7719 38.1677 25.3797 38.6203 24.9057 38.6914C24.6914 38.7237 24.4523 38.6376 24.2348 38.5706C24.1247 38.5367 24.0379 38.425 23.9411 38.3481C23.7161 38.1677 23.4919 37.9866 23.2702 37.8087C23.8981 36.4023 23.4398 35.3459 21.9606 34.7966Z" fill="#DDDDDD"/>
@@ -288,7 +280,7 @@ const home=()=>{
                             </div>
 
 
-                            <div className="hover-black-green mt-5 box w-full h-[122px] bg-[#FFFFFF] border-2 border-[#F5F5F5] text-[#222222] rounded-[5px] pt-5 pl-5 pr-5">
+                            <div className="middle-box mt-5 box w-full h-[122px] bg-[#FFFFFF] border-2 border-[#F5F5F5] text-[#222222] rounded-[5px] pt-5 pl-5 pr-5">
                                 <a href="#" className="block pt-2 pb-1 text-base font-medium ">
                                     Payment Types
                                     <svg className="display-revert ml-1" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -298,7 +290,7 @@ const home=()=>{
                                 <h3 style={{"fontSize":"22px"}} className="text-[#999999] font-semibold  opacity-70">No sales yet today</h3>
                             </div>
 
-                            <div className="hover-black-green mt-5 box w-full h-[122px] bg-[#FFFFFF] border-2 border-[#F5F5F5] rounded-[5px] pt-5 pl-5 pr-5">
+                            <div className="middle-box mt-5 box w-full h-[122px] bg-[#FFFFFF] border-2 border-[#F5F5F5] rounded-[5px] pt-5 pl-5 pr-5">
                                 <a href="#" className="block pt-2 pb-1 text-base font-medium ">
                                     Top Items by Sales
                                     <svg className="display-revert ml-1" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -403,27 +395,27 @@ const home=()=>{
             <style jsx="true">{`
 
 
-                .hover-black-green:hover, .hover-black-green:hover > h3 {
+                .middle-box:hover, .middle-box:hover > h3 {
                     background: #1A202C;
                     color: #FFFFFF;
                     opacity: 90%;
                     cursor: pointer;
                 } 
                 
-                .hover-black-green:hover > svg {
+                .middle-box:hover > svg {
                     background: #00D632;
                     border-radius: 6px;
                 }
 
-                .hover-black-green:hover > svg > rect {
+                .middle-box:hover > svg > rect {
                     stroke: #00D632;
                 } 
 
-                .hover-black-green:hover > svg > g > path {
+                .middle-box:hover > svg > g > path {
                     fill: #FFFFFF;
                 }
 
-                .hover-black-green:hover > a > svg > path {
+                .middle-box:hover > a > svg > path {
                     stroke: #FFFFFF;
                 }
 
