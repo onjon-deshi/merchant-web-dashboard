@@ -1,7 +1,6 @@
 "use strict";
-
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 const $ = require( "jquery" );
+
 
 // Side Bar Show/Hide
 const toggleLeftBar =()=>{
@@ -14,12 +13,9 @@ const refreshIconClick = (event) => {
     console.log("Clicked Refresh Button...." );
 }
 
-
-
 const home=()=>{
     return (
         
-
         <div className="body w-full bg-white">
 
             {/* TOP HEADER */}
@@ -36,7 +32,6 @@ const home=()=>{
 
             {/* MAIN BODY */}
             <div className="flex w-full h-full fixed bg-white">
-
 
                 {/* LEFT SIDE BAR */}
                 <aside id="left-sidebar" className="need w-[17rem] cursor-pointer mb-16 custom-scroll-auto "> 
@@ -167,8 +162,7 @@ const home=()=>{
                 {/* MAIN BODY CONTENT */}
                 <div className="custom-container w-full float-left px-8 py-10 flex font-montserrat">
 
-                        <div className="custom-container-left custom-scroll-auto float-left w-4/5 overflow-y-scroll pb-10 pr-3 text-justify">
-
+                        <div className="custom-container-left custom-scroll-auto float-left w-4/5 pb-10 pr-3 text-justify">
 
                             {/** First Div --- SUMMARY */}
                             <div className="box-full w-full h-[159px] bg-[#F5F5F5] text-[#222222] p-6 px-8 text-justify rounded-[5px]">
@@ -188,11 +182,12 @@ const home=()=>{
                                     <p className="font-normal text-base px-4 pb-0 pl-0 pt-4">Account Balance</p>
                                     <h2 style={{"fontSize":"24px","fontWeight":"600", "marginTop":"-4px"}} className="font-bold px-4 pl-0 pt-0">0.00 BDT</h2>
                                 </div>
-                                <div className="w-1/3 float-right text-right">
-                                    <a href="#" className="h-[54px] w-[136px] bg-[#1A202C] ">
-                                        Upload KYB
-                                    </a>
+
+                                <div className="w-1/3 h-[74px] float-left text-right pt-4">
+                                    <a href="#" className="upload-kyb-button text-right">Upload KYB</a>
                                 </div>
+
+
                             </div>
                             
                             
@@ -203,7 +198,6 @@ const home=()=>{
                             <div className="w-full flex overflow-hidden text-left ">
                                 
                                 <div className="box hover-black-green w-[32%] h-[200px] mr-[1%] bg-[#FFFFFF] border-2 border-[#F5F5F5] text-[#222222] rounded-[5px] pt-10 pl-5 pr-5">
-                                    
                                     <svg width="50" height="50" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <g clipPath="url(#clip0_2513_20291)">
                                     <path d="M27.7657 13C28.2813 13.2012 28.4347 13.5865 28.4335 14.124C28.4228 21.4105 28.4259 28.697 28.4259 35.9835C28.4259 36.5398 28.1857 36.8824 27.728 36.9723C27.6292 36.9918 27.5261 36.9912 27.4249 36.9918C25.8077 36.9931 24.1911 36.9931 22.5738 36.9925C21.8985 36.9918 21.5741 36.6643 21.5741 35.9829C21.5735 28.6964 21.5772 21.4099 21.5665 14.1234C21.5653 13.5853 21.7187 13.2005 22.2343 13C24.0779 13 25.9221 13 27.7657 13Z" fill="#DDDDDD"/>
@@ -225,21 +219,21 @@ const home=()=>{
                                         </svg>
                                     </a>
 
-                                    <h3 style={{"fontSize":"22px"}} className="text-[#999999] font-semibold  opacity-70">No sales yet today</h3>
+                                    <h3 style={{"fontSize":"22px"}} className="font-semibold  opacity-70">৳ 5,000.00</h3>
 
                                 </div>
 
+
                                 <div className="box hover-black-green w-[32%] h-[200px] ml-[1%] mr-[1%] bg-[#FFFFFF] border-2 border-[#F5F5F5] text-[#222222] rounded-[5px] pt-10 pl-5  pr-5">
                                     <svg width="50" height="50" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <g clipPath="url(#clip0_2513_20291)">
-                                    <path d="M27.7657 13C28.2813 13.2012 28.4347 13.5865 28.4335 14.124C28.4228 21.4105 28.4259 28.697 28.4259 35.9835C28.4259 36.5398 28.1857 36.8824 27.728 36.9723C27.6292 36.9918 27.5261 36.9912 27.4249 36.9918C25.8077 36.9931 24.1911 36.9931 22.5738 36.9925C21.8985 36.9918 21.5741 36.6643 21.5741 35.9829C21.5735 28.6964 21.5772 21.4099 21.5665 14.1234C21.5653 13.5853 21.7187 13.2005 22.2343 13C24.0779 13 25.9221 13 27.7657 13Z" fill="#DDDDDD"/>
-                                    <path d="M13 23.0757C13.2157 22.5577 13.6162 22.4069 14.157 22.4144C15.7182 22.4358 17.2808 22.4213 18.8426 22.422C19.5268 22.422 19.8544 22.7438 19.8544 23.4196C19.855 27.612 19.855 31.805 19.8544 35.9973C19.8544 36.665 19.528 36.9918 18.8647 36.9925C17.287 36.9937 15.7094 36.9805 14.1324 37C13.5992 37.0063 13.2062 36.8529 13.0006 36.3387C13 31.9175 13 27.4963 13 23.0757Z" fill="#DDDDDD"/>
-                                    <path d="M30.1456 28.411C30.1456 25.9122 30.1588 23.4133 30.1375 20.9145C30.1305 20.1325 30.599 19.8364 31.2095 19.8433C32.7947 19.8622 34.3805 19.8496 35.9663 19.8502C36.6718 19.8502 36.9994 20.1771 36.9994 20.8799C36.9994 25.909 36.9994 30.9381 36.9994 35.9665C36.9994 36.67 36.6743 36.9925 35.9663 36.9931C34.3648 36.9937 32.7639 36.9937 31.1624 36.9931C30.4644 36.9931 30.1456 36.675 30.145 35.9778C30.145 33.4551 30.1456 30.9331 30.1456 28.411Z" fill="#DDDDDD"/>
+                                    <g clipPath="url(#clip0_2513_20303)">
+                                    <path d="M33.2929 21.7282C32.9332 21.3758 32.6436 21.0953 32.3586 20.8112C31.8514 20.3067 31.3433 19.8023 30.8415 19.2932C30.3635 18.8088 30.3398 18.1604 30.776 17.7115C31.2213 17.2525 31.8887 17.2653 32.3823 17.7561C33.7983 19.1666 35.2097 20.5817 36.623 21.995C36.9781 22.3501 37.1065 22.7672 36.9062 23.238C36.7077 23.706 36.3261 23.9109 35.8216 23.9109C30.0648 23.91 24.307 23.9109 18.5501 23.9091C17.859 23.9091 17.3663 23.4483 17.3672 22.8182C17.3682 22.1844 17.8562 21.73 18.551 21.73C23.309 21.7282 28.0669 21.7291 32.8248 21.7291C32.945 21.7282 33.0652 21.7282 33.2929 21.7282Z" fill="#DDDDDD"/>
+                                    <path d="M16.748 28.2718C16.8719 28.4057 16.9438 28.4885 17.0203 28.565C17.7342 29.2798 18.4527 29.991 19.1621 30.7104C19.6374 31.1921 19.6556 31.8478 19.2185 32.293C18.7705 32.7484 18.1067 32.7311 17.6122 32.2384C16.2044 30.8361 14.8021 29.4283 13.3952 28.025C13.0309 27.6617 12.8862 27.2419 13.0956 26.7575C13.3032 26.2758 13.7011 26.0882 14.2165 26.0882C19.9616 26.0918 25.7066 26.09 31.4526 26.0909C32.1419 26.0909 32.6345 26.5535 32.6318 27.1845C32.6291 27.8156 32.1382 28.27 31.4434 28.27C26.6864 28.2718 21.9285 28.2709 17.1715 28.2709C17.0531 28.2718 16.9338 28.2718 16.748 28.2718Z" fill="#DDDDDD"/>
                                     </g>
                                     <rect x="0.5" y="0.5" width="49" height="49" rx="4.5" stroke="#DDDDDD"/>
                                     <defs>
-                                    <clipPath id="clip0_2513_20291">
-                                    <rect width="24" height="24" fill="white" transform="translate(13 13)"/>
+                                    <clipPath id="clip0_2513_20303">
+                                    <rect width="24" height="15.2454" fill="white" transform="translate(13 17.3773)"/>
                                     </clipPath>
                                     </defs>
                                     </svg>
@@ -251,8 +245,9 @@ const home=()=>{
                                         </svg>
                                     </a>
 
-                                    <h3 style={{"fontSize":"22px"}} className="text-[#999999] font-semibold  opacity-70">No sales yet today</h3>
+                                    <h3 style={{"fontSize":"22px"}} className="font-semibold  opacity-70">15</h3>
                                 </div>
+                                
                                 
                                 <div className="box hover-black-green w-[32%] h-[200px] ml-[1%] bg-[#FFFFFF] border-2 border-[#F5F5F5] text-[#222222] rounded-[5px]  pt-10 pl-5  pr-5">
                                     <svg width="50" height="50" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -282,7 +277,7 @@ const home=()=>{
                                         </svg>
                                     </a>
 
-                                    <h3 style={{"fontSize":"22px"}} className="text-[#999999] font-semibold  opacity-70">No sales yet today</h3>
+                                    <h3 style={{"fontSize":"22px"}} className=" font-semibold  opacity-70">৳ 2,500.00</h3>
                                 </div>
 
                             </div>
@@ -297,6 +292,7 @@ const home=()=>{
                                 </a>
                                 <h3 style={{"fontSize":"22px"}} className="text-[#999999] font-semibold  opacity-70">No sales yet today</h3>
                             </div>
+
 
                             <div className="hover-black-green mt-5 box w-full h-[122px] bg-[#FFFFFF] border-2 border-[#F5F5F5] rounded-[5px] pt-5 pl-5 pr-5">
                                 <a href="#" className="block pt-2 pb-1 text-base font-medium ">
@@ -314,7 +310,7 @@ const home=()=>{
 
 
 
-                        <div className="custom-container-right float-right w-1/5 pl-2">
+                        <div className="custom-container-right float-right w-1/5 pl-2 custom-scroll-auto pb-10">
                             
                             <div className="box-full w-full h-[54px] bg-[#F5F5F5] text-[#222222] text-justify rounded-[5px] px-5 py-3">
                                 <svg className="display-revert float-left" width="30" height="30" viewBox="0 0 24 24" fill="none" strokeWidth={2} xmlns="http://www.w3.org/2000/svg">
@@ -401,7 +397,18 @@ const home=()=>{
 
 
             <style jsx="true">{`
-
+                .upload-kyb-button {
+                    display: inline-block;
+                    flex-direction: row;
+                    align-items: flex-start;
+                    padding: 15px 20px;
+                    gap: 10px;
+                    width: 136px;
+                    height: 54px;
+                    background: #1A202C;
+                    border-radius: 3px;
+                    color: #FFFFFF;
+                }
 
                 .hover-black-green:hover, .hover-black-green:hover > h3 {
                     background: #1A202C;
@@ -466,6 +473,7 @@ const home=()=>{
                     overflow: auto;
                     scroll-behavior: auto;
                 }
+
                 .custom-scroll-auto::-webkit-scrollbar-track
                 {
                     -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
