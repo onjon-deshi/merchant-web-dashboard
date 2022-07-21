@@ -1,4 +1,4 @@
-import GoogleChart from "./chart";
+import RechartDonut from "./chart";
 const $ = require( "jquery" );
 
 // Side Bar Show/Hide
@@ -285,19 +285,86 @@ const home=()=>{
                             </div>
 
 
-                            <div className="mt-5 flex box w-full h-[145px] bg-[#FFFFFF] border-2 border-[#F5F5F5] text-[#222222] rounded-[5px] pt-5 pl-5 pr-5">
+                            <div className="mt-5 flex box w-full min-h-[200px] bg-[#FFFFFF] border-2 border-[#F5F5F5] text-[#222222] rounded-[5px] pt-5 pl-5 pr-5">
                                 
-                                <a href="#" className="block pt-4 pb-1 text-base font-medium w-4/5">
-                                    Payment Types
-                                    <svg className="display-revert ml-1" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M7.5 15L12.5 10L7.5 5" stroke="#222222" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                                    </svg>
-                                </a>
-                                <div className="w-1/5 text-center chart-div-right relative -m-5 right-0">
-                                    <GoogleChart />
+                                <div className="w-4/5 color-#222222">
+                                    <a href="#" className="block pt-2 pb-1 text-lg font-medium w-full">
+                                        Payment Types
+                                        <svg className="display-revert ml-1" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M7.5 15L12.5 10L7.5 5" stroke="#222222" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                                        </svg>
+                                    </a>
+
+                                    <table className="custom-border-top table-auto w-full m-auto h-auto mt-2" border={1}>
+                                    
+                                    <tbody>
+                                        <tr className="hover-black-green" id="inv-pay-data">
+                                            <td className="mt-2 pt-4 pb-4 rounded-l-md pl-4">
+                                                <span className="pointer pointer-success"></span>
+                                                Invoice Amount Received
+                                            </td>
+                                            <td className="mt-2 pt-4 pb-4 rounded-r-md text-center">৳ 1,800.00</td>
+                                        </tr>
+                                        <tr className="custom-border-top hover-black-green" id="qr-pay-data">
+                                            <td className="mt-2 pt-4 pb-4 rounded-l-md pl-4">
+                                                <span className="pointer pointer-success-dark"></span>
+                                                QR Offline
+                                            </td>
+                                            <td className="mt-2 pt-4 pb-4 rounded-r-md text-center">৳ 2,000.00</td>
+                                        </tr>
+                                    </tbody>
+                                    </table>
+                                </div>
+
+
+                                <div className="fixed w-1/5 text-center chart-div-right relative right-0 -mt-4 -right-4">
+                                    <RechartDonut  />
                                 </div>
                                 
                             </div>
+
+
+                            <div className="my-5 block box w-full min-h-[200px] bg-[#FFFFFF] border-2 border-[#F5F5F5] text-[#222222] rounded-[5px] p-5">
+
+                                    <a href="#" className="block pt-2 pb-1 text-lg font-medium w-full">
+                                        Top Items by Sales
+                                        <svg className="display-revert ml-1" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M7.5 15L12.5 10L7.5 5" stroke="#222222" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                                        </svg>
+                                    </a>
+
+                                    <table className="custom-border-top table-auto w-full m-auto h-auto mt-2">
+                                        <tbody>
+                                            <tr className="hover-black-green hover:text-white">
+                                                <td className="mt-2 pt-4 pb-4 rounded-l-md pl-4">
+                                                    Miniket Rice Premium <br/>
+                                                    <span className="text-[#999999] text-sm">5 KG Pack</span>
+                                                </td>
+                                                <td className="mt-2 pt-4 pb-4 text-center">30</td>
+                                                <td className="mt-2 pt-4 pb-4 text-center rounded-r-md">৳ 1,500.00</td>
+                                            </tr>
+                                            <tr className="custom-border-top hover-black-green">
+                                                <td className="mt-2 pt-4 pb-4 rounded-l-md pl-4">
+                                                    Local Onion <br/>
+                                                    <span className="text-[#999999] text-sm">1 KG Pack</span>
+                                                </td>
+                                                <td className="mt-2 pt-4 pb-4 text-center">7</td>
+                                                <td className="mt-2 pt-4 pb-4 text-center rounded-r-md">৳ 650.00</td>
+                                            </tr>
+                                            <tr className="custom-border-top hover-black-green">
+                                                <td className="mt-2 pt-4 pb-4 rounded-l-md pl-4">
+                                                    Vim Dishwashing Bar <br/>
+                                                    <span className="text-[#999999] text-sm">300 gm</span>
+                                                </td>
+                                                <td className="mt-2 pt-4 pb-4 text-center">3</td>
+                                                <td className="mt-2 pt-4 pb-4 text-center rounded-r-md">৳ 150.00</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    
+                            </div>
+                            <br/>
+
 
 
                         </div>
