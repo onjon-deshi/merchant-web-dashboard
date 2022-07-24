@@ -5,9 +5,7 @@ import "../styles/Dashboard.css";
 
 import Home from "./dashboard/home";
 import Home2 from "./dashboard/home-2";
-import Chart2 from "./dashboard/chart2";
-import ReChartDonut from "./dashboard/chart";
-
+import BarChart from "./dashboard/BarChart";
 
 const DashboardLayout=()=>{
 
@@ -15,8 +13,7 @@ const DashboardLayout=()=>{
         <Routes>
             <Route path="/home/index" element={<Home/>} />
             <Route path="/home/index2" element={<Home2/>} />
-            <Route path="/home/rechart-donut" element={<ReChartDonut/>} />
-            <Route path="/home/chart2" element={<Chart2/>} />
+            <Route path="/home/chart2" element={<BarChart/>} />
         </Routes>
     );
 }

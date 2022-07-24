@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react';
-import { PieChart, Pie, Sector, ResponsiveContainer } from 'recharts';
+import { PieChart, Pie, Sector } from 'recharts';
 import $ from "jquery";
 
 const data = [
@@ -56,14 +56,15 @@ const renderActiveShape = (props) => {
 };
 
 
-export default class Example extends PureComponent {
+
+export default class DonutChart extends PureComponent {
     state = {
-        // activeIndex: 2,
+        activeIndex: ""
     };
 
     onPieEnter = (_, index) => {
         this.setState({
-            activeIndex: index,
+            activeIndex: index
         });
 
 
@@ -96,6 +97,7 @@ export default class Example extends PureComponent {
                     dataKey="value"
                     onMouseEnter={this.onPieEnter}
                     onMouseLeave={this.onPieLeave}
+                    isAnimationActive={false}
                 />
             </PieChart>
         );

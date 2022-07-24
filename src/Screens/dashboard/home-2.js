@@ -1,5 +1,5 @@
-import RechartDonut from "./chart";
-const $ = require( "jquery" );
+import DonutChart from "./DonutChart";
+import $ from "jquery";
 
 // Side Bar Show/Hide
 const toggleLeftBar =()=>{
@@ -295,30 +295,29 @@ const home=()=>{
                                         </svg>
                                     </a>
 
-                                    <table className="custom-border-top table-auto w-full m-auto h-auto mt-2" border={1}>
-                                    
-                                    <tbody>
-                                        <tr className="hover-black-green" id="inv-pay-data">
-                                            <td className="mt-2 pt-4 pb-4 rounded-l-md pl-4">
-                                                <span className="pointer pointer-success"></span>
-                                                Invoice Amount Received
-                                            </td>
-                                            <td className="mt-2 pt-4 pb-4 rounded-r-md text-center">৳ 1,800.00</td>
-                                        </tr>
-                                        <tr className="custom-border-top hover-black-green" id="qr-pay-data">
-                                            <td className="mt-2 pt-4 pb-4 rounded-l-md pl-4">
-                                                <span className="pointer pointer-success-dark"></span>
-                                                QR Offline
-                                            </td>
-                                            <td className="mt-2 pt-4 pb-4 rounded-r-md text-center">৳ 2,000.00</td>
-                                        </tr>
-                                    </tbody>
+                                    <table id="payment-types-table" className="custom-border-top table-auto w-full m-auto h-auto mt-2" border={1}>
+                                        <tbody>
+                                            <tr className="hover-black-green" id="inv-pay-data">
+                                                <td className="mt-2 pt-4 pb-4 rounded-l-md pl-4">
+                                                    <span className="pointer pointer-success"></span>
+                                                    Invoice Amount Received
+                                                </td>
+                                                <td className="mt-2 pt-4 pb-4 rounded-r-md text-center">৳ 1,800.00</td>
+                                            </tr>
+                                            <tr className="custom-border-top hover-black-green" id="qr-pay-data">
+                                                <td className="mt-2 pt-4 pb-4 rounded-l-md pl-4">
+                                                    <span className="pointer pointer-success-dark"></span>
+                                                    QR Offline
+                                                </td>
+                                                <td className="mt-2 pt-4 pb-4 rounded-r-md text-center">৳ 2,000.00</td>
+                                            </tr>
+                                        </tbody>
                                     </table>
                                 </div>
 
 
                                 <div className="fixed w-1/5 text-center chart-div-right relative right-0 -mt-4 -right-4">
-                                    <RechartDonut  />
+                                    <DonutChart  />
                                 </div>
                                 
                             </div>
@@ -382,7 +381,7 @@ const home=()=>{
                                 <path d="M9.47795 9.1894C8.5729 9.1894 7.66715 9.19222 6.7621 9.188C6.30958 9.18589 6.04848 8.88819 6.13927 8.49056C6.19768 8.23439 6.41726 8.07182 6.73536 8.06549C7.0788 8.05915 7.42224 8.06408 7.76568 8.06408C9.2253 8.06408 10.6842 8.06338 12.1438 8.06478C12.4788 8.06478 12.704 8.19639 12.7892 8.43145C12.9271 8.81289 12.6562 9.17885 12.217 9.18729C11.7568 9.19574 11.2958 9.1894 10.8355 9.1894C10.3837 9.1894 9.93048 9.1894 9.47795 9.1894Z" fill="#222222"/>
                                 </svg>
 
-                                <a href="#" className="float-left font-medium text-base pl-4 pt-1">
+                                <a href="#" className="float-left font-medium text-base pl-4 pt-1 hover:underline">
                                     Send an Invoice
                                 </a>
                             </div>
@@ -400,7 +399,7 @@ const home=()=>{
                                 </defs>
                                 </svg>
 
-                                <a href="#" className="float-left font-medium text-base pl-4 pt-1">
+                                <a href="#" className="float-left font-medium text-base pl-4 pt-1 hover:underline">
                                     Add an Item
                                 </a>
                             </div>
