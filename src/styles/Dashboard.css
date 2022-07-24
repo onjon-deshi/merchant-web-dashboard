@@ -152,16 +152,15 @@ aside .grid-item svg {
     border-radius: 10px;
     max-height: 100%;
     z-index: -999999;
-}
-
-aside .grid-item:hover, aside .grid-item svg:hover, aside .grid-container .grid-item svg.current {
+} 
+ aside .grid-item:hover, aside .grid-item svg:hover, aside .grid-container .grid-item svg.current {
     background: #1A202C !important;
     stroke: #FFFFFF !important;
     fill: #FFFFFF !important;
     stroke-width: 1px !important;
-}
+} 
 
-aside .grid-item svg:hover path {
+ aside .grid-item svg:hover path {
     fill: #FFFFFF;
 }
 
