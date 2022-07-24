@@ -96,7 +96,8 @@ export default class DonutChart extends PureComponent {
 
     render() {
         return (
-            <PieChart width={200} height={200} className='float-right'>
+            // <PieChart width={200} height={200} className='float-left'>
+            <PieChart width={400} height={400}>
                 <Pie
                     activeIndex={this.state.activeIndex}
                     activeShape={renderActiveShape}
@@ -110,7 +111,6 @@ export default class DonutChart extends PureComponent {
                     onMouseEnter={this.onPieEnter}
                     onMouseLeave={this.onPieLeave}
                     isAnimationActive={false}
-                    stroke={0}
                 />
             </PieChart>
         );
