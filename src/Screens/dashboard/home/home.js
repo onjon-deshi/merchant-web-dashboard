@@ -1,6 +1,6 @@
-import DonutChart from "./DonutChart";
-import $ from "jquery";
-import Navbar from '../../components/Navbar';
+"use strict";
+const $ = require("jquery");
+
 
 // Side Bar Show/Hide
 const toggleLeftBar = () => {
@@ -13,31 +13,28 @@ const refreshIconClick = (event) => {
     console.log("Clicked Refresh Button....");
 }
 
-
 const home = () => {
     return (
-        <div className="body w-full bg-white font-medium">
+
+        <div className="body w-full bg-white">
 
             {/* TOP HEADER */}
-            <div className="w-full border-b-2 flex justify-between">
-                <a className="flex items-center pl-8">
+            <div className="w-full border-b-2 h-auto p-5 pl-8">
+                <a className="flex items-center">
                     <svg onClick={toggleLeftBar} className="w-6 h-6 float-right cursor-pointer" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16"></path>
                     </svg>
 
-
-                    <span className="self-center pl-3 text-2xl font-medium whitespace-nowrap dark:text-white">Home</span>
+                    <span className="self-center pl-3 text-xl font-semibold whitespace-nowrap dark:text-white">Home</span>
                 </a>
-                <Navbar />
             </div>
 
 
             {/* MAIN BODY */}
             <div className="flex w-full h-full fixed bg-white">
 
-
                 {/* LEFT SIDE BAR */}
-                <aside id="left-sidebar" className="need w-[17rem] cursor-pointer mb-16 custom-scroll-auto font-medium">
+                <aside id="left-sidebar" className="need w-[17rem] cursor-pointer mb-16 custom-scroll-auto ">
 
                     <div className="w-full grid-container mt-5">
                         <a href="#">
@@ -106,7 +103,7 @@ const home = () => {
                             <p className="block text-center">Connects</p>
                         </a>
 
-                        <a href="#">
+                        <a href="/home/reports">
                             <div className="grid-item">
                                 <svg fill="none" stroke="currentColor" viewBox="-4 -3 30 30" xmlns="http://www.w3.org/2000/svg">
                                     <g clipPath="url(#clip0_1009_2410)">
@@ -162,7 +159,6 @@ const home = () => {
 
                 </aside>
 
-
                 {/* MAIN BODY CONTENT */}
                 <div className="custom-container w-full float-left px-8 py-10 flex font-montserrat">
 
@@ -183,7 +179,7 @@ const home = () => {
                             <hr style={{ "border": "1px solid #DDDDDD", "borderRadius": "5px" }} />
 
                             <div className="w-2/3 float-left">
-                                <p className="font-normal text-base px-4 pb-0 pl-0 pt-4 mb-2.5">Account Balance</p>
+                                <p className="font-normal text-base px-4 pb-0 pl-0 pt-4">Account Balance</p>
                                 <h2 style={{ "fontSize": "24px", "fontWeight": "600", "marginTop": "-4px" }} className="font-bold px-4 pl-0 pt-0">0.00 BDT</h2>
                             </div>
 
@@ -196,7 +192,7 @@ const home = () => {
 
 
                         <h6 className="mt-7 text-xl font-medium">Here’s your business at a glance</h6>
-                        <h5 className="pt-3 pb-2 text-lg ">Today</h5>
+                        <h5 className="pt-3 pb-2 text-lg font-semibold">Today</h5>
 
 
                         <div className="w-full flex overflow-hidden text-left ">
@@ -223,7 +219,7 @@ const home = () => {
                                     </svg>
                                 </a>
 
-                                <h3 style={{ "fontSize": "22px" }} className="font-semibold  ">৳ 5,000.00</h3>
+                                <h3 style={{ "fontSize": "22px" }} className="font-semibold">৳ 5,000.00</h3>
 
                             </div>
 
@@ -281,90 +277,33 @@ const home = () => {
                                     </svg>
                                 </a>
 
-                                <h3 style={{ "fontSize": "22px" }} className=" font-semibold">৳ 2,500.00</h3>
+                                <h3 style={{ "fontSize": "22px" }} className=" font-semibold ">৳ 2,500.00</h3>
                             </div>
 
                         </div>
 
 
-                        <div className="mt-5 flex box w-full min-h-[200px] bg-[#FFFFFF] border-2 border-[#F5F5F5] text-[#222222] rounded-[5px] pt-5 pl-5 pr-5">
-
-                            <div className="w-4/5 color-#222222">
-                                <a href="#" className="block pt-2 pb-1 font-medium w-full">
-                                    Payment Types
-                                    <svg className="display-revert ml-1" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M7.5 15L12.5 10L7.5 5" stroke="#222222" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                                    </svg>
-                                </a>
-
-                                <table id="payment-types-table" className="custom-border-top table-auto w-full m-auto h-auto mt-2" border={1}>
-                                    <tbody>
-                                        <tr className="hover-black-green" id="inv-pay-data">
-                                            <td className="mt-2 pt-4 pb-4 rounded-l-md pl-4">
-                                                <span className="pointer pointer-success"></span>
-                                                Invoice Amount Received
-                                            </td>
-                                            <td className="mt-2 pt-4 pb-4 rounded-r-md text-center font-semibold text-xl">৳ 1,800.00</td>
-                                        </tr>
-                                        <tr className="custom-border-top hover-black-green" id="qr-pay-data">
-                                            <td className="mt-2 pt-4 pb-4 rounded-l-md pl-4">
-                                                <span className="pointer pointer-success-dark"></span>
-                                                QR Offline
-                                            </td>
-                                            <td className="mt-2 pt-4 pb-4 rounded-r-md text-center font-semibold text-xl">৳ 2,000.00</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-
-
-                            <div className="fixed w-1/5 text-center chart-div-right relative right-0 -mt-4 -right-4">
-                                <DonutChart />
-                            </div>
-
+                        <div className="hover-black-green mt-5 box w-full h-[122px] bg-[#FFFFFF] border-2 border-[#F5F5F5] text-[#222222] rounded-[5px] pt-5 pl-5 pr-5">
+                            <a href="#" className="block pt-2 pb-1 text-base font-medium ">
+                                Payment Types
+                                <svg className="display-revert ml-1" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M7.5 15L12.5 10L7.5 5" stroke="#222222" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                                </svg>
+                            </a>
+                            <h3 style={{ "fontSize": "22px" }} className="text-[#999999] font-semibold  opacity-70">No sales yet today</h3>
                         </div>
 
 
-                        <div className="my-5 block box w-full min-h-[200px] bg-[#FFFFFF] border-2 border-[#F5F5F5] text-[#222222] rounded-[5px] p-5">
-
-                            <a href="#" className="block pt-2 pb-1 font-medium w-full">
+                        <div className="hover-black-green mt-5 box w-full h-[122px] bg-[#FFFFFF] border-2 border-[#F5F5F5] rounded-[5px] pt-5 pl-5 pr-5">
+                            <a href="#" className="block pt-2 pb-1 text-base font-medium ">
                                 Top Items by Sales
                                 <svg className="display-revert ml-1" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M7.5 15L12.5 10L7.5 5" stroke="#222222" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                                 </svg>
                             </a>
-
-                            <table className="custom-border-top table-auto w-full m-auto h-auto mt-2">
-                                <tbody>
-                                    <tr className="hover-black-green hover:text-white">
-                                        <td className="mt-2 pt-4 pb-4 rounded-l-md pl-4">
-                                            Miniket Rice Premium <br />
-                                            <span className="text-[#999999] text-sm">5 KG Pack</span>
-                                        </td>
-                                        <td className="mt-2 pt-4 pb-4 text-center text-xl">30</td>
-                                        <td className="mt-2 pt-4 pb-4 text-center rounded-r-md text-xl">৳ 1,500.00</td>
-                                    </tr>
-                                    <tr className="custom-border-top hover-black-green">
-                                        <td className="mt-2 pt-4 pb-4 rounded-l-md pl-4">
-                                            Local Onion <br />
-                                            <span className="text-[#999999] text-sm">1 KG Pack</span>
-                                        </td>
-                                        <td className="mt-2 pt-4 pb-4 text-center text-xl">7</td>
-                                        <td className="mt-2 pt-4 pb-4 text-center rounded-r-md text-xl">৳ 650.00</td>
-                                    </tr>
-                                    <tr className="custom-border-top hover-black-green">
-                                        <td className="mt-2 pt-4 pb-4 rounded-l-md pl-4">
-                                            Vim Dishwashing Bar <br />
-                                            <span className="text-[#999999] text-sm">300 gm</span>
-                                        </td>
-                                        <td className="mt-2 pt-4 pb-4 text-center text-xl">3</td>
-                                        <td className="mt-2 pt-4 pb-4 text-center rounded-r-md text-xl">৳ 150.00</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-
+                            <h3 style={{ "fontSize": "22px" }} className="text-[#999999] font-semibold  opacity-70">No sales yet today</h3>
                         </div>
-                        <br />
+
 
                     </div>
 
@@ -372,7 +311,8 @@ const home = () => {
 
 
                     <div className="custom-container-right float-right w-1/5 pl-2 custom-scroll-auto pb-10">
-                        <div className="box-full w-full min-h-[54px] bg-[#F5F5F5] text-[#222222] text-justify rounded-[5px] px-5 py-3">
+
+                        <div className="box-full w-full h-[54px] bg-[#F5F5F5] text-[#222222] text-justify rounded-[5px] px-5 py-3">
                             <svg className="display-revert float-left" width="30" height="30" viewBox="0 0 24 24" fill="none" strokeWidth={2} xmlns="http://www.w3.org/2000/svg">
                                 <path d="M8.90583 23.9989C8.63136 23.8138 8.33788 23.6519 8.08734 23.4394C7.51588 22.9545 6.96483 22.445 6.40533 21.946C6.35958 21.9052 6.31032 21.8693 6.25191 21.8221C5.75504 22.262 5.2624 22.6948 4.77399 23.1311C4.47066 23.4021 4.13004 23.5379 3.72044 23.4471C3.23062 23.3387 2.88929 22.9425 2.85339 22.4414C2.84706 22.3556 2.84425 22.2697 2.84425 22.1839C2.84354 15.396 2.84425 8.6074 2.84143 1.81952C2.84143 1.47256 2.89069 1.15093 3.13631 0.886316C3.55857 0.429568 4.20815 0.397195 4.71417 0.825792C5.17302 1.21427 5.61781 1.61965 6.06893 2.01798C6.12663 2.06936 6.18646 2.11862 6.26035 2.18196C6.59112 1.88708 6.91697 1.59783 7.24211 1.30788C7.59189 0.995401 7.93955 0.681519 8.29003 0.370452C8.84389 -0.121485 9.41043 -0.1243 9.96359 0.366933C10.5773 0.910948 11.1875 1.45919 11.799 2.00531C11.8617 2.06161 11.9285 2.11369 12.0059 2.17844C12.5781 1.6675 13.1425 1.1636 13.7062 0.660405C13.8167 0.561877 13.9272 0.461942 14.0384 0.364118C14.593 -0.122892 15.1567 -0.120781 15.712 0.37397C16.325 0.919393 16.9352 1.46693 17.5467 2.01305C17.6044 2.06443 17.6636 2.1151 17.7403 2.18126C17.9183 2.02643 18.0936 1.87512 18.2667 1.72169C18.5827 1.4423 18.9008 1.16571 19.2133 0.882094C19.5954 0.535134 20.0282 0.411974 20.5054 0.632255C20.972 0.847609 21.1585 1.24383 21.1578 1.75266C21.1543 5.89295 21.1557 10.0332 21.1557 14.1728C21.1557 16.8521 21.1529 19.5313 21.1585 22.2106C21.1592 22.654 21.0417 23.0277 20.663 23.2853C20.2499 23.5661 19.7397 23.5506 19.3371 23.2156C18.8508 22.8109 18.3849 22.3823 17.9099 21.9643C17.8578 21.9185 17.8036 21.8749 17.7375 21.82C17.2835 22.2247 16.8359 22.6244 16.3883 23.0242C16.1962 23.1959 16.0153 23.3824 15.8091 23.5365C15.5818 23.7068 15.3327 23.8469 15.0934 24.0003C14.9526 24.0003 14.8119 24.0003 14.6718 24.0003C14.4058 23.8307 14.1278 23.6766 13.8766 23.4879C13.6401 23.3106 13.4318 23.0966 13.2108 22.8989C12.8111 22.5421 12.4099 22.1853 11.9996 21.82C11.4148 22.3422 10.8539 22.8602 10.2733 23.3549C9.99386 23.5928 9.67575 23.7863 9.37595 24.0003C9.2183 23.9989 9.06206 23.9989 8.90583 23.9989ZM3.97521 22.3408C4.51359 21.8643 4.99919 21.4238 5.49676 20.9973C5.97884 20.5835 6.54186 20.5877 7.02746 20.998C7.26604 21.1993 7.49406 21.4132 7.72701 21.6215C8.1915 22.0361 8.65528 22.4499 9.12822 22.8714C9.2176 22.7933 9.2936 22.7279 9.36891 22.6603C9.96922 22.1247 10.5681 21.5878 11.1685 21.0522C11.7097 20.5701 12.2853 20.5687 12.8251 21.0494C13.4318 21.5899 14.0363 22.1318 14.6423 22.673C14.7162 22.7391 14.7936 22.8025 14.8717 22.87C15.5614 22.2528 16.2342 21.6462 16.9126 21.0459C17.4496 20.5701 18.0119 20.568 18.5517 21.0374C18.9937 21.4217 19.4293 21.813 19.8692 22.2007C19.9114 22.238 19.9607 22.2669 20.0163 22.307C20.0163 15.4255 20.0163 8.56798 20.0163 1.67384C19.9191 1.75477 19.8537 1.80755 19.7911 1.86315C19.3702 2.23615 18.9592 2.62111 18.5243 2.97722C18.3554 3.11516 18.1421 3.22706 17.9317 3.27984C17.5383 3.37767 17.2019 3.21932 16.9063 2.95259C16.2342 2.34594 15.5579 1.74492 14.871 1.13052C14.7774 1.21216 14.6887 1.28747 14.6021 1.36418C14.0018 1.89975 13.4043 2.43884 12.8019 2.9723C12.2938 3.42271 11.7068 3.4213 11.1973 2.97581C11.0326 2.83154 10.8715 2.68445 10.7082 2.53877C10.1846 2.07147 9.66027 1.60416 9.13174 1.13264C9.06629 1.18823 9.0128 1.23187 8.96142 1.27832C8.32803 1.84345 7.69745 2.41561 7.05772 2.97722C6.55171 3.42201 5.98166 3.4206 5.47142 2.98637C5.23988 2.78861 5.01538 2.58241 4.78736 2.38042C4.52626 2.14959 4.26446 1.92016 3.97591 1.6661C3.97521 8.56728 3.97521 15.4262 3.97521 22.3408Z" fill="#222222" />
                                 <path d="M12.0087 14.8104C13.7351 14.8104 15.4614 14.8111 17.1878 14.8097C17.4341 14.8097 17.6537 14.8548 17.7958 15.0814C17.9866 15.3854 17.8367 15.7943 17.4918 15.8928C17.3884 15.9224 17.2765 15.9329 17.1688 15.9329C13.7238 15.935 10.2789 15.935 6.83391 15.9329C6.72623 15.9329 6.61504 15.9217 6.51088 15.8942C6.27511 15.8316 6.11958 15.6169 6.11817 15.3741C6.11677 15.144 6.26315 14.9223 6.48413 14.8562C6.60096 14.821 6.72975 14.8125 6.85291 14.8125C8.57152 14.8097 10.2901 14.8104 12.0087 14.8104Z" fill="#222222" />
@@ -380,12 +320,12 @@ const home = () => {
                                 <path d="M9.47795 9.1894C8.5729 9.1894 7.66715 9.19222 6.7621 9.188C6.30958 9.18589 6.04848 8.88819 6.13927 8.49056C6.19768 8.23439 6.41726 8.07182 6.73536 8.06549C7.0788 8.05915 7.42224 8.06408 7.76568 8.06408C9.2253 8.06408 10.6842 8.06338 12.1438 8.06478C12.4788 8.06478 12.704 8.19639 12.7892 8.43145C12.9271 8.81289 12.6562 9.17885 12.217 9.18729C11.7568 9.19574 11.2958 9.1894 10.8355 9.1894C10.3837 9.1894 9.93048 9.1894 9.47795 9.1894Z" fill="#222222" />
                             </svg>
 
-                            <a href="#" className="float-left font-medium text-base pl-4 pt-1 hover:underline">
+                            <a href="#" className="float-left font-medium text-base pl-4 pt-1">
                                 Send an Invoice
                             </a>
                         </div>
 
-                        <div className="box-full w-full min-h-[54px] bg-[#F5F5F5] text-[#222222] text-justify rounded-[5px] px-5 py-3 mt-4">
+                        <div className="box-full w-full h-[54px] bg-[#F5F5F5] text-[#222222] text-justify rounded-[5px] px-5 py-3 mt-4">
                             <svg className="display-revert float-left" width="30" height="30" viewBox="0 0 24 24" fill="none" strokeWidth={2} xmlns="http://www.w3.org/2000/svg">
                                 <g clipPath="url(#clip0_2513_20358)">
                                     <path d="M24 2.25029C24 5.45326 24 8.6567 24 11.8597C23.9081 11.9923 23.8341 12.1428 23.722 12.2553C20.0761 15.9078 16.4259 19.5561 12.7777 23.2058C12.4097 23.5742 11.9775 23.8226 11.4698 23.9394C11.3958 23.9562 11.3236 23.9797 11.2505 24.0003C11.0316 24.0003 10.8131 24.0003 10.5942 24.0003C9.75094 23.8695 9.16734 23.3379 8.59266 22.759C6.14672 20.2944 3.69094 17.839 1.22531 15.394C0.650156 14.824 0.129844 14.2414 0 13.4065C0 13.1876 0 12.9692 0 12.7503C0.139219 11.9192 0.666094 11.3412 1.23844 10.7717C4.70859 7.31888 8.16469 3.85248 11.6292 0.394509C11.7806 0.243571 11.9695 0.131071 12.1406 0.000289917C15.3436 0.000289917 18.547 0.000289917 21.75 0.000289917C21.7852 0.0143524 21.8189 0.0345087 21.855 0.0415399C22.8473 0.237946 23.513 0.816384 23.8603 1.76232C23.9189 1.92076 23.9541 2.08763 24 2.25029ZM17.1328 1.40654C15.6877 1.40654 14.2425 1.40373 12.7978 1.41216C12.6881 1.41263 12.5498 1.46279 12.4739 1.53826C8.91797 5.08482 5.36672 8.63654 1.81641 12.1892C1.26609 12.74 1.26047 13.4286 1.80187 13.97C4.54594 16.7164 7.29 19.4623 10.0411 22.2012C10.1902 22.3494 10.3903 22.475 10.5895 22.5383C11.0887 22.6962 11.4956 22.505 11.8552 22.1454C15.3816 18.6134 18.9127 15.0856 22.4367 11.5512C22.523 11.465 22.5867 11.3126 22.5872 11.1908C22.5956 8.35529 22.5942 5.51982 22.5933 2.68435C22.5928 1.88888 22.1063 1.40701 21.3038 1.40654C19.9134 1.40607 18.5231 1.40654 17.1328 1.40654Z" fill="black" />
@@ -398,24 +338,24 @@ const home = () => {
                                 </defs>
                             </svg>
 
-                            <a href="#" className="float-left font-medium text-base pl-4 pt-1 hover:underline">
+                            <a href="#" className="float-left font-medium text-base pl-4 pt-1">
                                 Add an Item
                             </a>
                         </div>
 
 
-                        <h6 className="mt-7 text-xl font-medium">Last 30 days</h6>
-                        <div className="mt-3 box w-full min-h-[69px] bg-[#FFFFFF] border-2 border-[#F5F5F5] text-[#222222] rounded-[5px] px-5 py-6 border-b-0 rounded-b-none">
-                            <a href="#" className="block text-sm font-normal text-[#444444]">
+                        <h6 className="mt-7 text-lg font-medium">Last 30 days</h6>
+                        <div className="mt-3 box w-full h-[69px] bg-[#FFFFFF] border-2 border-[#F5F5F5] text-[#222222] rounded-[5px] px-5 py-6 border-b-0 rounded-b-none">
+                            <a href="#" className="block text-base font-medium text-[#222222]">
                                 Total Connects
                                 <svg className="display-revert ml-1 mt-0.5 float-right" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M7.5 15L12.5 10L7.5 5" stroke="#999999" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                                 </svg>
-                                <span className="float-right pr-1 text-base ">0</span>
+                                <span className="float-right pr-1 text-base">0</span>
                             </a>
                         </div>
                         <div className="box w-full h-[69px] bg-[#FFFFFF] border-2 border-[#F5F5F5] text-[#222222] rounded-[5px] px-5 py-6 rounded-t-none border-b-0 rounded-b-none">
-                            <a href="#" className="block text-sm font-normal text-[#444444]">
+                            <a href="#" className="block text-base font-medium text-[#222222]">
                                 New Connects
                                 <svg className="display-revert ml-1 mt-0.5 float-right" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M7.5 15L12.5 10L7.5 5" stroke="#999999" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
@@ -423,8 +363,8 @@ const home = () => {
                                 <span className="float-right pr-1 text-base">0</span>
                             </a>
                         </div>
-                        <div className="box w-full min-h-[69px] bg-[#FFFFFF] border-2 border-[#F5F5F5] text-[#222222] rounded-[5px] px-5 py-6 rounded-t-none border-b-0 rounded-b-none">
-                            <a href="#" className="block text-sm font-normal text-[#444444]">
+                        <div className="box w-full h-[69px] bg-[#FFFFFF] border-2 border-[#F5F5F5] text-[#222222] rounded-[5px] px-5 py-6 rounded-t-none border-b-0 rounded-b-none">
+                            <a href="#" className="block text-base font-medium text-[#222222]">
                                 Returning Connects
                                 <svg className="display-revert ml-1 mt-0.5 float-right" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M7.5 15L12.5 10L7.5 5" stroke="#999999" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
@@ -433,8 +373,8 @@ const home = () => {
                             </a>
                         </div>
 
-                        <div className="flow-root w-full min-h-[69px] bg-[#FFFFFF] border-2 border-[#F5F5F5] text-[#222222] rounded-[5px] px-5 py-2 rounded-t-none">
-                            <a href="#" className="block text-sm font-normal text-[#444444]">
+                        <div className="flow-root w-full h-[69px] bg-[#FFFFFF] border-2 border-[#F5F5F5] text-[#222222] rounded-[5px] px-5 py-2 rounded-t-none">
+                            <a href="#" className="block text-base font-medium text-[#222222]">
                                 <span style={{ "maxWidth": "60%", "whiteSpace": "break-spaces", "display": "block", "float": "left" }}>Average Spending Per Connects</span>
                                 <svg className="display-revert ml-1 float-right mt-3.5" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M7.5 15L12.5 10L7.5 5" stroke="#999999" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
@@ -448,7 +388,6 @@ const home = () => {
                 </div>
             </div>
         </div>
-
     );
 }
 

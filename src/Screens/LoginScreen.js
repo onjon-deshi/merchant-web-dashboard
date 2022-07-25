@@ -16,11 +16,8 @@ import BankAccount from './signup/bankAccount/BankAccount';
 import UploadDocuments from './signup/uploadDocuments/UploadDocuments';
 import Otp from './signup/otp/Otp';
 
-const MainLayout = () => {
-
-
+const LoginScreen = () => {
     return (
-
         <div className="App flex font-montserrat w-full">
             <div className="relative w-1/2">
                 <img src={img} alt="" className="h-full w-full p-8 relative" />
@@ -73,4 +70,4 @@ const MainLayout = () => {
     );
 };
 
-export default MainLayout; 
+export default LoginScreen; 

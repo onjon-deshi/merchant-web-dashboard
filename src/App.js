@@ -1,22 +1,22 @@
 import React from 'react';
-import MainLayout from './Screens/MainLayout';
-import DashboardLayout from "./Screens/DashboardLayout";
+import LoginScreen from './Screens/LoginScreen';
+import Dashboard from "./Screens/Dashboard";
 
 
 
 const App = () => {
 
-  if( document.URL.includes("/home/") ) {
-      return (
-          <DashboardLayout />
-      );
+  if (document.URL.includes("/dashboard")) {
+    return (
+      <Dashboard />
+    );
   }
   else {
-      return (
-        <MainLayout />
-      );
+    return (
+      <LoginScreen />
+    );
   }
-  
+
 };
 
 export default App;
