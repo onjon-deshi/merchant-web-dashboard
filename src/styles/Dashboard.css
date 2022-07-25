@@ -34,7 +34,8 @@ span.pointer.pointer-success-dark {
 
 
 /* Hover CSS Start*/
-.hover-black-green:hover, .hover-black-green:hover > h3, .hover-black-green:hover .text-sm, .current-graph-data  {
+.hover-black-green:hover, .hover-black-green:hover > h3, .hover-black-green:hover .text-sm, .current-graph-data
+  {
     background: #1A202C;
     color: #FFFFFF;
     opacity: 90%;
@@ -161,7 +162,7 @@ aside .grid-item:hover, aside .grid-item svg:hover, aside .grid-container .grid-
     stroke-width: 1px !important;
 }
 
-aside .grid-item svg:hover path {
+aside .grid-item svg:hover path, aside .grid-item svg.current path {
     fill: #FFFFFF;
 }
 
@@ -172,4 +173,54 @@ svg path {
 aside a:hover {
     text-decoration: none;
     background: none !important;
+}
+
+
+/** TAB */
+/* Style the tab */
+.tab {
+    overflow: hidden;
+    border-bottom: .5px solid #F5F5F5;
+    position: relative;
+    color: #222;
+}
+
+  /* Style the buttons inside the tab */
+.tab button {
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 10px 20px;
+    transition: 0s;
+    font-size: 17px;
+    margin: 0 1px;
+
+}
+
+
+/* Create an active/current tablink class */
+.tab button:hover, .tab button.current {
+    color: #00D632;
+    border-bottom: 3px solid #00D632;
+}
+
+/* Style the tab content */
+.tabcontent {
+    display: none;
+    padding: 6px 12px;
+    border-top: none;
+}
+
+
+.custom-btn {
+    padding: 10px 20px;
+    border: 1px solid #1A202C;
+    border-radius: 3px;
+    color: #1A202C;
+}
+
+.custom-btn:hover {
+    background: #1A202C;
+    color: #FFF;
 }

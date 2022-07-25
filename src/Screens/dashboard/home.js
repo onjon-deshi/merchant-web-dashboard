@@ -103,7 +103,7 @@ const home=()=>{
                             <p className="block text-center">Connects</p>
                         </a>
 
-                        <a href="#">
+                        <a href="/home/reports">
                             <div className="grid-item">
                                 <svg fill="none" stroke="currentColor" viewBox="-4 -3 30 30" xmlns="http://www.w3.org/2000/svg">
                                     <g clipPath="url(#clip0_1009_2410)">
