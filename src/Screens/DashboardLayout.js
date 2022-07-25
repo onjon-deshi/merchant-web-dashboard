@@ -1,16 +1,12 @@
 import { Route, Routes } from "react-router-dom";
 import "../styles/Dashboard.css";
-
-
-
 import Home from "./dashboard/home";
 import Home2 from "./dashboard/home-2";
 import Reports from "./dashboard/reports";
 import DatePicker from "./../components/DatePicker";
 
-// import BarChart from "./dashboard/BarChart";
 
-const DashboardLayout=()=>{
+const DashboardLayout = () => {
 
     return (
         <Routes>

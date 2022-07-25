@@ -17,13 +17,11 @@ import UploadDocuments from './signup/uploadDocuments/UploadDocuments';
 import Otp from './signup/otp/Otp';
 
 const MainLayout = () => {
-    
-    
+
+
     return (
 
         <div className="App flex font-montserrat w-full">
-            
-
             <div className="relative w-1/2">
                 <img src={img} alt="" className="h-full w-full p-8 relative" />
                 <h1 className="absolute text-4xl top-20 left-96 font-semibold text-white">WELCOME</h1>
@@ -41,7 +39,7 @@ const MainLayout = () => {
 
             <div className="flex flex-col justify-center w-1/2">
                 <Routes>
-                    
+
                     {/* Signup Module */}
                     <Route path="/signup" element={<AddForm title="Join Deshi" type="tel" name="mobileNumber" subtitle="Provide the 11 digit Bangladeshi phone number you want to associate with your merchant account." placeholder="Mobile Number" />} />
                     <Route path="/otp" element={<Otp title="Join Deshi" subtitle="Please enter the 6 digit code we've sent to:" number="+880 1676533442" bottomText="Didn’t get the code yet?" bottomLink="Send Again" />} />
@@ -67,7 +65,7 @@ const MainLayout = () => {
                     <Route path="/forgot-pass" element={<AddForm title="Welcome Back to Deshi" name="mobileNumber" subtitle="Provide the 11 digit Bangladeshi phone number you want to associate with your merchant account." placeholder="Mobile number or e-mail address" value="Next" />} />
                     <Route path="/reset-pass" element={<Login title="Reset Password" subtitle="Enter the code we sent to the phone number" type1="password" type2="password" name1="password" name2="confirmPassword" placeholder1="New Password" placeholder2="Confirm Password" btnName="Reset Password" />} />
                     <Route path="/forgot-otp    " element={<Otp title="Verify Your Identity" subtitle="Enter the code we sent to the phone number" bottomText="Don’t have any account?" bottomLink="Signup Instead" />} />
-                
+
                 </Routes>
             </div>
 
