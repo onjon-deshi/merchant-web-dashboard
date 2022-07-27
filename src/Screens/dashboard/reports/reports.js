@@ -1,15 +1,11 @@
-import React from 'react';
-import $ from "jquery";
+import React, { useState, useEffect } from 'react';
+import $, { event } from "jquery";
 import BarChart from '../../../components/charts/BarChart';
 import Sidebar from '../../../components/Sidebar';
 import Navbar from '../../../components/Navbar';
 
-// Side Bar Show/Hide
-const toggleLeftBar = () => {
-    $("#left-sidebar").toggleClass("need");
-    $("#left-sidebar").toggleClass("no-need");
-}
-
+import DatePicker from "../../../components/date/DatePicker"; 
+import DatePickerRange from "../../../components/date/DatePickerRange";
 
 const filterClick = () => {
     console.log("next filter click.");
@@ -20,36 +16,31 @@ var handleTab = (tabId, event) => {
     $(".tablinks").removeClass("current");
     $(".tabcontentbody>#" + tabId).show();
 
-
     $(event.target).addClass("current");
 }
 
-var d = new Date();
-var day = d.getDate();
-var month = parseInt(d.getMonth()) + 1;
-var year = d.getFullYear();
 
-var today = (year + "-" + month + "-" + day);
-console.log(today);
+var setData = () => {
+    $("#date-range-div").hide();
+    var v = $("#date-range-data").val();
+    if( v === "custom" ) {
+        $("#date-range-div").show();
+    }
+}
 
+
+
+var pageName = "reports";
 const report = () => {
 
-
+    
     return (
 
         <div className="body w-full bg-white font-medium">
 
             {/* TOP HEADER */}
             <div className="w-full border-b-2 flex justify-between">
-                <a className="flex items-center pl-8">
-                    <svg onClick={toggleLeftBar} className="w-6 h-6 float-right cursor-pointer" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16"></path>
-                    </svg>
-
-
-                    <span className="self-center pl-3 text-2xl font-medium whitespace-nowrap dark:text-white">Home</span>
-                </a>
-                <Navbar />
+                <Navbar name={pageName} />
             </div>
 
 
@@ -58,25 +49,26 @@ const report = () => {
 
 
                 {/* LEFT SIDE BAR */}
-                <Sidebar />
+                <Sidebar name={pageName} />
 
 
                 {/* MAIN BODY CONTENT */}
-                <div className="custom-container w-full float-left px-8 py-10 flex font-montserrat">
+                <div className="custom-container w-full float-left px-8 py-10 block font-montserrat custom-scroll-auto mb-20">
+                
+                    <div className="tab w-full">
+                        <button className="tablinks current" onClick={(event) => handleTab("sales-summary", event)}>Sales Summary</button>
+                        <button className="tablinks" onClick={(event) => handleTab("item-sales", event)}>Item Sales</button>
+                        <button className="tablinks" onClick={(event) => handleTab("category-sales", event)}>Category Sales</button>
+                    </div>
 
-                    {/** Left Side */}
-                    <div className="custom-container-left custom-scroll-auto float-left w-4/5 pb-10 pr-3 text-justify">
-
-                        <div className="tab">
-                            <button className="tablinks current" onClick={(event) => handleTab("sales-summary", event)}>Sales Summary</button>
-                            <button className="tablinks" onClick={(event) => handleTab("item-sales", event)}>Item Sales</button>
-                            <button className="tablinks" onClick={(event) => handleTab("category-sales", event)}>Category Sales</button>
-                        </div>
-
-
-
-                        <div className='tabcontentbody py-3'>
-                            <div id="sales-summary" className="tabcontent px-0" style={{ display: "block", paddingLeft: "0px" }}>
+                    <div className='tabcontentbody py-3'>
+                        
+                        
+                        <div id="sales-summary" className="tabcontent px-0" style={{ display: "block", paddingLeft: "0px" }}>
+                            
+                            {/** Left Side */}
+                            <div className="custom-container-left custom-scroll-auto float-left w-4/5 pb-10 pr-3 text-justify" style={{boxShadow:"3px 0 0px 0px rgb(0 0 0 / 1%)"}}>
+                            
                                 <div className="box-full block w-full h-full text-justify rounded-[5px] py-3">
 
                                     <div className="w-1/2 float-left">
@@ -162,46 +154,58 @@ const report = () => {
                                 </div>
 
 
-                            </div>
 
-                            <div id="item-sales" className="tabcontent">
-                                <h3>Item Sales</h3>
-                                <p>This is sales item lists</p>
+
                             </div>
 
 
-                            <div id="category-sales" className="tabcontent">
-                                <h3>Category Sales</h3>
-                                <p>This is sales category.</p>
+                            {/** Right Side */}
+                            <div className="custom-container-right float-right w-1/5 pl-2 pb-10 justify-center -mr-5">
+                                                        
+                                <div className="relative">
+                                    <div className="box-full block w-full h-full text-justify py-3 px-2">
+
+                                        <div className="w-full float-left pt-1">
+                                            <DatePicker name="all" />
+                                            
+
+                                            <select onChange={setData} id="date-range-data" className='w-full mt-4 mb-4'>
+                                                <option value="all">All Day</option>
+                                                <option value="custom">Custom</option>
+                                            </select>
+
+
+                                            <DatePickerRange />
+
+                                        </div>
+
+                                    </div>
+                                </div>
+
                             </div>
+
                         </div>
 
+                        <div id="item-sales" className="tabcontent">
+                            <h3>Item Sales</h3>
+                            <p>This is sales item lists</p>
+                        </div>
+
+
+                        <div id="category-sales" className="tabcontent">
+                            <h3>Category Sales</h3>
+                            <p>This is sales category.</p>
+                        </div>
+
+
                     </div>
 
-
-                    {/** Right Side */}
-                    <div className="custom-container-right float-right w-1/5 pl-2 custom-scroll-auto pb-10">
-
-                    </div>
+                    
 
                 </div>
 
             </div>
 
-
-            <style jsx="true">{`
-                .rdp.picker-trigger {
-                    background: #F5F5F5;    
-                }
-
-                .rdp.date-picker-wrapper.open, .rdp.date-picker.table {
-                    width: 100% !important; 
-                }
-
-                .rdp.date-picker-calendar-wrapper {
-                    width: 103% !important;
-                }
-            `}</style>
         </div>
 
     );
@@ -210,3 +214,4 @@ const report = () => {
 
 
 export default report;
+
