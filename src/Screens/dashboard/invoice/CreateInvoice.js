@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef, useState } from 'react';
 import { ReactComponent as CloseBtn } from '../../../assets/icons/close.svg'
 import Button from './components/Button';
 import { Link } from "react-router-dom";
@@ -6,6 +6,21 @@ import BlackButton from '../../../components/BlackButton';
 import { ReactComponent as PlusIcon } from '../../../assets/icons/plus.svg'
 
 const Invoice = () => {
+    const fileInput = useRef();
+    const [file, setFile] = useState();
+
+    const selectFile = () => {
+        fileInput.current.click();
+    }
+
+    const handleChange = (e) => {
+        setFile(URL.createObjectURL(e.target.files[0]));
+        console.log(file);
+    }
+
+    const onSubmit = (e) => {
+        e.preventDefault();
+    }
     return (
         <div className="font-medium pb-[60px]">
             <header className="flex justify-between items-center p-4 border-b-2 border-dark-white mb-[60px]">
@@ -19,7 +34,7 @@ const Invoice = () => {
             </header>
             <main className="max-w-2xl m-auto">
                 <div className="flex justify-center ">
-                    <form className="max-w-2xl w-full">
+                    <form className="max-w-2xl w-full" onSubmit={onSubmit}>
                         <h3 className="text-xl mb-[15px]">Customer Information</h3>
                         <div>
                             <input type="text" name="customerName" placeholder="Find or add customer name" className="w-full mb-2.5 rounded border-solid border border-dark-white placeholder:text-ash" />
@@ -179,7 +194,9 @@ const Invoice = () => {
                         <div>
                             <textarea type="text" name="note" placeholder="Write a note" className="w-full mb-2.5 rounded border-solid border border-dark-white placeholder:text-ash" />
                         </div>
-                        <BlackButton name="Add Attachment" icon={<PlusIcon />} />
+                        {/* <img src={file} className="mb-4" /> */}
+                        <input type="file" className="hidden" ref={fileInput} onChange={handleChange} />
+                        <BlackButton name="Add Attachment" icon={<PlusIcon />} onClick={selectFile} />
                         <hr className="my-[30px]" />
 
                         <h3 className="text-xl mb-[15px]">Set a Reminder</h3>
@@ -200,8 +217,8 @@ const Invoice = () => {
                         </div>
                     </form>
                 </div>
-            </main >
-        </div >
+            </main>
+        </div>
     );
 };
 

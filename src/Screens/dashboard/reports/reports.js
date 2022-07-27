@@ -8,7 +8,7 @@ import DatePicker from "../../../components/date/DatePicker";
 import DatePickerRange from "../../../components/date/DatePickerRange";
 
 const filterClick = () => {
-    console.log("next filter click.");
+    // console.log("next filter click.");
 }
 
 var handleTab = (tabId, event) => {
@@ -20,6 +20,10 @@ var handleTab = (tabId, event) => {
 }
 
 
+<<<<<<< HEAD
+var today = (year + "-" + month + "-" + day);
+// console.log(today);
+=======
 var setData = () => {
     $("#date-range-div").hide();
     var v = $("#date-range-data").val();
@@ -27,6 +31,7 @@ var setData = () => {
         $("#date-range-div").show();
     }
 }
+>>>>>>> c47535cbbabeb093f66f784a1a55bd93985c938f
 
 
 

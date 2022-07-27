@@ -18,7 +18,6 @@ const Nid = () => {
     }
 
     const handleChange = (e) => {
-        console.log(e.target.files);
         setFile(URL.createObjectURL(e.target.files[0]));
     }
 
@@ -43,7 +42,7 @@ const Nid = () => {
             <div className="bg-neutral-100 p-9 text-secondary mt-6">
                 <p className="pb-5">Position all 4 corners  of the front side of your NID clearly in the frame and take a picture.</p>
                 <img src={file} className="mb-4" />
-                <input type="file" style={{ "display": "none" }} ref={fileInput} onChange={handleChange} />
+                <input type="file" className="hidden" ref={fileInput} onChange={handleChange} />
                 <Button onClick={selectFile} type="file" name={file ? "Next" : "Upload NID (Front Side)"} />
             </div>
         </div>
