@@ -20,8 +20,11 @@ var handleTab = (tabId, event) => {
 }
 
 
+<<<<<<< HEAD
 // var today = (year + "-" + month + "-" + day);
 // console.log(today);
+=======
+>>>>>>> 2dea68f6ad584ae827cc6c50a85efc5c68f9a2ff
 var setData = () => {
     $("#date-range-div").hide();
     var v = $("#date-range-data").val();
