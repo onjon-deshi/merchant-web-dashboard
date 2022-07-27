@@ -5,12 +5,18 @@ import Reports from "./dashboard/reports/reports";
 import CreateInvoice from "./dashboard/invoice/CreateInvoice";
 
 
+import HomeDraft from "./dashboard/home/home-draft";
+
 const DashboardNavigation = () => {
     return (
         <Routes>
             <Route path="/dashboard/home" element={<Home />} />
             <Route path="/dashboard/reports" element={<Reports />} />
             <Route path="/dashboard/invoice" element={<CreateInvoice />} />
+
+
+            <Route path="/dashboard/home-draft" element={<HomeDraft />} />
+
         </Routes>
     );
 }

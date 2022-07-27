@@ -21,7 +21,7 @@ const home = () => {
             {/* TOP HEADER */}
             <div className="w-full border-b-2 h-auto p-5 pl-8">
                 <a className="flex items-center">
-                    <svg onClick={toggleLeftBar} className="w-6 h-6 float-right cursor-pointer" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <svg onClick={toggleLeftBar} className="need w-6 h-6 float-right cursor-pointer" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16"></path>
                     </svg>
 
@@ -34,7 +34,7 @@ const home = () => {
             <div className="flex w-full h-full fixed bg-white">
 
                 {/* LEFT SIDE BAR */}
-                <aside id="left-sidebar" className="need w-[17rem] cursor-pointer mb-16 custom-scroll-auto ">
+                <aside id="left-sidebar" className=" w-[17rem] cursor-pointer mb-16 custom-scroll-auto ">
 
                     <div className="w-full grid-container mt-5">
                         <a href="#">

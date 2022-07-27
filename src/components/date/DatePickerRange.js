@@ -1,31 +1,36 @@
-import $, { event } from 'jquery';
+import React, {useEffect} from 'react';
+
+import $ from 'jquery';
 import 'jquery-ui-bundle';
 import 'jquery-ui-bundle/jquery-ui.min.css';
 
 
-$(function() {
-    $( "#fromDate" ).datepicker({
-        defaultDate: "+1w",
-        changeMonth: true,
-        numberOfMonths: 1,
-        onClose: function( selectedDate ) {
-            $( "#toDate" ).datepicker( "option", "minDate", selectedDate );
-            $( "#toDate" ).trigger("focus");
-        }
-    });
-    $( "#toDate" ).datepicker({
-        defaultDate: "+1w",
-        changeMonth: true,
-        numberOfMonths: 1,
-        onClose: function( selectedDate ) {
-            $( "#fromDate" ).datepicker( "option", "maxDate", selectedDate );
-        }
-    });
-});
-
-
 var App = () => {
     
+    useEffect(() => {
+        $( "#fromDate" ).datepicker({
+            defaultDate: "+1w",
+            changeMonth: true,
+            numberOfMonths: 1,
+            onClose: function( selectedDate ) {
+                $( "#toDate" ).datepicker( "option", "minDate", selectedDate );
+
+                if( (selectedDate !== null) && document.URL.includes("/reports") === true ) {
+                    $( "#toDate" ).trigger("focus");
+                }
+            }
+        });
+        $( "#toDate" ).datepicker({
+            defaultDate: "+1w",
+            changeMonth: true,
+            numberOfMonths: 1,
+            onClose: function( selectedDate ) {
+                $( "#fromDate" ).datepicker( "option", "maxDate", selectedDate );
+            }
+        });
+    });
+
+
     return (
         <div id='date-range-div' style={{display: "none"}}>
             <div className='flex'>
