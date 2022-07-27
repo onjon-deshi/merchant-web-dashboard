@@ -12,7 +12,7 @@ const toggleLeftBar = () => {
 
 
 const filterClick = () => {
-    console.log("next filter click.");
+    // console.log("next filter click.");
 }
 
 var handleTab = (tabId, event) => {
@@ -30,7 +30,7 @@ var month = parseInt(d.getMonth()) + 1;
 var year = d.getFullYear();
 
 var today = (year + "-" + month + "-" + day);
-console.log(today);
+// console.log(today);
 
 const report = () => {
 
