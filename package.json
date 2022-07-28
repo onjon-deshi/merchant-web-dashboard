@@ -23,8 +23,6 @@
     "@uvarov.frontend/vanilla-calendar": "^1.4.9",
     "babel-plugin-macros": "^3.1.0",
     "date-fns": "^2.29.1",
-    "flowbite": "^1.5.1",
-    "flowbite-datepicker": "^1.2.2",
     "jquery": "^3.6.0",
     "jquery-ui-bundle": "^1.12.1-migrate",
     "mc-datepicker": "^0.6.5",
@@ -43,7 +41,6 @@
     "react-toastify": "^9.0.5",
     "rechart": "^0.0.1",
     "recharts": "^2.1.12",
-    "rsuite": "^5.16.1",
     "sass": "^1.54.0",
     "styled-components": "^5.3.5",
     "web-vitals": "^2.1.4"

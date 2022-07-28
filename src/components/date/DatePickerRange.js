@@ -10,19 +10,23 @@ var App = () => {
     useEffect(() => {
         $( "#fromDate" ).datepicker({
             defaultDate: "+1w",
+            dateFormat: 'dd/mm/yy',
             changeMonth: true,
+            gotoCurrent: true,
             numberOfMonths: 1,
             onClose: function( selectedDate ) {
                 $( "#toDate" ).datepicker( "option", "minDate", selectedDate );
 
-                if( (selectedDate !== null) && document.URL.includes("/reports") === true ) {
-                    $( "#toDate" ).trigger("focus");
+                if( selectedDate !== "" ) {
+                    $("#toDate").trigger("focus");
                 }
             }
         });
         $( "#toDate" ).datepicker({
             defaultDate: "+1w",
+            dateFormat: 'dd/mm/yy',
             changeMonth: true,
+            gotoCurrent: true,
             numberOfMonths: 1,
             onClose: function( selectedDate ) {
                 $( "#fromDate" ).datepicker( "option", "maxDate", selectedDate );

@@ -1,5 +1,4 @@
 import DonutChart from "../../../components/charts/DonutChart";
-import $ from "jquery";
 import Navbar from '../../../components/Navbar';
 import Sidebar from "../../../components/Sidebar";
 
@@ -273,7 +272,7 @@ const home = () => {
 
                         <h6 className="mt-7 text-xl font-medium">Last 30 days</h6>
                         <div className="mt-3 box w-full min-h-[69px] bg-[#FFFFFF] border-2 border-[#F5F5F5] text-[#222222] rounded-[5px] px-5 py-6 border-b-0 rounded-b-none">
-                            <a href="#" className="block text-sm font-normal text-[#444444]">
+                            <a href="#" className="block text-base font-normal text-[#444444]">
                                 Total Connects
                                 <svg className="display-revert ml-1 mt-0.5 float-right" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M7.5 15L12.5 10L7.5 5" stroke="#999999" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
@@ -282,7 +281,7 @@ const home = () => {
                             </a>
                         </div>
                         <div className="box w-full h-[69px] bg-[#FFFFFF] border-2 border-[#F5F5F5] text-[#222222] rounded-[5px] px-5 py-6 rounded-t-none border-b-0 rounded-b-none">
-                            <a href="#" className="block text-sm font-normal text-[#444444]">
+                            <a href="#" className="block text-base font-normal text-[#444444]">
                                 New Connects
                                 <svg className="display-revert ml-1 mt-0.5 float-right" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M7.5 15L12.5 10L7.5 5" stroke="#999999" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
@@ -291,7 +290,7 @@ const home = () => {
                             </a>
                         </div>
                         <div className="box w-full min-h-[69px] bg-[#FFFFFF] border-2 border-[#F5F5F5] text-[#222222] rounded-[5px] px-5 py-6 rounded-t-none border-b-0 rounded-b-none">
-                            <a href="#" className="block text-sm font-normal text-[#444444]">
+                            <a href="#" className="block text-base font-normal text-[#444444]">
                                 Returning Connects
                                 <svg className="display-revert ml-1 mt-0.5 float-right" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M7.5 15L12.5 10L7.5 5" stroke="#999999" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
@@ -301,21 +300,22 @@ const home = () => {
                         </div>
 
                         <div className="flow-root w-full min-h-[69px] bg-[#FFFFFF] border-2 border-[#F5F5F5] text-[#222222] rounded-[5px] px-5 py-2 rounded-t-none">
-                            <a href="#" className="block text-sm font-normal text-[#444444]">
+                            <a href="#" className="block text-base font-normal text-[#444444]">
                                 <span style={{ "maxWidth": "60%", "whiteSpace": "break-spaces", "display": "block", "float": "left" }}>Average Spending Per Connects</span>
                                 <svg className="display-revert ml-1 float-right mt-3.5" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M7.5 15L12.5 10L7.5 5" stroke="#999999" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                                 </svg>
 
                                 <span className="float-right pr-1 text-base mt-3">0</span>
-                                <span className="float-right pr-2 text-sm mt-3.5">৳</span>
+                                <span className="float-right pr-2 text-base mt-3.5">৳</span>
                             </a>
                         </div>
                     </div>
                 </div>
+
+
             </div>
         </div>
-
     );
 }
 

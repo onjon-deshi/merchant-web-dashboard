@@ -4,11 +4,13 @@ import BarChart from '../../../components/charts/BarChart';
 import Sidebar from '../../../components/Sidebar';
 import Navbar from '../../../components/Navbar';
 
-import DatePicker from "../../../components/date/DatePicker"; 
+import DatePickerV2 from "../../../components/date/DatePicker-v2"; 
 import DatePickerRange from "../../../components/date/DatePickerRange";
 
+
+
 const filterClick = () => {
-    // console.log("next filter click.");
+    console.log("next filter click.");
 }
 
 var handleTab = (tabId, event) => {
@@ -20,10 +22,6 @@ var handleTab = (tabId, event) => {
 }
 
 
-<<<<<<< HEAD
-var today = (year + "-" + month + "-" + day);
-// console.log(today);
-=======
 var setData = () => {
     $("#date-range-div").hide();
     var v = $("#date-range-data").val();
@@ -31,7 +29,6 @@ var setData = () => {
         $("#date-range-div").show();
     }
 }
->>>>>>> c47535cbbabeb093f66f784a1a55bd93985c938f
 
 
 
@@ -165,14 +162,16 @@ const report = () => {
 
 
                             {/** Right Side */}
-                            <div className="custom-container-right float-right w-1/5 pl-2 pb-10 justify-center -mr-5">
+                            <div className="custom-container-right float-right w-1/5 pl-2 pb-10 justify-center -mr-4">
                                                         
                                 <div className="relative">
                                     <div className="box-full block w-full h-full text-justify py-3 px-2">
 
                                         <div className="w-full float-left pt-1">
-                                            <DatePicker name="all" />
+                                            {/* <DatePicker name="all" />
                                             
+                                            <br/> */}
+                                            <DatePickerV2 />
 
                                             <select onChange={setData} id="date-range-data" className='w-full mt-4 mb-4'>
                                                 <option value="all">All Day</option>
@@ -192,8 +191,8 @@ const report = () => {
                         </div>
 
                         <div id="item-sales" className="tabcontent">
-                            <h3>Item Sales</h3>
-                            <p>This is sales item lists</p>
+                            <h3>This is Item Sales Page</h3>
+                            <p>This is sales category.</p>
                         </div>
 
 
@@ -210,6 +209,8 @@ const report = () => {
                 </div>
 
             </div>
+
+
 
         </div>
 
