@@ -111,8 +111,8 @@ export default function Example(props) {
                                                 <div className="absolute top-3 left-0 w-[60px] rounded-full flex items-center justify-center z-[1000]" onClick={onClick}>
                                                     <SearchIcon />
                                                 </div>
-                                                <div className=" relative w-[680px] h-[60px] left-[45px] bottom-2.5 flex justify-center items-center">
-                                                    <input type="text" placeholder="Search" id="mysearch" className="text-black absolute top-0 w-full h-full border-none outline-none text-lg py-2.5 bg-neutral-100 ring-offset-transparent focus:ring-0" />
+                                                <div className="relative w-[680px] h-[60px] left-[45px] bottom-2.5 flex justify-center items-center">
+                                                    <input type="text" placeholder="Search" id="mysearch" className="text-black absolute top-0 w-full h-full border-none outline-none text-lg py-2.5 bg-neutral-100 focus:ring-0" />
                                                 </div>
                                                 {/* <span className="clear" onClick={onClickExpand}></span> */}
                                             </div>
