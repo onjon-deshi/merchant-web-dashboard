@@ -4,8 +4,7 @@ import Home from "./dashboard/home/home";
 import Reports from "./dashboard/reports/reports";
 import CreateInvoice from "./dashboard/invoice/CreateInvoice";
 import AddNewConnect from "./dashboard/connects/AddNewConnect";
-import Store from "./dashboard/store/Store";
-
+import StoreTest from "./dashboard/store/StoreTest";
 import HomeDraft from "./dashboard/home/home-draft";
 import ProductTable from "../components/Table/ProductTable";
 import StatusTable from "../components/Table/StatusTable";
@@ -17,7 +16,7 @@ const DashboardNavigation = () => {
             <Route path="/dashboard/reports" element={<Reports />} />
             <Route path="/dashboard/invoice" element={<CreateInvoice />} />
             <Route path="/dashboard/connects" element={<AddNewConnect />} />
-            <Route path="/dashboard/store" element={<Store />} />
+            <Route path="/dashboard/store-test" element={<StoreTest />} />
             <Route path="/dashboard/home-draft" element={<HomeDraft />} />
             <Route path="/dashboard/product-table" element={<ProductTable />} />
             <Route path="/dashboard/status-table" element={<StatusTable />} />
