@@ -88,7 +88,8 @@ const data = [
 
 const productTable = () => {
     return (
-        <table className="table table-auto min-w-full text-left">
+        <div className="product-table">
+            <table className="table table-auto min-w-full text-left">
             <thead>
                 <tr >
                     <th className="first-heading">Item Image</th>
@@ -120,6 +121,7 @@ const productTable = () => {
                 }
             </tbody>
         </table>
+        </div>
     );
 }
 
