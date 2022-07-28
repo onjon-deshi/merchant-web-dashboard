@@ -27,7 +27,7 @@ const productTable = () => {
     return (
         <table className="table table-auto min-w-full text-left">
             <thead>
-                <tr >
+                <tr>
                     <th className="first-heading">Item Image</th>
                     <th>Item Name</th>
                     <th>Category</th>

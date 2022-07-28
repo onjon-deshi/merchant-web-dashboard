@@ -54,6 +54,7 @@ const LoginScreen = () => {
                     <Route path="/transaction-profile" element={<TransactionProfile />} />
                     <Route path="/bank-account" element={<BankAccount />} />
                     <Route path="/upload-documents" element={<UploadDocuments />} />
+                    
                     <Route path="*" element={<ErrorShow />} />
                     {/* <Route path="about" element={<About />} /> */}
 

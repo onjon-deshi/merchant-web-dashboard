@@ -38,8 +38,7 @@ span.pointer.pointer-success-dark {
 
 
 /* Hover CSS Start*/
-.hover-black-green:hover, .hover-black-green:hover > h3, .hover-black-green:hover .text-sm, .current-graph-data
-{
+.hover-black-green:hover, .hover-black-green:hover > h3, .hover-black-green:hover .text-sm, .current-graph-data {
     background: #1A202C;
     color: #FFFFFF;
     opacity: 90%;
