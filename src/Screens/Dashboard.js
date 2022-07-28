@@ -11,6 +11,7 @@ import StoreDetails from "./dashboard/store/details";
 
 import ProductTable from "../components/Table/ProductTable";
 import StatusTable from "../components/Table/StatusTable";
+import StoreTable from "./dashboard/store-table/store";
 
 const DashboardNavigation = () => {
     return (
@@ -26,6 +27,7 @@ const DashboardNavigation = () => {
             <Route path="/dashboard/home-draft" element={<HomeDraft />} />
             <Route path="/dashboard/product-table" element={<ProductTable />} />
             <Route path="/dashboard/status-table" element={<StatusTable />} />
+            <Route path="/dashboard/store-table" element={<StoreTable />} />
         </Routes>
 
     );

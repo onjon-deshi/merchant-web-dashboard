@@ -22,7 +22,8 @@ const data = [
 
 const statusTable = () => {
     return (
-        <table className="table table-auto min-w-full text-left">
+        <div className='status-table'>
+            <table className="table table-auto min-w-full text-left">
             <thead>
                 <tr >
                     <th className="first-heading">Create Date</th>
@@ -48,6 +49,7 @@ const statusTable = () => {
                 }
           </tbody>
         </table>
+        </div>
     );
 }
 
