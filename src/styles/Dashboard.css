@@ -271,6 +271,7 @@ table.custom-details-table tr td:first-child {
     background: #F5F5F5;
     padding: 12px 20px;
     width: 200px;
+    border: 1px solid #F5F5F5;
 }
 
 table.custom-details-table tr td:nth-child(2) {
