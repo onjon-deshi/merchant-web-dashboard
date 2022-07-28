@@ -25,7 +25,7 @@ var handleTab = (tabId, event) => {
 var setData = () => {
     $("#date-range-div").hide();
     var v = $("#date-range-data").val();
-    if( v === "custom" ) {
+    if (v === "custom") {
         $("#date-range-div").show();
     }
 }
@@ -35,7 +35,7 @@ var setData = () => {
 var pageName = "reports";
 const report = () => {
 
-    
+
     return (
 
         <div className="body w-full bg-white font-medium">
@@ -56,7 +56,7 @@ const report = () => {
 
                 {/* MAIN BODY CONTENT */}
                 <div className="custom-container w-full float-left px-8 py-10 block font-montserrat custom-scroll-auto mb-20">
-                
+
                     <div className="tab w-full">
                         <button className="tablinks current" onClick={(event) => handleTab("sales-summary", event)}>Sales Summary</button>
                         <button className="tablinks" onClick={(event) => handleTab("item-sales", event)}>Item Sales</button>
@@ -64,13 +64,13 @@ const report = () => {
                     </div>
 
                     <div className='tabcontentbody py-3'>
-                        
-                        
+
+
                         <div id="sales-summary" className="tabcontent px-0" style={{ display: "block", paddingLeft: "0px" }}>
-                            
+
                             {/** Left Side */}
-                            <div className="custom-container-left custom-scroll-auto float-left w-4/5 pb-10 pr-3 text-justify" style={{boxShadow:"3px 0 0px 0px rgb(0 0 0 / 1%)"}}>
-                            
+                            <div className="custom-container-left custom-scroll-auto float-left w-4/5 pb-10 pr-3 text-justify" style={{ boxShadow: "3px 0 0px 0px rgb(0 0 0 / 1%)" }}>
+
                                 <div className="box-full block w-full h-full text-justify rounded-[5px] py-3">
 
                                     <div className="w-1/2 float-left">
@@ -204,7 +204,7 @@ const report = () => {
 
                     </div>
 
-                    
+
 
                 </div>
 

@@ -1,8 +1,10 @@
-import React, {useEffect} from 'react';
-
+import {useEffect} from 'react';
 import $ from 'jquery';
 import 'jquery-ui-bundle';
 import 'jquery-ui-bundle/jquery-ui.min.css';
+
+
+
 
 
 var App = () => {
@@ -34,7 +36,6 @@ var App = () => {
         });
     });
 
-
     return (
         <div id='date-range-div' style={{display: "none"}}>
             <div className='flex'>
@@ -50,5 +51,6 @@ var App = () => {
         </div>
     );
 }
+
 
 export default App;
