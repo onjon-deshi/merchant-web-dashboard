@@ -1,13 +1,17 @@
-import React, {useEffect, useState} from 'react'
-
+import React, {useEffect, useState, useContext} from 'react'
+import ApiContext from './../../contexts/ApiContext';
 
 export default function GetInfo() {
-    
+  
     const [error, setError] = useState(null);
     const [isLoaded, setIsLoaded] = useState(false);
     const [apiData, setApiData] = useState([]);
 
+
+    
+
     useEffect(()=>{
+        
         var getApiData = async () => {
             await fetch("http://localhost:4000/api").then(res => res.json()).then(
                 (result)=>{
@@ -22,7 +26,6 @@ export default function GetInfo() {
         }
 
         getApiData();
-
     }, []);
 
 
