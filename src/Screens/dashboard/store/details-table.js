@@ -15,7 +15,7 @@ var toggleTable = () => {
 export default function detailsTable() {
     return (
         <>
-            <div id="store-head" className="flow-root w-full py-3 bg-white px-1 rounded-md" style={{boxShadow:"0px 4px 40px rgb(0 0 0 / 5%)", border: "1px dotted rgb(243 243 243)"}}>
+            <div id="store-head" className="flow-root w-full py-3 bg-white px-1 rounded-md" style={{boxShadow:"0px 4px 10px rgb(0 0 0 / 5%)", border: "1px solid rgb(243 243 243)"}}>
                 <p className="float-left text-xl px-4 font-medium pb-0 pl-4">Demo Name Store Details</p>
                 
                 <svg onClick={toggleTable} className="toggle-table float-right cursor-pointer upside-down mt-1" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
