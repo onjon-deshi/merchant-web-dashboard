@@ -12,7 +12,7 @@ var App = () => {
     useEffect(() => {
         $( "#singleDatePicker" ).datepicker({
             dateFormat: 'dd/mm/yy',
-            gotoCurrent: true
+            changeMonth: true
         });
     });
 
