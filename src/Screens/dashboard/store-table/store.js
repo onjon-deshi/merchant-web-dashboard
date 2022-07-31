@@ -62,14 +62,12 @@ const store = () => {
                         <button className="tablinks current" onClick={(event) => handleTab("all-items", event)}>All Items</button>
                         <button className="tablinks" onClick={(event) => handleTab("all-categories", event)}>All Categories</button>
                         <button className="tablinks" onClick={(event) => handleTab("discount", event)}>Discount</button>
-
-
                     </div>
 
                     <div className='tabcontentbody py-3'>
                         
                         
-                        <div id="sales-summary" className="tabcontent px-0" style={{ display: "block", paddingLeft: "0px" }}>
+                        <div id="all-items" className="tabcontent px-0" style={{ display: "block", paddingLeft: "0px" }}>
                             
                             {/** Left Side */}
                             <div className="custom-container-left custom-scroll-auto float-left w-4/5 pb-10 pr-3 text-justify" style={{boxShadow:"3px 0 0px 0px rgb(0 0 0 / 1%)"}}>
@@ -192,15 +190,25 @@ const store = () => {
 
                         </div>
 
-                        <div id="item-sales" className="tabcontent">
-                            <h3>Item Sales</h3>
-                            <p>This is sales item lists</p>
+                        <div id="online-store" className="tabcontent">
+                            <h3>Online Store</h3>
+                            <p>This is Online Store </p>
                         </div>
 
 
-                        <div id="category-sales" className="tabcontent">
-                            <h3>Category Sales</h3>
-                            <p>This is sales category.</p>
+                        <div id="offline-store" className="tabcontent">
+                            <h3>Offline Store</h3>
+                            <p>This is Offline Store</p>
+                        </div>
+
+                        <div id="all-categories" className="tabcontent">
+                            <h3>All Categories</h3>
+                            <p>This is All Categories.</p>
+                        </div>
+
+                        <div id="discount" className="tabcontent">
+                            <h3>Discount</h3>
+                            <p>This is discount.</p>
                         </div>
 
 
