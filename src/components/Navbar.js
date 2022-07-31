@@ -13,6 +13,9 @@ import { ReactComponent as RightIcon } from '../assets/icons/right.svg'
 import $ from "jquery";
 import { Link } from 'react-router-dom'
 
+import {useContext} from 'react';
+import UserContext from '../UserContext'
+
 // const navigation = [
 //     { name: 'Dashboard', href: '#', current: true },
 //     { name: 'Team', href: '#', current: false },
@@ -40,8 +43,11 @@ const toggleLeftBar = () => {
 
     // $("#left-sidebar").toggle("slide");
 }
-
 export default function Example(props) {
+    let userName = useContext(UserContext);
+    // userName = "dfdfd"
+    // userName = "dfdf"
+    console.log(userName);
     return (
         <>
             <div className="flex items-center pl-8 cursor-pointer">
@@ -304,7 +310,7 @@ export default function Example(props) {
                                                 src={shopno}
                                                 alt=""
                                             />
-                                            <p className="font-medium">Swapno</p>
+                                            <p className="font-medium">{userName}</p>
                                             <Menu as="div" className="ml-3 relative">
                                                 <div>
                                                     <Menu.Button className="flex ">
