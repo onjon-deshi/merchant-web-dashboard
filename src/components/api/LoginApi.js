@@ -1,8 +1,7 @@
 import React, {useEffect, useState } from 'react';
 
 
-
-export default function GetInfo() {
+export default function LoginApi(mobile_number, password) {
 
     const [error, setError] = useState(null);
     const [isLoaded, setIsLoaded] = useState(false);
@@ -11,7 +10,10 @@ export default function GetInfo() {
 
     useEffect(()=>{
         var getApiData = async () => {
-            await fetch(process.env.REACT_APP_API_BASE_URL).then(res => res.json()).then(
+            await fetch(process.env.REACT_APP_API_BASE_URL + "api/v1/auth/signin", {
+                method: 'POST',
+                body: "param1=value1&param2=value2"
+            }).then(res => res.json()).then(
                 (result)=>{
                     setIsLoaded(true);
                     setApiData(result);
@@ -34,7 +36,6 @@ export default function GetInfo() {
         return (<>Loading...</>)
     }
     else {
-
         return (
             <div className='py-2'>
                 {apiData.status === undefined ? "No status found" : `Status: ` +  apiData.status }
@@ -47,3 +48,4 @@ export default function GetInfo() {
     }
 
 }
+
