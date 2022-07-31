@@ -1,20 +1,16 @@
-import React, { createContext, useState } from "react";
-
-const UserContext = createContext(undefined);
-const UserDispatchContext = createContext(undefined);
-
-function ApiDetails({ children }) {
-    const [apiDetails, setApiDetails] = useState({
-        ApiBaseURL: "John Doe"
-    });
-
+import React, { createContext, useState } from 'react'
+export const SampleContext = createContext()
+const SampleContextProvider = (props) => {
+    const [variableOne, setVariableOne] = useState(`somethingRandom`);
+    const Url = "http://localhost:3000"
     return (
-        <UserContext.Provider value={apiDetails}>
-            <UserDispatchContext.Provider value={setApiDetails}>
-                {children}
-            </UserDispatchContext.Provider>
-        </UserContext.Provider>
-    );
+        <SampleContext.Provider 
+            value={{
+                variableOne,
+                Url
+            }}>
+                {props.children}
+        </SampleContext.Provider>
+    )
 }
-
-export { ApiDetails, UserContext, UserDispatchContext };
+export default SampleContextProvider;

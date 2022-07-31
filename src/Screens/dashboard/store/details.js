@@ -36,7 +36,7 @@ const details = () => {
 
 
                         {/* <Link to="/dashboard/store-table"><p className='border-red-800 bg-red-400 inline-block p-2 m-3 text-white hover:bg-sky-700'>Store Table</p></Link> */}
-                       
+                    
                         <Link to="/dashboard/store-table"><p className='custom-btn inline-block mx-2'>Store Table</p></Link>
 
                         <Link to="/dashboard/status-table"><p className='custom-btn inline-block mx-2'>Status Table</p></Link>

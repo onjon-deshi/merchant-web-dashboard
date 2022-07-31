@@ -1,14 +1,13 @@
-import React, {useEffect, useState, useContext} from 'react'
-import ApiContext from './../../contexts/ApiContext';
+import React, {useEffect, useState, useContext, Fragment } from 'react';
+
+
 
 export default function GetInfo() {
-  
+
     const [error, setError] = useState(null);
     const [isLoaded, setIsLoaded] = useState(false);
     const [apiData, setApiData] = useState([]);
 
-
-    
 
     useEffect(()=>{
         
@@ -36,6 +35,7 @@ export default function GetInfo() {
         return (<>Loading...</>)
     }
     else {
+
         return (
             <div className='py-2'>
                 {apiData.status === undefined ? "No status found" : `Status: ` +  apiData.status }
