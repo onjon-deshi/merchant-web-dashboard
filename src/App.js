@@ -7,7 +7,9 @@ const App = () => {
 
   if (document.URL.includes("/dashboard")) {
     return (
+
       <Dashboard />
+
     );
   }
   else {

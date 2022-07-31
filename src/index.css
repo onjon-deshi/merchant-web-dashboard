@@ -44,7 +44,7 @@ body,
 }
 
 
-.search .input {
+/* .search .input {
     position: relative;
     width: 680px;
     height: 60px;
@@ -67,7 +67,7 @@ body,
     padding: 10px 0;
     background: #F5F5F5;
     box-shadow: none;
-}
+} */
 
 /* Popup style */
 /* .popup-box {

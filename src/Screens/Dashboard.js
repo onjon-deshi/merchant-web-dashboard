@@ -7,15 +7,17 @@ import AddNewConnect from "./dashboard/connects/AddNewConnect";
 import StoreTest from "./dashboard/store/StoreTest";
 import HomeDraft from "./dashboard/home/home-draft";
 import StoreDetails from "./dashboard/store/details";
-
-
 import ProductTable from "../components/Table/ProductTable";
 import StatusTable from "../components/Table/StatusTable";
 import StoreTable from "./dashboard/store-table/store";
+import { createContext, useState } from "react";
+import ErrorShow from "./ErrorShow";
+
+
+export const UserContext = createContext();
 
 const DashboardNavigation = () => {
     return (
-        
         <Routes>
             <Route path="/dashboard/home" element={<Home />} />
             <Route path="/dashboard/store-details" element={<StoreDetails />} />
@@ -28,8 +30,8 @@ const DashboardNavigation = () => {
             <Route path="/dashboard/product-table" element={<ProductTable />} />
             <Route path="/dashboard/status-table" element={<StatusTable />} />
             <Route path="/dashboard/store-table" element={<StoreTable />} />
+            <Route path="*" element={<ErrorShow />} />
         </Routes>
-
     );
 }
 
