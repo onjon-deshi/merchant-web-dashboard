@@ -46,10 +46,8 @@ const DashboardNavigation = () => {
                     <Route path="/dashboard/home-draft" element={<HomeDraft />} />
                     <Route path="/dashboard/connects" element={<AddNewConnect />} />
                     <Route path="/dashboard/store-test" element={<StoreTest />} />
-                    {/* <Route path="/dashboard/product-table" element={<ProductTable />} /> */}
-                    {/* <Route path="/dashboard/status-table" element={<StatusTable />} /> */}
                     <Route path="/dashboard/store" element={<StoreTable />} />
-                    <Route path="*" element={<ErrorShow />} />
+
                 </Routes>
             </div>
         </div>

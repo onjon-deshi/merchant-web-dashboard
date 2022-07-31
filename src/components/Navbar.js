@@ -1,4 +1,5 @@
 /* This example requires Tailwind CSS v2.0+ */
+import { useNavigate } from 'react-router-dom'
 import { Fragment } from 'react'
 import { Disclosure, Menu, Transition } from '@headlessui/react'
 import { ReactComponent as SearchIcon } from '../assets/icons/search.svg'
@@ -14,6 +15,7 @@ import $ from "jquery";
 
 import {useContext} from 'react';
 import UserContext from '../UserContext'
+import { Link } from 'react-router-dom';
 
 // const navigation = [
 //     { name: 'Dashboard', href: '#', current: true },
@@ -21,6 +23,16 @@ import UserContext from '../UserContext'
 //     { name: 'Projects', href: '#', current: false },
 //     { name: 'Calendar', href: '#', current: false },
 // ]
+
+
+
+
+var UserLogOut = () => {
+    window.localStorage.clear();
+    let navigate = useNavigate();
+    navigate("/");
+    return;
+}
 
 function classNames(...classes) {
     return classes.filter(Boolean).join(' ')
@@ -44,8 +56,6 @@ const toggleLeftBar = () => {
 }
 export default function Example(props) {
     let userName = useContext(UserContext);
-    // userName = "dfdfd"
-    // userName = "dfdf"
     console.log(userName);
     return (
         <>
@@ -349,12 +359,9 @@ export default function Example(props) {
                                                         </Menu.Item>
                                                         <Menu.Item>
                                                             {({ active }) => (
-                                                                <a
-                                                                    href="#"
-                                                                    className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
-                                                                >
+                                                                <Link to={'/'} onClick={UserLogOut} className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}>
                                                                     Sign out
-                                                                </a>
+                                                                </Link>
                                                             )}
                                                         </Menu.Item>
                                                     </Menu.Items>

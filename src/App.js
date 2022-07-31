@@ -2,30 +2,38 @@ import LoginScreen from './Screens/LoginScreen';
 import Dashboard from "./Screens/Dashboard";
 import UserContext from './UserContext';
 
-import { useState, useEffect , createContext, useContext } from "react";
+import { useState, useEffect } from "react";
 import ReactDOM from "react-dom/client";
+import { useNavigate } from 'react-router-dom';
 
 
 const App = () => {
 
   const [name, setName] = useState('default user')
-
+  var navigate = useNavigate();
   
   useEffect(()=>{
-    // setTimeout(() => {
-    //   setName('ShareTrip')
-    // }, 2000)
-
     setName('ShareTrip')
   }, []);
 
+  var isLogin = true;
+  if( window.localStorage.getItem("UserToken") === null || window.localStorage.getItem("UserToken") === undefined || window.localStorage.getItem("UserToken") === "" ) {
+    isLogin = false;
+  }
 
-  if (document.URL.includes("/dashboard")) {
+
+  if( isLogin === true ) {
+    if( !document.URL.includes("/dashboard/") ) {
+      navigate("/dashboard/home");
+    }
+  }
+
+
+  if( isLogin === true ) {
     return (
       <UserContext.Provider value={name}>
         <Dashboard />
       </UserContext.Provider >
-
     );
   }
   else {
@@ -33,6 +41,8 @@ const App = () => {
         <LoginScreen />
     );
   }
+
+  
 
 };
 

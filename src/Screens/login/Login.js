@@ -6,6 +6,8 @@ import Button from '../../components/Button';
 import SignUpOrLogin from '../../components/SignUpOrLogin';
 import { ImArrowRight2 } from "react-icons/im";
 
+
+
 export default class Login extends React.Component {
     
     constructor(props) {
@@ -17,7 +19,8 @@ export default class Login extends React.Component {
         };
 
         this.handleInputChange = this.handleInputChange.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
+        
+        // window.localStorage.clear();
     }
 
     handleInputChange(event) {
@@ -59,11 +62,23 @@ export default class Login extends React.Component {
                 })
             })
             .then((response) => response.text())
-            .then((responseText) => {
-                alert(responseText);
+            .then((responseJSON) => {
+                let response = JSON.parse(responseJSON);
+                if( response["code"] !== 200 ) {
+                    alert(response["code"] + " : " + response["messages"] );
+                    return;
+                }
+
+                if( response["data"]["token"] !== undefined ) {
+                    let token = response["data"]["token"];
+
+                    window.localStorage.setItem("UserToken", token);
+                    document.location.href = "/dashboard/home";
+                    return;
+                }
             })
             .catch((error) => {
-                console.error(error);
+                console.log(error);
             });
         }
         catch(err) {
@@ -73,11 +88,11 @@ export default class Login extends React.Component {
 
         // RESET FORM
         event.target.reset();
-
     }
 
 
     render = () => {
+
         return (
 
             <div className="w-3/5">
