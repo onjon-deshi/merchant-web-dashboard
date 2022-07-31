@@ -18,11 +18,9 @@ const App = () => {
 
   if (document.URL.includes("/dashboard")) {
     return (
-        <Fragment>
-          <SampleContextProvider>
-            <Dashboard></Dashboard>
-          </SampleContextProvider>
-        </Fragment>
+
+      <Dashboard />
+
     );
   }
   else {

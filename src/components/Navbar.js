@@ -11,7 +11,6 @@ import { ReactComponent as InvoiceIcon } from '../assets/icons/invoice.svg'
 import { ReactComponent as TransactionIcon } from '../assets/icons/transaction.svg'
 import { ReactComponent as RightIcon } from '../assets/icons/right.svg'
 import $ from "jquery";
-import { Link } from 'react-router-dom'
 
 // const navigation = [
 //     { name: 'Dashboard', href: '#', current: true },
