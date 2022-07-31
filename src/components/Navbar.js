@@ -13,7 +13,7 @@ import { ReactComponent as TransactionIcon } from '../assets/icons/transaction.s
 import { ReactComponent as RightIcon } from '../assets/icons/right.svg'
 import $ from "jquery";
 
-import {useContext} from 'react';
+import { useContext } from 'react';
 import UserContext from '../UserContext'
 import { Link } from 'react-router-dom';
 
