@@ -56,7 +56,6 @@ const toggleLeftBar = () => {
 }
 export default function Example(props) {
     let userName = useContext(UserContext);
-    console.log(userName);
     return (
         <>
             <div className="flex items-center pl-8 cursor-pointer">
