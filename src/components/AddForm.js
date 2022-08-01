@@ -8,29 +8,58 @@ import 'react-toastify/dist/ReactToastify.css';
 
 const AddForm = ({ title, subtitle, placeholder, type, name, value }) => {
     const [inputValue, setInputValue] = useState('');
+    const [data, setData] = useState('');
+
     let navigate = useNavigate();
     const location = useLocation();
 
+
+    async function fetchData(param) {
+        await fetch(process.env.REACT_APP_API_BASE_URL + process.env.REACT_APP_API_PREFIX + "signup/existence", {
+            method: 'POST',
+            headers: new Headers({ 'Content-Type': 'application/json' }),
+
+            body: JSON.stringify({
+                mobile_number: param,
+            })
+        }).then(res => res.json()).then(
+            (result) => {
+                setData(result);
+                console.log(data);
+            },
+            (error) => {
+                "Can't fetch data"
+            }
+        )
+    }
+
+
     const onSubmit = (e) => {
         e.preventDefault();
+        console.log(inputValue.length);
 
-        if (name === "mobileNumber" && /^\d{11}$/.test(inputValue)) {
-            setInputValue("")
-            navigate('/otp');
-        }
-        else {
-            toast.error("Invalid number; must be 11 digits");
+        if (inputValue.length !== 14) {
+            toast.error("Please enter valid phone number.");
+            return;
         }
 
-        if (name === "email" && (/^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[A-Za-z]+$/).test(inputValue)) {
-            setInputValue("")
-            navigate('/terms-and-policy');
-        }
-        else {
-            toast.error("Invalid email");
-        }
+        fetchData(inputValue);
 
+        // if (name === "mobileNumber" && /^\d{11}$/.test(inputValue)) {
+        //     setInputValue("")
+        //     navigate('/otp');
+        // }
+        // else {
+        //     toast.error("Invalid number; must be 11 digits");
+        // }
 
+        // if (name === "email" && (/^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[A-Za-z]+$/).test(inputValue)) {
+        //     setInputValue("")
+        //     navigate('/terms-and-policy');
+        // }
+        // else {
+        //     toast.error("Invalid email");
+        // }
     }
 
     return (
