@@ -13,7 +13,7 @@ import { ReactComponent as TransactionIcon } from '../assets/icons/transaction.s
 import { ReactComponent as RightIcon } from '../assets/icons/right.svg'
 import $ from "jquery";
 
-import {useContext} from 'react';
+import { useContext } from 'react';
 import UserContext from '../UserContext'
 import { Link } from 'react-router-dom';
 
@@ -51,9 +51,9 @@ const onClick = (e) => {
 const toggleLeftBar = () => {
     $("#left-sidebar").toggleClass("need");
     $("#left-sidebar").toggleClass("no-need");
-
-    // $("#left-sidebar").toggle("slide");
 }
+
+
 export default function Example(props) {
     let userName = useContext(UserContext);
     return (

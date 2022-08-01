@@ -18,6 +18,10 @@ import BankAccount from './signup/bankAccount/BankAccount';
 import UploadDocuments from './signup/uploadDocuments/UploadDocuments';
 import Otp from './signup/otp/Otp';
 
+
+import ForgetPasswordStepOne from "./ForgetPassword/StepOne";
+
+
 const LoginScreen = () => {
     return (
         <div className="App flex font-montserrat w-full">
@@ -62,12 +66,14 @@ const LoginScreen = () => {
                     {/* Login Module */}
                     <Route path="/" element={<Navigate replace to="/login" />} />
                     
-                    <Route path="/login" element={<Login title="Welcome Back to Deshi" subtitle="Enter your ID and Password to Login your account" type1="tel" type2="password" name1="mobileNumber" name2="password" placeholder1="Mobile number" placeholder2="Password" maxLength="13" btnName="Login" />} />
+                    <Route path="/login" element={<Login title="Welcome Back to Deshi" subtitle="Enter your ID and Password to Login your account" type1="tel" type2="password" name1="mobileNumber" name2="password" placeholder1="Mobile Number" placeholder2="Password" maxLength="13" btnName="Login" />} />
+                    
+                    
+                    <Route path="/forget-password-step-one" element={<ForgetPasswordStepOne title="Welcome Back to Deshi" subtitle="Provide the 11 digit Bangladeshi phone number you want to associate with your merchant account." type="tel" name="mobileNumber" placeholder="Mobile Number" btnName="Continue" />}></Route>
 
-                    <Route path="/forgot-pass" element={<AddForm title="Welcome Back to Deshi" name="mobileNumber" subtitle="Provide the 11 digit Bangladeshi phone number you want to associate with your merchant account." placeholder="Mobile number or e-mail address" value="Next" />} />
 
                     <Route path="/reset-pass" element={<Login title="Reset Password" subtitle="Enter the code we sent to the phone number" type1="password" type2="password" name1="password" name2="confirmPassword" placeholder1="New Password" placeholder2="Confirm Password" btnName="Reset Password" />} />
-
+                    
                     <Route path="/forgot-otp    " element={<Otp title="Verify Your Identity" subtitle="Enter the code we sent to the phone number" bottomText="Don’t have any account?" bottomLink="Signup Instead" />} />
 
 

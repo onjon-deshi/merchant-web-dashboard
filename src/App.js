@@ -21,6 +21,10 @@ const App = () => {
     isLogin = false;
   }
 
+  if( !document.URL.includes("/otp") ) {
+      sessionStorage.removeItem("otp-mobile-number");
+  }
+
 
   if( isLogin === true ) {
     if( !document.URL.includes("/dashboard/") ) {
