@@ -44,6 +44,7 @@ export default function StepOne(props) {
 
 
     useEffect(()=>{
+        window.history.replaceState({}, "");
         
         if( isLoaded === true ) {
             if( error ) {
@@ -55,14 +56,11 @@ export default function StepOne(props) {
             response = JSON.parse(response);
 
             if (response["code"] === 200) {
-
-                sessionStorage.setItem("otp-mobile-number", mobileNumber);
-                navigate("/otp", {
+                navigate("/forget-password-step-two", {
                     state: {
                         mobileNumber: mobileNumber
                     }
                 });
-
                 return;
             }
 
