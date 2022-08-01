@@ -51,9 +51,9 @@ const onClick = (e) => {
 const toggleLeftBar = () => {
     $("#left-sidebar").toggleClass("need");
     $("#left-sidebar").toggleClass("no-need");
-
-    // $("#left-sidebar").toggle("slide");
 }
+
+
 export default function Example(props) {
     let userName = useContext(UserContext);
     return (

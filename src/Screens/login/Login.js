@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import InputMask from "react-input-mask";
 import Button from '../../components/Button';
 import SignUpOrLogin from '../../components/SignUpOrLogin';
@@ -15,10 +15,8 @@ export default class Login extends React.Component {
             mobileNumber: "",
             password: ""
         };
-
+        
         this.handleInputChange = this.handleInputChange.bind(this);
-
-        // window.localStorage.clear();
     }
 
     handleInputChange(event) {
@@ -93,11 +91,8 @@ export default class Login extends React.Component {
 
 
     render = () => {
-
         return (
-
             <div className="w-3/5">
-
                 <h1 className="font-bold text-4xl mb-8">{this.props.title}</h1>
                 <SignUpOrLogin />
                 <div className="bg-neutral-100 p-9 text-secondary ">
@@ -110,7 +105,7 @@ export default class Login extends React.Component {
                             <input type={this.props.type2} name={this.props.name2} value={this.state.value} onChange={this.handleInputChange} className="w-full p-3 rounded-lg border-none" placeholder={this.props.placeholder2} required />
                         </div>
                         <Button name={this.props.btnName} />
-                        <Link to="/forgot-pass" className='font-bold text-primary inline-block mb-3'>Forgot Password?</Link>
+                        <Link to="/forget-password-step-one" className='font-bold text-primary inline-block mb-3'>Forgot Password?</Link>
                         <p>Don’t have any account? <Link to="/signup" className="font-bold text-primary">Signup Instead <ImArrowRight2 className='inline ml-1 mb-0.5' /></Link> </p>
                     </form>
                 </div>
