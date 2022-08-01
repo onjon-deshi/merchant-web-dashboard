@@ -45,7 +45,7 @@ const AddForm = ({ title, subtitle, placeholder, type, name, value }) => {
                     </div>
                     <Button value={value} />
                     {location.pathname === "/signup" && <p>Already have an account? <Link to="/login" className="font-bold text-primary">Login Instead <ImArrowRight2 className='inline ml-1 mb-0.5' /></Link> </p>}
-                    {location.pathname === "/forgot-pass" && <p>Don’t have any account? <Link to="/ " className="font-bold text-primary">Signup Instead <ImArrowRight2 className='inline' /></Link> </p>}
+                    {location.pathname === "/forgot-pass" && <p>Don’t have any account? <Link to="/signup" className="font-bold text-primary">Signup Instead <ImArrowRight2 className='inline' /></Link> </p>}
                 </form>
             </div>
         </div>
