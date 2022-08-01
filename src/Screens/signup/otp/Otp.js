@@ -13,16 +13,20 @@ const Otp = ({ title, subtitle, number }) => {
 
     const otpMobileNumber = sessionStorage.getItem("otp-mobile-number");
 
+    
+    // Check OTP page access is valid or not
     if( otpMobileNumber === undefined || otpMobileNumber === "" || otpMobileNumber === null ) {
         navigate("/forget-password-step-one");
         return;
     }
 
+    // Destroy OTP session and redirect to forget password step one page after 5 minutes
     setTimeout(()=>{
         sessionStorage.removeItem("otp-mobile-number");
         navigate("/forget-password-step-one");
         return;
     }, 500000);
+
 
     function handleChange(element, index) {
         if (isNaN(element.value)) {
@@ -30,8 +34,6 @@ const Otp = ({ title, subtitle, number }) => {
         }
 
         setOtp([...otp.map((d, idx) => (idx === index ? element.value : d))])
-
-
         if (element.value !== "" && element.nextSibling) {
             element.nextSibling.focus();
         }
@@ -43,14 +45,7 @@ const Otp = ({ title, subtitle, number }) => {
 
     const onSubmit = (e) => {
         e.preventDefault();
-
-        if (e.element.value < 6) {
-            toast.error("Invalid otp, must be 6 digits");
-        }
-        else {
-            // navigate("/add-email");
-            console.log(e.element.value);
-        }
+        console.log(otp);
     }
 
     return (
@@ -59,13 +54,13 @@ const Otp = ({ title, subtitle, number }) => {
             <h1 className="font-bold text-4xl mb-7">{title}</h1>
             <div className="bg-neutral-100 px-8 py-10 text-secondary rounded-lg">
                 <p className="mb-6">{subtitle} <span className="font-bold">{otpMobileNumber}</span></p>
-                <form>
+                <form onSubmit={onSubmit}>
                     <div className="flex items-center space-x-2 container mb-4">
                         {otp.map((data, index) => {
                             return (
                                 <input
                                     type="text"
-
+                                    name="otp[]"
                                     maxLength="1"
                                     key={index}
                                     value={data}

@@ -15,10 +15,8 @@ export default class Login extends React.Component {
             mobileNumber: "",
             password: ""
         };
-
+        
         this.handleInputChange = this.handleInputChange.bind(this);
-
-        // window.localStorage.clear();
     }
 
     handleInputChange(event) {

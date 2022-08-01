@@ -46,6 +46,11 @@ export default function StepOne(props) {
     useEffect(()=>{
         
         if( isLoaded === true ) {
+            if( error ) {
+                toast.error(error.messages.toString());
+                return;
+            }
+
             let response = JSON.stringify(apiData);
             response = JSON.parse(response);
 
@@ -57,7 +62,7 @@ export default function StepOne(props) {
                         mobileNumber: mobileNumber
                     }
                 });
-                
+
                 return;
             }
 
