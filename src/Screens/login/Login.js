@@ -131,7 +131,6 @@ export default class Login extends React.Component {
 
                         <div className="mb-4">
                             <InputMask mask="+880 999 999 9999" value={this.state.value} type={this.props.type} name={this.props.name1} onChange={this.handleInputChange} className="w-full p-3 rounded-lg mb-4" min-length="16" autoComplete='off' placeholder={this.props.placeholder1} required />
-
                             <input type={this.props.type2} name={this.props.name2} value={this.state.value} onChange={this.handleInputChange} className="w-full p-3 rounded-lg border-none" placeholder={this.props.placeholder2} required />
                         </div>
                         <Button name={this.props.btnName} />
