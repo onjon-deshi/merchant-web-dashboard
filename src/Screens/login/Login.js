@@ -4,6 +4,7 @@ import InputMask from "react-input-mask";
 import Button from '../../components/Button';
 import SignUpOrLogin from '../../components/SignUpOrLogin';
 import { ImArrowRight2 } from "react-icons/im";
+import postFetchApi from '../../utilities/postFetch';
 
 
 
@@ -15,7 +16,7 @@ export default class Login extends React.Component {
             mobileNumber: "",
             password: ""
         };
-        
+
         this.handleInputChange = this.handleInputChange.bind(this);
     }
 
@@ -47,18 +48,46 @@ export default class Login extends React.Component {
         }
 
         try {
-            await fetch(process.env.REACT_APP_API_BASE_URL + "api/v1/auth/signin", {
-                method: 'POST',
-                headers: new Headers({
-                    'Content-Type': 'application/json',
-                }),
+            // await fetch(process.env.REACT_APP_API_BASE_URL + "api/v1/auth/signin", {
+            //     method: 'POST',
+            //     headers: new Headers({
+            //         'Content-Type': 'application/json',
+            //     }),
 
-                body: JSON.stringify({
+            //     body: JSON.stringify({
+            //         mobile_number: mobileNumberFinal,
+            //         password: this.state.password
+            //     })
+            // })
+            //     .then((response) => response.text())
+            //     .then((responseJSON) => {
+            //         let response = JSON.parse(responseJSON);
+            //         if (response["code"] !== 200) {
+            //             alert(response["code"] + " : " + response["messages"]);
+            //             return;
+            //         }
+
+            //         if (response["data"]["token"] !== undefined) {
+            //             let token = response["data"]["token"];
+
+            //             window.localStorage.setItem("UserToken", token);
+            //             document.location.href = "/dashboard/home";
+            //             return;
+            //         }
+            //     })
+            //     .catch((error) => {
+            //         console.log(error);
+            //     });
+
+            let response = await postFetchApi('api/v1/auth/signin',JSON.stringify(
+                {
                     mobile_number: mobileNumberFinal,
                     password: this.state.password
-                })
-            })
-                .then((response) => response.text())
+                }),
+                true
+            )
+
+            response.text()
                 .then((responseJSON) => {
                     let response = JSON.parse(responseJSON);
                     if (response["code"] !== 200) {
@@ -77,6 +106,7 @@ export default class Login extends React.Component {
                 .catch((error) => {
                     console.log(error);
                 });
+
         }
 
 
