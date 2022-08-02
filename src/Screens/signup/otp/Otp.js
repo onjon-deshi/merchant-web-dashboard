@@ -8,24 +8,27 @@ import 'react-toastify/dist/ReactToastify.css';
 
 const Otp = ({ title, subtitle, number }) => {
     const [otp, setOtp] = useState(new Array(6).fill(""));
+    const { state } = useLocation();
     let location = useLocation();
     let navigate = useNavigate();
 
-    const otpMobileNumber = sessionStorage.getItem("otp-mobile-number");
+    console.log(location);
 
-    
-    // Check OTP page access is valid or not
-    if( otpMobileNumber === undefined || otpMobileNumber === "" || otpMobileNumber === null ) {
-        navigate("/forget-password-step-one");
-        return;
-    }
+    // const otpMobileNumber = sessionStorage.getItem("otp-mobile-number");
+
+
+    // // Check OTP page access is valid or not
+    // if( otpMobileNumber === undefined || otpMobileNumber === "" || otpMobileNumber === null ) {
+    //     navigate("/forget-password-step-one");
+    //     return;
+    // }
 
     // Destroy OTP session and redirect to forget password step one page after 5 minutes
-    setTimeout(()=>{
-        sessionStorage.removeItem("otp-mobile-number");
-        navigate("/forget-password-step-one");
-        return;
-    }, 500000);
+    // setTimeout(() => {
+    //     sessionStorage.removeItem("otp-mobile-number");
+    //     navigate("/forget-password-step-one");
+    //     return;
+    // }, 500000);
 
 
     function handleChange(element, index) {
@@ -53,7 +56,7 @@ const Otp = ({ title, subtitle, number }) => {
             <ToastContainer />
             <h1 className="font-bold text-4xl mb-7">{title}</h1>
             <div className="bg-neutral-100 px-8 py-10 text-secondary rounded-lg">
-                <p className="mb-6">{subtitle} <span className="font-bold">{otpMobileNumber}</span></p>
+                <p className="mb-6">{subtitle} <span className="font-bold">{state.mobileNumber}</span></p>
                 <form onSubmit={onSubmit}>
                     <div className="flex items-center space-x-2 container mb-4">
                         {otp.map((data, index) => {

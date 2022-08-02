@@ -49,7 +49,11 @@ export default function StepThree(props) {
 
             if (response["code"] === 200) {
                 window.history.replaceState({}, "");
-                navigate("/login");
+                navigate("/login", {
+                    state: {
+                        passwordChangeMessage: "Password Change Successfully."
+                    }
+                });
                 return;
             }
 
@@ -64,7 +68,7 @@ export default function StepThree(props) {
         window.history.replaceState({}, "");
         navigate("/forget-password-step-one");
         return;
-    }, 200000);
+    }, 300000);
 
 
     async function fetchData() {
