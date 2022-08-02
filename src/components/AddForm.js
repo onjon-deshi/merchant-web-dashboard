@@ -1,14 +1,17 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Button from './Button';
 import SignUpOrLogin from './SignUpOrLogin';
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import { ImArrowRight2 } from "react-icons/im";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import InputMask from "react-input-mask";
 
 const AddForm = ({ title, subtitle, placeholder, type, name, value }) => {
     const [inputValue, setInputValue] = useState('');
     const [data, setData] = useState('');
+    const [error, setError] = useState(null);
+    const [isLoaded, setIsLoaded] = useState(false);
 
     let navigate = useNavigate();
     const location = useLocation();
@@ -24,26 +27,57 @@ const AddForm = ({ title, subtitle, placeholder, type, name, value }) => {
             })
         }).then(res => res.json()).then(
             (result) => {
+                setIsLoaded(true);
                 setData(result);
+                setInputValue(param)
                 console.log(data);
             },
             (error) => {
-                "Can't fetch data"
+                setIsLoaded(true);
+                setError(error);
             }
         )
     }
+
+    useEffect(() => {
+        window.history.replaceState({}, "");
+        if (isLoaded === true) {
+            if (error) {
+                toast.error(error.messages.toString());
+                return;
+            }
+
+            let response = JSON.stringify(data);
+            response = JSON.parse(response);
+
+            if (response["code"] === 200) {
+                navigate("/otp", {
+                    state: {
+                        mobileNumber: inputValue
+                    }
+                });
+                return;
+            }
+
+            toast.error(response["messages"].toString());
+        }
+
+    }, [data]);
 
 
     const onSubmit = (e) => {
         e.preventDefault();
         console.log(inputValue.length);
 
-        if (inputValue.length !== 14) {
+        var mobileNumber = inputValue.split(" ").join("");
+        mobileNumber = mobileNumber.replace(/_+/g, '');
+
+        if (mobileNumber.length !== 14) {
             toast.error("Please enter valid phone number.");
             return;
         }
 
-        fetchData(inputValue);
+        fetchData(mobileNumber);
 
         // if (name === "mobileNumber" && /^\d{11}$/.test(inputValue)) {
         //     setInputValue("")
@@ -71,7 +105,8 @@ const AddForm = ({ title, subtitle, placeholder, type, name, value }) => {
                 <p className="mb-5">{subtitle}</p>
                 <form onSubmit={onSubmit} >
                     <div className="mb-4">
-                        <input type={type} name={name} className="w-full p-3 rounded-lg border border-[#EEEEEE]" autoComplete='off' placeholder={placeholder} value={inputValue} onChange={(e) => { setInputValue(e.target.value) }} />
+                        <InputMask mask="+880 999 999 9999" value={inputValue} type={type} name={name} onChange={(e) => setInputValue(e.target.value)} className="w-full p-3 rounded-lg border border-[#EEEEEE]" minLength={16} autoComplete='off' placeholder={placeholder} required />
+                        {/* <input type={type} name={name} className="w-full p-3 rounded-lg border border-[#EEEEEE]" autoComplete='off' placeholder={placeholder} value={inputValue} onChange={(e) => { setInputValue(e.target.value) }} /> */}
                         {/* <label htmlFor="floatingInput">Mobile number</label> */}
                     </div>
                     <Button value={value} />
