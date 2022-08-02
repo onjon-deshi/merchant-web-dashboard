@@ -93,6 +93,7 @@ export default function StepTwo(props) {
             (result) => {
                 setIsLoaded(true);
                 setApiData(result);
+                console.log(result);
             },
             (error) => {
                 setIsLoaded(true);
@@ -106,6 +107,7 @@ export default function StepTwo(props) {
     var handleSubmit = (event) => {
         event.preventDefault();
         var otpString = otp.join('');
+        console.log(otpMobileNumber, otpString)
         if (otpString.length === 6) {
             fetchData(otpString);
             return;

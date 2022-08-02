@@ -5,39 +5,30 @@ import { ImArrowRight2 } from "react-icons/im";
 import { useLocation } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import $ from "jquery";
 
-
-
-export default function Otp({ title, subtitle, number }) {
-
+const Otp = ({ title, subtitle, number }) => {
     const [otp, setOtp] = useState(new Array(6).fill(""));
     const [data, setData] = useState();
     const [error, setError] = useState('');
     const [isLoaded, setIsLoaded] = useState(false);
-    const [otpMobileNumber, setOtpMobileNumber] = useState("");
     const { state } = useLocation();
     let location = useLocation();
     let navigate = useNavigate();
 
 
     useEffect(() => {
-        console.log(state);
+
         if (state === null || state.mobileNumber === undefined || state.mobileNumber === "" || state.mobileNUmber === null) {
             console.log("State is Null");
             navigate("/signup");
             return;
         }
 
-        setOtpMobileNumber(state.mobileNumber)
-
         if (isLoaded === true) {
             if (error) {
                 toast.error(error.message.toString());
                 return;
             }
-
-            console.log(data);
 
             let response = JSON.stringify(data);
             response = JSON.parse(response);
@@ -49,19 +40,11 @@ export default function Otp({ title, subtitle, number }) {
                         otp: otp
                     }
                 });
-
                 return;
             }
             toast.error(response["messages"].toString());
         }
-    }, [data])
-
-    // Destroy OTP session and redirect to forget password step one page after 5 minutes
-    setTimeout(() => {
-        window.history.replaceState({}, "");
-        navigate("/signup");
-        return;
-    }, 500000);
+    }, [data, error, isLoaded, navigate, state])
 
     function handleChange(element, index) {
         if (isNaN(element.value)) {
@@ -79,17 +62,43 @@ export default function Otp({ title, subtitle, number }) {
     }
 
 
-    // setTimeout(() => {
-    //     window.history.replaceState({}, "");
-    //     navigate("/signup");
+    async function fetchData(param) {
+
+    }
+
+
+    setTimeout(() => {
+        window.history.replaceState({}, "");
+        navigate("/signup");
+        return;
+    }, 500000);
+
+
+
+
+    // const otpMobileNumber = sessionStorage.getItem("otp-mobile-number");
+
+
+    // // Check OTP page access is valid or not
+    // if( otpMobileNumber === undefined || otpMobileNumber === "" || otpMobileNumber === null ) {
+    //     navigate("/forget-password-step-one");
     //     return;
-    // }, 5000000);
+    // }
+
+    // Destroy OTP session and redirect to forget password step one page after 5 minutes
+    // setTimeout(() => {
+    //     sessionStorage.removeItem("otp-mobile-number");
+    //     navigate("/forget-password-step-one");
+    //     return;
+    // }, 500000);
+
 
 
 
     const onSubmit = (e) => {
         e.preventDefault();
         let otpString = otp.join('');
+        console.log(otpString, state.mobileNumber)
         if (otpString.length === 6) {
             fetchData(otpString);
             return;
@@ -98,64 +107,12 @@ export default function Otp({ title, subtitle, number }) {
         toast.error("Please enter valid OTP")
     }
 
-
-
-    async function fetchData(param) {
-        await fetch(process.env.REACT_APP_API_BASE_URL + process.env.REACT_APP_API_PREFIX + "signup/verify-otp", {
-            method: 'POST',
-            headers: new Headers({
-                'Content-Type': 'application/json',
-                'Accept': 'application/json',
-            }),
-
-            body: JSON.stringify({
-                mobile_number: otpMobileNumber,
-                otp: param
-            })
-
-        }).then(res => res.json()).then(
-            (result) => {
-                setIsLoaded(true);
-                setData(result);
-            },
-            (error) => {
-                setIsLoaded(true);
-                setError(error);
-            }
-        );
-    }
-
-    async function otpResend() {
-        await fetch(process.env.REACT_APP_API_BASE_URL + process.env.REACT_APP_API_PREFIX + "signup/existence", {
-            method: 'POST',
-            headers: new Headers({ 'Content-Type': 'application/json' }),
-
-            body: JSON.stringify({
-                mobile_number: otpMobileNumber
-            })
-        }).then(res => res.json()).then(
-            (result) => {
-                var finalRes = JSON.stringify(result);
-                finalRes = JSON.parse(finalRes);
-                console.log(result);
-                if (finalRes["code"] === 200) {
-                    toast.success("OTP bas been send again on your mobile number.");
-                    return;
-                }
-            },
-            (error) => {
-                toast.error(error.message.toString());
-            }
-        );
-    }
-
-
     return (
         <div className="w-3/5">
             <ToastContainer />
             <h1 className="font-bold text-4xl mb-7">{title}</h1>
             <div className="bg-neutral-100 px-8 py-10 text-secondary rounded-lg">
-                <p className="mb-6">{subtitle} <span className="font-bold">{otpMobileNumber}</span></p>
+                <p className="mb-6">{subtitle} <span className="font-bold">{state?.mobileNumber}</span></p>
                 <form onSubmit={onSubmit}>
                     <div className="flex items-center space-x-2 container mb-4">
                         {otp.map((data, index) => {
@@ -177,7 +134,7 @@ export default function Otp({ title, subtitle, number }) {
                     </div>
                     <Button name="Verify OTP" />
                     {location.pathname === "/otp"
-                        ? <p> Didn’t get the code yet? <Link to="#" onClick={otpResend} className="font-bold text-primary">Send Again <ImArrowRight2 className='inline ml-1' /></Link></p>
+                        ? <p> Didn’t get the code yet? <Link to="#" className="font-bold text-primary ">Send Again <ImArrowRight2 className='inline ml-1' /></Link></p>
                         : <>
                             <p className="text-primary font-bold cursor-pointer mb-2.5">Didn’t get the code yet?</p>
                             <p>Don’t have any account? <Link to="#" className="font-bold text-primary ">Signup Instead <ImArrowRight2 className='inline ml-1' /></Link></p>
@@ -186,5 +143,7 @@ export default function Otp({ title, subtitle, number }) {
                 </form>
             </div>
         </div>
-    )
-}
+    );
+};
+
+export default Otp;
