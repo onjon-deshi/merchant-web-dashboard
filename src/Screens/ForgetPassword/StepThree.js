@@ -5,9 +5,7 @@ import Button from '../../components/Button';
 import { ImArrowRight2 } from "react-icons/im";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { event } from 'jquery';
-import { AiOutlineConsoleSql } from 'react-icons/ai';
-import { KeyboardReturnSharp } from '@mui/icons-material';
+
 
 
 
