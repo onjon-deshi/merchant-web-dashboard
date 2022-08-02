@@ -10,14 +10,14 @@ import 'react-toastify/dist/ReactToastify.css';
 
 
 export default function StepOne(props) {
-    
+
     const [mobileNumber, setMobileNumber] = useState('')
     const [error, setError] = useState(null);
     const [isLoaded, setIsLoaded] = useState(false);
     const [apiData, setApiData] = useState([]);
 
     let navigate = useNavigate();
-    
+
     async function fetchData(param) {
         await fetch(process.env.REACT_APP_API_BASE_URL + process.env.REACT_APP_API_PREFIX + "forgot-password/send-otp", {
             method: 'POST',
@@ -30,12 +30,12 @@ export default function StepOne(props) {
             })
 
         }).then(res => res.json()).then(
-            (result)=>{
+            (result) => {
                 setIsLoaded(true);
                 setApiData(result);
                 setMobileNumber(param);
             },
-            (error)=>{
+            (error) => {
                 setIsLoaded(true);
                 setError(error);
             }
@@ -43,11 +43,11 @@ export default function StepOne(props) {
     }
 
 
-    useEffect(()=>{
+    useEffect(() => {
         window.history.replaceState({}, "");
-        
-        if( isLoaded === true ) {
-            if( error ) {
+
+        if (isLoaded === true) {
+            if (error) {
                 toast.error(error.messages.toString());
                 return;
             }
@@ -67,7 +67,7 @@ export default function StepOne(props) {
             toast.error(response["messages"].toString());
         }
 
-    },[apiData]);
+    }, [apiData]);
 
 
     const handleSubmit = e => {
@@ -94,7 +94,7 @@ export default function StepOne(props) {
                 <p className="mb-5">{props.subtitle}</p>
                 <form onSubmit={handleSubmit} method="POST" className="form-body">
                     <div className="mb-4">
-                        <InputMask mask="+880 999 999 9999" value={mobileNumber} type={props.type} name={props.name} onChange={(e)=>setMobileNumber(e.target.value)} className="w-full p-3 rounded-lg" minLength={16} autoComplete='off' placeholder={props.placeholder} required />
+                        <InputMask mask="+880 999 999 9999" value={mobileNumber} type={props.type} name={props.name} onChange={(e) => setMobileNumber(e.target.value)} className="w-full p-3 rounded-lg" minLength={16} autoComplete='off' placeholder={props.placeholder} required />
                     </div>
                     <Button name={props.btnName} />
                     <p>Don’t have any account? <Link to="/signup" className="font-bold text-primary">Signup Instead <ImArrowRight2 className='inline' /></Link> </p>

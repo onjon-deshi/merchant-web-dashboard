@@ -9,32 +9,32 @@ import 'react-toastify/dist/ReactToastify.css';
 
 
 export default function StepTwo(props) {
-    
+
     const [otp, setOtp] = useState(new Array(6).fill(""));
     const [error, setError] = useState(null);
     const [isLoaded, setIsLoaded] = useState(false);
     const [apiData, setApiData] = useState([]);
     const [otpMobileNumber, setOtpMobileNumber] = useState("");
-    
+
     let navigate = useNavigate();
     const { state } = useLocation();
 
-    useEffect(()=>{
-        
+    useEffect(() => {
+
         // Check OTP page access is valid or not
-        if( state === null || state.mobileNumber === undefined || state.mobileNumber === "" || state.mobileNumber === null ) {
+        if (state === null || state.mobileNumber === undefined || state.mobileNumber === "" || state.mobileNumber === null) {
             navigate("/forget-password-step-one");
             return;
         }
 
         setOtpMobileNumber(state.mobileNumber);
-        
-        if( isLoaded === true ) {
-            if( error ) {
+
+        if (isLoaded === true) {
+            if (error) {
                 toast.error(error.messages.toString());
                 return;
             }
-            
+
             let response = JSON.stringify(apiData);
             response = JSON.parse(response);
             if (response["code"] === 200) {
@@ -47,14 +47,14 @@ export default function StepTwo(props) {
                 });
                 return;
             }
-            
+
             toast.error(response["messages"].toString());
         }
     }, [apiData, error, isLoaded, navigate, otp, otpMobileNumber, state]);
 
 
     // Destroy OTP session and redirect to forget password step one page after 5 minutes
-    setTimeout(()=>{
+    setTimeout(() => {
         window.history.replaceState({}, "");
         navigate("/forget-password-step-one");
         return;
@@ -90,11 +90,11 @@ export default function StepTwo(props) {
             })
 
         }).then(res => res.json()).then(
-            (result)=>{
+            (result) => {
                 setIsLoaded(true);
                 setApiData(result);
             },
-            (error)=>{
+            (error) => {
                 setIsLoaded(true);
                 setError(error);
             }
@@ -106,7 +106,7 @@ export default function StepTwo(props) {
     var handleSubmit = (event) => {
         event.preventDefault();
         var otpString = otp.join('');
-        if(otpString.length === 6 ) {
+        if (otpString.length === 6) {
             fetchData(otpString);
             return;
         }
@@ -114,7 +114,7 @@ export default function StepTwo(props) {
         toast.error("Please enter valid OTP");
     }
 
-    
+
     return (
         <div className="w-3/5">
             <ToastContainer />
