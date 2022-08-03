@@ -145,8 +145,9 @@ export default function StepTwo(props) {
 
     
     setTimeout(()=>{
-        $("#resetOtpBtn").attr("disabled",false);
-    },15000);
+        $("#resetOtpBtn").hide();
+        $("#resetOtpBtnActive").show();
+    },60000);
 
 
     return (
@@ -176,8 +177,10 @@ export default function StepTwo(props) {
                     </div>
                     <Button name="Verify OTP" />
                     <p> Didn’t get the code yet?
-                    <button id="resetOtpBtn" onClick={resendOtp} type="button" disabled={true} className="disabled:text-ash font-bold text-primary ml-2">Send Again 
-                    <ImArrowRight2 className='inline ml-1' /></button>
+                    <button id="resetOtpBtn" type="button" className="text-ash font-bold ml-2 cursor-default">Send Again <ImArrowRight2 className='inline ml-1' /></button>
+                    <button id="resetOtpBtnActive" onClick={resendOtp} type="button" className="hidden font-bold text-primary ml-2">
+                        Send Again <ImArrowRight2 className='inline ml-1' />
+                    </button>
                     </p>
                 </form>
             </div>

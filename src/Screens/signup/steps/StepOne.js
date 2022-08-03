@@ -4,13 +4,15 @@ import SignUpOrLogin from '../../../components/SignUpOrLogin';
 import { useForm } from "react-hook-form";
 import Button from '../../../components/Button';
 import { ImArrowRight2 } from "react-icons/im";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const StepOne = () => {
     const { register, handleSubmit } = useForm();
+    let navigate = useNavigate();
 
     const onSubmit = (data) => {
         console.log(data);
+        navigate('/signup/step-two')
     };
 
     return (

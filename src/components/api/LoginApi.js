@@ -7,8 +7,6 @@ export default function LoginApi(mobile_number, password) {
     const [isLoaded, setIsLoaded] = useState(false);
     const [apiData, setApiData] = useState([]);
 
-    
-
 
     useEffect(()=>{
         var getApiData = async () => {
