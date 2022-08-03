@@ -177,7 +177,7 @@ export default function Otp({ title, subtitle, number }) {
                     </div>
                     <Button name="Verify OTP" />
                     {location.pathname === "/otp"
-                        ? <p> Didn’t get the code yet? <Link to="#" onClick={otpResend} className="font-bold text-primary">Send Again <ImArrowRight2 className='inline ml-1' /></Link></p>
+                        ? <p> Didn’t get the code yet? <button type="button" onClick={otpResend} className="font-bold text-primary">Send Again <ImArrowRight2 className='inline ml-1' /></button></p>
                         : <>
                             <p className="text-primary font-bold cursor-pointer mb-2.5">Didn’t get the code yet?</p>
                             <p>Don’t have any account? <Link to="#" className="font-bold text-primary ">Signup Instead <ImArrowRight2 className='inline ml-1' /></Link></p>
