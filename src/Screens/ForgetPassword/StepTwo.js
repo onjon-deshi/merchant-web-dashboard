@@ -23,7 +23,8 @@ export default function StepTwo(props) {
 
         // Check OTP page access is valid or not
         if (state === null || state.mobileNumber === undefined || state.mobileNumber === "" || state.mobileNumber === null) {
-            navigate("/forget-password-step-one");
+            // navigate("/forget-password-step-one");
+            console.log("state is null.");
             return;
         }
 
@@ -50,14 +51,14 @@ export default function StepTwo(props) {
 
             toast.error(response["messages"].toString());
         }
-    }, [apiData, error, isLoaded, navigate, otp, otpMobileNumber, state]);
+    }, [apiData, isLoaded]);
 
 
     // Destroy OTP session and redirect to forget password step one page after 5 minutes
     setTimeout(() => {
-        window.history.replaceState({}, "");
-        navigate("/forget-password-step-one");
-        return;
+        // window.history.replaceState({}, "");
+        // navigate("/forget-password-step-one");
+        // return;
     }, 500000);
 
 
@@ -77,7 +78,7 @@ export default function StepTwo(props) {
     }
 
 
-    async function fetchData(param) {
+    async function fetchData(param, isResend=false) {
         await fetch(process.env.REACT_APP_API_BASE_URL + process.env.REACT_APP_API_PREFIX + "forgot-password/verify-otp", {
             method: 'POST',
             headers: new Headers({
@@ -93,7 +94,6 @@ export default function StepTwo(props) {
             (result) => {
                 setIsLoaded(true);
                 setApiData(result);
-                console.log(result);
             },
             (error) => {
                 setIsLoaded(true);
@@ -107,13 +107,45 @@ export default function StepTwo(props) {
     var handleSubmit = (event) => {
         event.preventDefault();
         var otpString = otp.join('');
-        console.log(otpMobileNumber, otpString)
         if (otpString.length === 6) {
             fetchData(otpString);
             return;
         }
 
         toast.error("Please enter valid OTP");
+    }
+
+    var resendOtp = () => {
+        try {
+            fetch(process.env.REACT_APP_API_BASE_URL + process.env.REACT_APP_API_PREFIX + "forgot-password/send-otp", {
+                method: 'POST',
+                headers: new Headers({
+                    'Content-Type': 'application/json',
+                }), 
+                body: JSON.stringify({
+                    mobile_number: otpMobileNumber,
+                })
+            }).then(res => res.json()).then(
+                (resultJSON) => {
+                    var result = JSON.stringify(resultJSON);
+                    result = JSON.parse(result);
+
+                    if(result["code"]===200) {
+                        toast.success(result["messages"].toString());
+                        return;
+                    }
+
+                    toast.error(result["messages"].toString());
+                },
+                (error) => {
+                    console.log(error.messages);
+                    toast.error("A problem occur. Please try again.");
+                }
+            );
+        } catch(ex) {
+            console.log(ex.messages.toString());
+            toast.error("A problem occur. Please try again.");
+        }
     }
 
 
@@ -143,7 +175,7 @@ export default function StepTwo(props) {
                         })}
                     </div>
                     <Button name="Verify OTP" />
-                    <p> Didn’t get the code yet? <Link to="#" className="font-bold text-primary ">Send Again <ImArrowRight2 className='inline ml-1' /></Link></p>
+                    <p> Didn’t get the code yet? <button onClick={resendOtp} type="button" className="font-bold text-primary ">Send Again <ImArrowRight2 className='inline ml-1' /></button></p>
 
                 </form>
             </div>
