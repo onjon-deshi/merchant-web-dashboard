@@ -8,7 +8,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import InputMask from "react-input-mask";
 
 const AddForm = ({ title, subtitle, placeholder, type, name, value }) => {
-    const [inputValue, setInputValue] = useState('');
+    const [inputValue, setInputValue] = useState("");
     const [data, setData] = useState('');
     const [error, setError] = useState(null);
     const [isLoaded, setIsLoaded] = useState(false);
