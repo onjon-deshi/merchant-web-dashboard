@@ -105,7 +105,10 @@ const AddForm = ({ title, subtitle, placeholder, type, name, value }) => {
                 <p className="mb-5">{subtitle}</p>
                 <form onSubmit={onSubmit} >
                     <div className="mb-4">
-                        <InputMask mask="+880 999 999 9999" value={inputValue} type={type} name={name} onChange={(e) => setInputValue(e.target.value)} className="w-full p-3 rounded-lg border border-[#EEEEEE]" minLength={16} autoComplete='off' placeholder={placeholder} required />
+                        {location.pathname === "/signup"
+                            ? <InputMask mask="+880 999 999 9999" value={inputValue} type={type} name={name} onChange={(e) => setInputValue(e.target.value)} className="w-full p-3 rounded-lg border border-[#EEEEEE]" minLength={16} autoComplete='off' placeholder={placeholder} required />
+                            : <input type={type} name={name} className="w-full p-3 rounded-lg border border-[#EEEEEE]" autoComplete='off' placeholder={placeholder} value={inputValue} onChange={(e) => { setInputValue(e.target.value) }} />
+                        }
                         {/* <input type={type} name={name} className="w-full p-3 rounded-lg border border-[#EEEEEE]" autoComplete='off' placeholder={placeholder} value={inputValue} onChange={(e) => { setInputValue(e.target.value) }} /> */}
                         {/* <label htmlFor="floatingInput">Mobile number</label> */}
                     </div>
