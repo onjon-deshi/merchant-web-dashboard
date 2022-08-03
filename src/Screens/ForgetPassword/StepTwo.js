@@ -5,6 +5,7 @@ import Button from '../../components/Button';
 import { ImArrowRight2 } from "react-icons/im";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import $ from 'jquery';
 
 
 
@@ -20,11 +21,9 @@ export default function StepTwo(props) {
     const { state } = useLocation();
 
     useEffect(() => {
-
         // Check OTP page access is valid or not
         if (state === null || state.mobileNumber === undefined || state.mobileNumber === "" || state.mobileNumber === null) {
-            // navigate("/forget-password-step-one");
-            console.log("state is null.");
+            navigate("/forget-password-step-one");
             return;
         }
 
@@ -52,14 +51,6 @@ export default function StepTwo(props) {
             toast.error(response["messages"].toString());
         }
     }, [apiData, isLoaded]);
-
-
-    // Destroy OTP session and redirect to forget password step one page after 5 minutes
-    setTimeout(() => {
-        // window.history.replaceState({}, "");
-        // navigate("/forget-password-step-one");
-        // return;
-    }, 500000);
 
 
     var handleChange = (element, index) => {
@@ -115,6 +106,9 @@ export default function StepTwo(props) {
         toast.error("Please enter valid OTP");
     }
 
+
+    
+
     var resendOtp = () => {
         try {
             fetch(process.env.REACT_APP_API_BASE_URL + process.env.REACT_APP_API_PREFIX + "forgot-password/send-otp", {
@@ -149,6 +143,12 @@ export default function StepTwo(props) {
     }
 
 
+    
+    setTimeout(()=>{
+        $("#resetOtpBtn").attr("disabled",false);
+    },3000);
+
+
     return (
         <div className="w-3/5">
             <ToastContainer />
@@ -175,8 +175,10 @@ export default function StepTwo(props) {
                         })}
                     </div>
                     <Button name="Verify OTP" />
-                    <p> Didn’t get the code yet? <button onClick={resendOtp} type="button" className="font-bold text-primary ">Send Again <ImArrowRight2 className='inline ml-1' /></button></p>
-
+                    <p> Didn’t get the code yet?
+                    <button id="resetOtpBtn" onClick={resendOtp} type="button" disabled={true} className="disabled:text-ash font-bold text-primary ml-2">Send Again 
+                    <ImArrowRight2 className='inline ml-1' /></button>
+                    </p>
                 </form>
             </div>
         </div>
