@@ -146,7 +146,7 @@ export default function StepTwo(props) {
     
     setTimeout(()=>{
         $("#resetOtpBtn").attr("disabled",false);
-    },3000);
+    },15000);
 
 
     return (
