@@ -11,35 +11,35 @@ import 'react-toastify/dist/ReactToastify.css';
 
 const Login = (props) => {
 
-    const {state} = useLocation();
+    const { state } = useLocation();
 
     const [error, setError] = useState(null);
     const [isLoaded, setIsLoaded] = useState(false);
     const [apiData, setApiData] = useState([]);
-    
+
     let [input, setInput] = useState({
         mobileNumber: "",
         password: ""
     });
 
 
-    useEffect(()=>{
-        if( state !== null ) {
-            if( state.passwordChangeMessage !== null && state.passwordChangeMessage !== undefined && state.passwordChangeMessage !== "" ) {
+    useEffect(() => {
+        if (state !== null) {
+            if (state.passwordChangeMessage !== null && state.passwordChangeMessage !== undefined && state.passwordChangeMessage !== "") {
                 toast.success(state.passwordChangeMessage.toString());
             }
         }
         window.history.replaceState({}, "");
 
-        if( isLoaded === true ) {
-            if( error ) {
+        if (isLoaded === true) {
+            if (error) {
                 toast.error(error.messages);
                 return;
             }
 
             let response = JSON.stringify(apiData);
             response = JSON.parse(response);
-            if(response["code"] === 200) {
+            if (response["code"] === 200) {
                 if (response["data"]["token"] !== undefined) {
                     let token = response["data"]["token"];
                     window.localStorage.setItem("UserToken", token);
@@ -47,15 +47,15 @@ const Login = (props) => {
                     return;
                 }
             }
-            
+
             toast.error(response["messages"].toString());
         }
 
-    },[apiData, isLoaded]);
+    }, [apiData, isLoaded]);
 
 
     let handleInputChange = (e) => {
-        setInput({...input, [e.name]: e.value});
+        setInput({ ...input, [e.name]: e.value });
     }
 
     let handleSubmit = async (event) => {
@@ -69,7 +69,7 @@ const Login = (props) => {
             return;
         }
 
-        if(input.password.length < 8 || input.password.length > 32 ) {
+        if (input.password.length < 8 || input.password.length > 32) {
             toast.error("Password must be between 8 to 32 character long.");
             return;
         }
@@ -86,11 +86,11 @@ const Login = (props) => {
                     password: input.password
                 })
             }).then(res => res.json()).then(
-                (result)=>{
+                (result) => {
                     setIsLoaded(true);
                     setApiData(result);
                 },
-                (error)=>{
+                (error) => {
                     setIsLoaded(true);
                     setError(error);
                 }
@@ -118,7 +118,7 @@ const Login = (props) => {
                     </div>
                     <Button name={props.btnName} />
                     <Link to="/forget-password-step-one" className='font-bold text-primary inline-block mb-3'>Forgot Password?</Link>
-                    <p>Don’t have any account? <Link to="/signup" className="font-bold text-primary">Signup Instead <ImArrowRight2 className='inline ml-1 mb-0.5' /></Link> </p>
+                    <p>Don’t have any account? <Link to="/signup/step-one" className="font-bold text-primary">Signup Instead <ImArrowRight2 className='inline ml-1 mb-0.5' /></Link> </p>
                 </form>
             </div>
         </div>
@@ -127,3 +127,4 @@ const Login = (props) => {
 
 
 export default Login;
+

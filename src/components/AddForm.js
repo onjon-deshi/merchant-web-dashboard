@@ -51,7 +51,7 @@ const AddForm = ({ title, subtitle, placeholder, type, name, value }) => {
             response = JSON.parse(response);
 
             if (response["code"] === 200) {
-                navigate("/otp", {
+                navigate("/signup-step-three", {
                     state: {
                         mobileNumber: inputValue
                     }
@@ -100,12 +100,12 @@ const AddForm = ({ title, subtitle, placeholder, type, name, value }) => {
         <div className="w-3/5">
             <ToastContainer />
             <h1 className="font-bold text-4xl mb-8">{title}</h1>
-            {location.pathname === "/signup" && <SignUpOrLogin />}
+            {location.pathname === "/signup-step-one" && <SignUpOrLogin />}
             <div className="bg-neutral-100 p-9 text-secondary">
                 <p className="mb-5">{subtitle}</p>
                 <form onSubmit={onSubmit} >
                     <div className="mb-4">
-                        {location.pathname === "/signup"
+                        {location.pathname === "/signup-step-two"
                             ? <InputMask mask="+880 999 999 9999" value={inputValue} type={type} name={name} onChange={(e) => setInputValue(e.target.value)} className="w-full p-3 rounded-lg border border-[#EEEEEE]" minLength={16} autoComplete='off' placeholder={placeholder} required />
                             : <input type={type} name={name} className="w-full p-3 rounded-lg border border-[#EEEEEE]" autoComplete='off' placeholder={placeholder} value={inputValue} onChange={(e) => { setInputValue(e.target.value) }} />
                         }
@@ -113,8 +113,8 @@ const AddForm = ({ title, subtitle, placeholder, type, name, value }) => {
                         {/* <label htmlFor="floatingInput">Mobile number</label> */}
                     </div>
                     <Button value={value} />
-                    {location.pathname === "/signup" && <p>Already have an account? <Link to="/login" className="font-bold text-primary">Login Instead <ImArrowRight2 className='inline ml-1 mb-0.5' /></Link> </p>}
-                    {location.pathname === "/forget-password-step-one" && <p>Don’t have any account? <Link to="/signup" className="font-bold text-primary">Signup Instead <ImArrowRight2 className='inline' /></Link> </p>}
+                    {location.pathname === "/signup-step-one" && <p>Already have an account? <Link to="/login" className="font-bold text-primary">Login Instead <ImArrowRight2 className='inline ml-1 mb-0.5' /></Link> </p>}
+                    {/* {location.pathname === "/forget-password-step-one" && <p>Don’t have any account? <Link to="/signup" className="font-bold text-primary">Signup Instead <ImArrowRight2 className='inline' /></Link> </p>} */}
                 </form>
             </div>
         </div>
