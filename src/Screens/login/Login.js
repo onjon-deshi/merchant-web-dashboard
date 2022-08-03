@@ -10,18 +10,28 @@ import 'react-toastify/dist/ReactToastify.css';
 
 
 const Login = (props) => {
+
+    const {state} = useLocation();
     
     const [error, setError] = useState(null);
     const [isLoaded, setIsLoaded] = useState(false);
     const [apiData, setApiData] = useState([]);
-
+    
     let [input, setInput] = useState({
         mobileNumber: "",
         password: ""
     });
 
 
-    useEffect(()=>{
+    useEffect((previousState)=>{
+        console.log(previousState);
+        
+        if( state !== null ) {
+            if( state.passwordChangeMessage !== null && state.passwordChangeMessage !== undefined && state.passwordChangeMessage !== "" ) {
+                toast.success(state.passwordChangeMessage.toString());
+            }
+        }
+        window.history.replaceState({}, "");
 
         if( isLoaded === true ) {
             if( error ) {
