@@ -8,10 +8,13 @@ import { ImArrowRight2 } from "react-icons/im";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
+import PreLoginApi from "../../components/api/PreLoginApi"; 
+import postFetchApi from "./../../utilities/postFetch";
 
 const Login = (props) => {
 
     const {state} = useLocation();
+    const location = useLocation();
 
     const [error, setError] = useState(null);
     const [isLoaded, setIsLoaded] = useState(false);
@@ -40,6 +43,7 @@ const Login = (props) => {
             let response = JSON.stringify(apiData);
             response = JSON.parse(response);
             if(response["code"] === 200) {
+                toast.success(response["data"]["message"]);
                 if (response["data"]["token"] !== undefined) {
                     let token = response["data"]["token"];
                     window.localStorage.setItem("UserToken", token);
@@ -48,7 +52,8 @@ const Login = (props) => {
                 }
             }
             
-            toast.error(response["messages"].toString());
+            console.log(response);
+            toast.error(response["messages"]);
         }
 
     },[apiData, isLoaded]);
@@ -75,30 +80,28 @@ const Login = (props) => {
         }
 
         try {
-            await fetch(process.env.REACT_APP_API_BASE_URL + "api/v1/auth/signin", {
-                method: 'POST',
-                headers: new Headers({
-                    'Content-Type': 'application/json',
-                }),
 
-                body: JSON.stringify({
-                    mobile_number: mobileNumberFinal,
-                    password: input.password
-                })
-            }).then(res => res.json()).then(
-                (result)=>{
-                    setIsLoaded(true);
-                    setApiData(result);
-                },
-                (error)=>{
-                    setIsLoaded(true);
-                    setError(error);
+            var req_body = JSON.stringify({mobile_number: mobileNumberFinal, password: input.password});
+            PreLoginApi("signin", req_body).then((responseJSON) => {
+                setIsLoaded(true);
+
+                var response = JSON.stringify(responseJSON);
+                response = JSON.parse(response);
+                if( response["status"] === 1 ) {
+                    setApiData(response["data"]);
+                    return;
                 }
-            );
+
+                setError(response["data"]);
+            })
+            .catch((error) => {
+                toast.error(error);
+                console.log(error.message);
+            });
         }
         catch (err) {
-            toast.error(error.messages.toString());
-            console.log(error);
+            toast.error(err.toString());
+            console.log(err);
         }
     }
 
@@ -113,8 +116,8 @@ const Login = (props) => {
                 <form onSubmit={handleSubmit} method="POST" className="form-body">
 
                     <div className="mb-4">
-                        <InputMask mask="+880 999 999 9999" value={input.mobileNumber} type={props.type} name={props.name1} onChange={(e) => handleInputChange(e.target)} className="w-full p-3 rounded-lg mb-4" min-length="16" autoComplete='off' placeholder={props.placeholder1} required />
-                        <input type={props.type2} value={input.password} name={props.name2} onChange={(e) => handleInputChange(e.target)} className="w-full p-3 rounded-lg border-none" placeholder={props.placeholder2} required />
+                        <InputMask mask="+880 999 999 9999" value={input.mobileNumber} type={props.type} name={props.name1} onChange={(e) => handleInputChange(e.target)} className="w-full p-3 rounded-lg mb-4" min-length="16" autoComplete='off' placeholder={props.placeholder1} />
+                        <input type={props.type2} value={input.password} name={props.name2} onChange={(e) => handleInputChange(e.target)} className="w-full p-3 rounded-lg border-none" placeholder={props.placeholder2} />
                     </div>
                     <Button name={props.btnName} />
                     <Link to="/forget-password-step-one" className='font-bold text-primary inline-block mb-3'>Forgot Password?</Link>

@@ -37,8 +37,6 @@ export default function Otp({ title, subtitle, number }) {
                 return;
             }
 
-            console.log(data);
-
             let response = JSON.stringify(data);
             response = JSON.parse(response);
             if (response["code"] === 200) {
@@ -77,13 +75,6 @@ export default function Otp({ title, subtitle, number }) {
             element.previousSibling.focus();
         }
     }
-
-
-    // setTimeout(() => {
-    //     window.history.replaceState({}, "");
-    //     navigate("/signup");
-    //     return;
-    // }, 5000000);
 
 
 

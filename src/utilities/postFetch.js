@@ -2,7 +2,7 @@ const postFetchApi = async (endpoint, body, headerFlag = null, token = null) => 
 
     let response;
 
-    const base_url = process.env.REACT_APP_API_BASE_URL;
+    const base_url = process.env.REACT_APP_API_BASE_URL + process.env.REACT_APP_API_PREFIX;
     const final_url = base_url + endpoint;
     let headerObject = {}
 
