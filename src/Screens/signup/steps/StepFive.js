@@ -5,7 +5,12 @@ import { Link, useNavigate } from "react-router-dom";
 const StepFive = () => {
     let navigate = useNavigate();
     const handleSubmit = (e) => {
-        console.log(e);
+        if (e.target.name === "agree") {
+            navigate('/signup/step-six');
+        }
+        else {
+            navigate('/signup/step-one')
+        }
     }
     return (
         <div>
