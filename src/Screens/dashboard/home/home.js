@@ -1,14 +1,10 @@
-import DonutChart from "../../../components/charts/DonutChart";
-import Navbar from '../../../components/Navbar';
-import Sidebar from "../../../components/Sidebar";
-
-var pageName = "home";
-
+import DonutChart from "./../../../components/charts/DonutChart";
 
 // Refresh Icon Click Event
 const refreshIconClick = (event) => {
     console.log("Clicked Refresh Button....");
 }
+
 
 
 const home = () => {

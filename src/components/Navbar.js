@@ -1,6 +1,6 @@
 /* This example requires Tailwind CSS v2.0+ */
 import { useNavigate } from 'react-router-dom'
-import { Fragment } from 'react'
+import { Fragment, useEffect, useState } from 'react'
 import { Disclosure, Menu, Transition } from '@headlessui/react'
 import { ReactComponent as SearchIcon } from '../assets/icons/search.svg'
 import { ReactComponent as ChecklistIcon } from '../assets/icons/checklist.svg'
@@ -13,9 +13,10 @@ import { ReactComponent as TransactionIcon } from '../assets/icons/transaction.s
 import { ReactComponent as RightIcon } from '../assets/icons/right.svg'
 import $ from "jquery";
 
-import { useContext } from 'react';
-import UserContext from '../UserContext'
+
 import { Link } from 'react-router-dom';
+
+import PostLoginGetApi from "../components/api/PostLoginGetApi";
 
 // const navigation = [
 //     { name: 'Dashboard', href: '#', current: true },
@@ -55,7 +56,27 @@ const toggleLeftBar = () => {
 
 
 export default function Example(props) {
-    let userName = useContext(UserContext);
+
+    const [profile, setProfile] = useState("");
+
+    useEffect(()=>{
+        PostLoginGetApi("user/profile").then((responseJSON)=>{
+            var response = JSON.stringify(responseJSON);
+            response = JSON.parse(response);
+            if( response["status"] === 1 ) {
+                var responseData = JSON.stringify(response["data"]);
+                responseData = JSON.parse(responseData);
+
+                if( responseData["code"] !== 200 ) {
+                    UserLogOut();
+                }
+                setProfile(responseData["data"]["profile"]);
+            }
+        });
+    },[]);
+
+    
+
     return (
         <>
             <div className="flex items-center pl-8 cursor-pointer">
@@ -314,11 +335,11 @@ export default function Example(props) {
                                         {/* Profile dropdown */}
                                         <div className="flex items-center justify-center ">
                                             <img
-                                                className=" rounded-full mr-2.5 ml-1"
-                                                src={shopno}
-                                                alt=""
+                                                className=" rounded-full p-3 max-h-20"
+                                                src={profile.logo ? profile.logo : shopno}
+                                                alt="User's Logo"
                                             />
-                                            <p className="font-medium">{userName}</p>
+                                            <p className="font-medium">{profile.name?.profile.name }</p>
                                             <Menu as="div" className="ml-3 relative">
                                                 <div>
                                                     <Menu.Button className="flex ">

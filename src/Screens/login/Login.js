@@ -9,7 +9,6 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 import PreLoginApi from "../../components/api/PreLoginApi"; 
-import postFetchApi from "./../../utilities/postFetch";
 
 const Login = (props) => {
 
@@ -84,7 +83,7 @@ const Login = (props) => {
             var req_body = JSON.stringify({mobile_number: mobileNumberFinal, password: input.password});
             PreLoginApi("signin", req_body).then((responseJSON) => {
                 setIsLoaded(true);
-
+                
                 var response = JSON.stringify(responseJSON);
                 response = JSON.parse(response);
                 if( response["status"] === 1 ) {
