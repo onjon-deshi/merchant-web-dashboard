@@ -58,7 +58,7 @@ const StepOne = () => {
                 //         mobile_number: businessNumber
                 //     }
                 // });
-                navigate("/signup/step-two")
+                navigate("/signup/step-two");
                 return;
             }
             toast.error(response["messages"].toString());
