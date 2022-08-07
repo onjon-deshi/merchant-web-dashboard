@@ -33,13 +33,14 @@ const StepTwo = () => {
             response = JSON.parse(response);
 
             if (response["code"] === 200) {
-                sessionStorage.setItem("otp", otp);
-                navigate("/signup/step-three", {
-                    state: {
-                        mobile_number: mobile_number,
-                        otp: otp
-                    }
-                });
+                sessionStorage.setItem("otp", otp.join(''));
+                // navigate("/signup/step-three", {
+                //     state: {
+                //         mobile_number: mobile_number,
+                //         otp: otp
+                //     }
+                // });
+                navigate("/signup/step-three");
                 return;
             }
             toast.error(response["messages"].toString());
