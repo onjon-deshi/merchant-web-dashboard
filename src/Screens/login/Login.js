@@ -10,6 +10,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 import PreLoginApi from "../../components/api/PreLoginApi"; 
 
+
 const Login = (props) => {
 
     const { state } = useLocation();
@@ -116,6 +117,7 @@ const Login = (props) => {
 
                     <div className="mb-4">
                         <InputMask mask="+880 999 999 9999" value={input.mobileNumber} type={props.type} name={props.name1} onChange={(e) => handleInputChange(e.target)} className="w-full p-3 rounded-lg mb-4" min-length="16" autoComplete='off' placeholder={props.placeholder1} />
+
                         <input type={props.type2} value={input.password} name={props.name2} onChange={(e) => handleInputChange(e.target)} className="w-full p-3 rounded-lg border-none" placeholder={props.placeholder2} />
                     </div>
                     <Button name={props.btnName} />

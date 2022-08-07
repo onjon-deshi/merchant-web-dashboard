@@ -340,7 +340,7 @@ export default function Example(props) {
                                                 src={profile.logo ? profile.logo : shopno}
                                                 alt="User's Logo"
                                             />
-                                            <p className="font-medium">{profile && profile.name}</p>
+                                            <p className="font-medium">{profile.name ? profile.name : "" }</p>
                                             <Menu as="div" className="ml-3 relative">
                                                 <div>
                                                     <Menu.Button className="flex ">
