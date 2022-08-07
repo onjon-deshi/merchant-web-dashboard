@@ -11,7 +11,12 @@ const StepEight = () => {
 
     const onSubmit = data => {
         console.log(data);
+        sessionStorage.setItem("password_confirmation", data.confirmPassword);
         navigate("/dashboard/home")
+
+        // Remove All (Clear session Storage)
+        // sessionStorage.clear();
+        console.log(window.sessionStorage)
 
     }
     return (

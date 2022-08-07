@@ -10,6 +10,8 @@ const StepSix = () => {
 
     const onSubmit = data => {
         console.log(data)
+        sessionStorage.setItem("type_of_org", data.typeOfOrg);
+        sessionStorage.setItem("business_category", data.businessCategory);
         navigate('/signup/step-seven')
     };
     return (

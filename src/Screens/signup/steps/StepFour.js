@@ -10,6 +10,7 @@ const StepFour = () => {
 
     const onSubmit = data => {
         console.log(data)
+        sessionStorage.setItem("email", data.email);
         navigate('/signup/step-five');
     };
     return (

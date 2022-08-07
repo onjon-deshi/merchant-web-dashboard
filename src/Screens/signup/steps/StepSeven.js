@@ -11,6 +11,7 @@ const StepSeven = () => {
 
     const onSubmit = data => {
         console.log(data);
+        sessionStorage.setItem("password", data.password);
         navigate("/signup/step-eight")
 
     }
