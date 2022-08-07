@@ -23,9 +23,13 @@ import ForgetPasswordStepOne from "./ForgetPassword/StepOne";
 import ForgetPasswordStepTwo from "./ForgetPassword/StepTwo";
 import ForgetPasswordStepThree from "./ForgetPassword/StepThree";
 import StepOne from './signup/steps/StepOne';
-import StepThree from './signup/steps/StepThree';
 import StepTwo from './signup/steps/StepTwo';
+import StepThree from './signup/steps/StepThree';
 import StepFour from './signup/steps/StepFour';
+import StepFive from './signup/steps/StepFive';
+import StepSix from './signup/steps/StepSix';
+import StepSeven from './signup/steps/StepSeven';
+import StepEight from './signup/steps/StepEight';
 
 
 const LoginScreen = () => {
@@ -54,8 +58,11 @@ const LoginScreen = () => {
                     <Route path="/signup/step-two" element={<StepTwo />} />
                     <Route path="/signup/step-three" element={<StepThree />} />
                     <Route path="/signup/step-four" element={<StepFour />} />
-                    <Route path="/terms-and-policy" element={<TermsAndPolicy title="Terms of Use & Privacy Policy" subheading_one="1. General Terms" details_one="By accessing and placing an order with you confirm that you are in greement with and bound by the terms of service contained in the Terms & Conditions outlined below. These terms apply to the entire website and any email or other type of communication between you and Under no circumstances shall team be liable for any direct, indirect, special, incidental or consequential damages, including, but not limited to, loss of data or profit, arising out of the use, or the inability to use, the materials on this site, even if team or an authorized representative has been advised of the possibility of such damages. If your use of materials from this site results in the need for servicing, repair or correction of equipment or data, you assume any costs thereof will not be responsible for any outcome that may occur during the course of usage of our resources. We reserve the rights to change prices and revise the resources usage policy in any moment." subheading_two="2. License" details_two="By accessing and placing an order with you confirm that you are in greement with and bound by the terms of service contained in the Terms & Conditions outlined below. These terms apply to the entire website and any email or other type of communication between you and Under no circumstances shall team be liable for any direct, indirect, special, incidental or consequential damages, including, but not limited to, loss of data or profit, arising out of the use, or the inability to use, the materials on this site, even if team or an authorized representative has been advised of the possibility of such damages." btnOneName="I’ve Read it & Agree with it" btnTwoName="Not Agreed, Take me Back" />} />
-                    <Route path="/add-pass" element={<AddForm title="Set a Password" type="password" subtitle="Please set a Password (8-16 digit) to proceed" placeholder="Password" />} />
+                    <Route path="/signup/step-five" element={<StepFive />} />
+                    <Route path="/signup/step-six" element={<StepSix />} />
+                    <Route path="/signup/step-seven" element={<StepSeven />} />
+                    <Route path="/signup/step-eight" element={<StepEight />} />
+                    {/* <Route path="/add-pass" element={<AddForm title="Set a Password" type="password" subtitle="Please set a Password (8-16 digit) to proceed" placeholder="Password" />} />
                     <Route path="/add-confirm-pass" element={<AddForm title="Confirm Password" type="password" subtitle="Please re-type your Password" placeholder="Password" />} />
                     <Route path="/nid-front" element={<Nid />} />
                     <Route path="/nid-back" element={<Nid />} />
@@ -66,7 +73,7 @@ const LoginScreen = () => {
                     <Route path="/business-details" element={<BusinessDetails />} />
                     <Route path="/transaction-profile" element={<TransactionProfile />} />
                     <Route path="/bank-account" element={<BankAccount />} />
-                    <Route path="/upload-documents" element={<UploadDocuments />} />
+                    <Route path="/upload-documents" element={<UploadDocuments />} /> */}
 
 
 
@@ -80,7 +87,7 @@ const LoginScreen = () => {
 
                     <Route path="/forget-password-step-two" element={<ForgetPasswordStepTwo title="Join Deshi" subtitle="Please enter the 6 digit code we've sent to:" bottomText="Didn’t get the code yet?" bottomLink="Send Again" />}></Route>
 
-                    <Route path="/forget- -step-three" element={<ForgetPasswordStepThree title="Reset Password" subtitle="Enter the code we sent to the phone number" type1="password" type2="password" name1="password" name2="confirmPassword" placeholder1="New Password" placeholder2="Confirm Password" btnName="Reset Password" />} />
+                    <Route path="/forget-password-step-three" element={<ForgetPasswordStepThree title="Reset Password" subtitle="Enter the code we sent to the phone number" type1="password" type2="password" name1="password" name2="confirmPassword" placeholder1="New Password" placeholder2="Confirm Password" btnName="Reset Password" />} />
 
 
                 </Routes>
