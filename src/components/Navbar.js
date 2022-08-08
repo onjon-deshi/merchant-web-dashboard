@@ -59,27 +59,28 @@ export default function Example(props) {
 
     const [profile, setProfile] = useState("");
 
-    useEffect(()=>{
-        PostLoginGetApi("user/profile").then((responseJSON)=>{
+    useEffect(() => {
+        PostLoginGetApi("user/profile").then((responseJSON) => {
             var response = JSON.stringify(responseJSON);
             response = JSON.parse(response);
-            if( response["status"] === 1 ) {
+            if (response["status"] === 1) {
                 var responseData = JSON.stringify(response["data"]);
                 responseData = JSON.parse(responseData);
 
-                if( responseData["code"] !== 200 ) {
+                if (responseData["code"] !== 200) {
                     UserLogOut();
                 }
 
                 setProfile(responseData["data"]["profile"]);
             }
         });
-    },[]);
+    }, []);
 
-    
+
 
     return (
-        <>
+
+        <div className="w-full border-b-2 flex justify-between">
             <div className="flex items-center pl-8 cursor-pointer">
                 <svg onClick={toggleLeftBar} className="w-6 h-6 float-right cursor-pointer" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16"></path>
@@ -340,7 +341,7 @@ export default function Example(props) {
                                                 src={profile.logo ? profile.logo : shopno}
                                                 alt="User's Logo"
                                             />
-                                            <p className="font-medium">{profile.name ? profile.name : "" }</p>
+                                            <p className="font-medium">{profile.name ? profile.name : ""}</p>
                                             <Menu as="div" className="ml-3 relative">
                                                 <div>
                                                     <Menu.Button className="flex ">
@@ -415,7 +416,7 @@ export default function Example(props) {
                     )
                 }
             </Disclosure>
-            
-        </>
+
+        </div>
     )
 }

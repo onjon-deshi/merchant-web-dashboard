@@ -5,6 +5,13 @@ import Button from '../../../components/Button';
 import { useNavigate } from "react-router-dom";
 
 const StepSix = () => {
+
+    const arr = [];
+    console.log(typeof (arr));
+
+
+
+
     const { register, handleSubmit, formState: { errors } } = useForm();
     let navigate = useNavigate();
 

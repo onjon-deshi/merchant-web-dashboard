@@ -7,12 +7,15 @@ const StepFive = () => {
     const handleSubmit = (e) => {
         if (e.target.name === "agree") {
             sessionStorage.setItem("accept", "1");
+            console.log("accept: 1")
             navigate('/signup/step-six');
         }
         else {
             sessionStorage.setItem("accept", "0");
+            console.log("accept: 0")
             navigate('/signup/step-one')
         }
+
     }
     return (
         <div>

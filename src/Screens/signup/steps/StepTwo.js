@@ -16,7 +16,7 @@ const StepTwo = () => {
     useEffect(() => {
         console.log(mobile_number);
 
-        if (mobile_number === null || mobile_number === undefined || mobile_number === "" || mobile_number === null) {
+        if (mobile_number === null || mobile_number === undefined || mobile_number === "") {
             console.log("State is Null");
             navigate("/signup/step-one");
             return;
