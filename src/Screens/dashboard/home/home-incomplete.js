@@ -1,4 +1,4 @@
-import DonutChart from "./../../../components/charts/DonutChart";
+import { Link, useLocation } from 'react-router-dom';
 
 // Refresh Icon Click Event
 const refreshIconClick = (event) => {
@@ -6,8 +6,9 @@ const refreshIconClick = (event) => {
 }
 
 
-
 const home = () => {
+    
+
     return (
         <div className="custom-container w-full float-left px-8 py-10 flex font-montserrat">
 
@@ -39,10 +40,10 @@ const home = () => {
                 {/* Profile Incomplete Fields */}
                 <div className="flow-root pt-5 text-xl w-full px-1">
                     <p className="float-left">Profile not Complete</p>
-                    <p className="float-right">0/4</p>
+                    <p className="float-right">1/4</p>
                 </div>
                 
-                <div className="incomplete-profile-steps rounded-lg items-center cursor-pointer my-3">
+                <Link to={"/dashboard/verify-identity-step-one"} className="incomplete-profile-steps rounded-lg items-center cursor-pointer my-3">
                     <svg width="50" height="50" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <rect width="50" height="50" rx="5" fill="white" />
                         <path d="M30.7811 18.7903C30.8075 21.9407 28.2008 24.5744 25.0123 24.5838C21.8443 24.5932 19.237 22.017 19.2188 18.8161C19.2006 15.6253 21.7668 13.0397 24.9747 13.0174C28.1738 12.995 30.7664 15.573 30.7811 18.7903ZM24.9647 23.1724C27.3301 23.2235 29.3597 21.245 29.3815 18.8326C29.4026 16.473 27.5022 14.4863 25.105 14.4258C22.6645 14.3642 20.6924 16.2646 20.6231 18.7157C20.5556 21.0958 22.5371 23.183 24.9647 23.1724Z" fill="#444444" />
@@ -55,7 +56,7 @@ const home = () => {
                     <div className="flex mr-2 arrow">
                         <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7.5 15L12.5 10L7.5 5" stroke="#222222" strokeWidth="3"  strokeLinecap="round" strokeLinejoin="round"></path></svg>
                     </div>
-                </div>
+                </Link>
 
                 <div className="incomplete-profile-steps rounded-lg items-center cursor-pointer my-3">
                     <svg width="50" height="50" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">

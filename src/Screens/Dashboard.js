@@ -12,8 +12,10 @@ import StoreTable from "./dashboard/store-table/store";
 import Navbar from '../components/Navbar'
 import Sidebar from '../components/Sidebar'
 import { useLocation } from 'react-router-dom';
-import DragDropFile from "./../components/FileUpload/DragAndDrop";
 
+
+import StepOne from "./dashboard/home/verify-identity/step-one";
+import StepTwo from "./dashboard/home/verify-identity/step-two";
 
 
 const DashboardNavigation = () => {
@@ -33,7 +35,15 @@ const DashboardNavigation = () => {
                 <Route path="/dashboard/invoice" element={<CreateInvoice />}></Route>
             </Routes>
             
+
             
+            {/* PopUps */}
+            <Routes>
+                <Route path="/dashboard/verify-identity-step-one" element={<StepOne />}></Route>
+                <Route path="/dashboard/verify-identity-step-two" element={<StepTwo />}></Route>
+            </Routes>
+            
+
             {/* TOP HEADER */}
             <div className="w-full border-b-2 flex justify-between">
                 <Navbar name={secondIndex} />
@@ -59,7 +69,6 @@ const DashboardNavigation = () => {
                         : <Route path="/dashboard/home" element={<HomeIncomplete />} />
                     }
                     
-                    <Route path="/dashboard/image-upload" element={<DragDropFile />} />
 
                     <Route path="/dashboard/home2" element={<Home />} />
                     <Route path="/dashboard/store-details" element={<StoreDetails />} />
