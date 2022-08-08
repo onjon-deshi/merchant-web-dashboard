@@ -1,10 +1,5 @@
 import { Link } from 'react-router-dom';
-import Navbar from '../../../components/Navbar';
-import Sidebar from "../../../components/Sidebar";
 import DetailsTable from './details-table';
-
-import GetInfoApi from "../../../components/api/GetInfo";
-
 
 
 var pageName = "store";
@@ -15,21 +10,10 @@ const details = () => {
                 <DetailsTable></DetailsTable>
                 <br />
 
-
-                {/* <Link to="/dashboard/store-table"><p className='border-red-800 bg-red-400 inline-block p-2 m-3 text-white hover:bg-sky-700'>Store Table</p></Link> */}
-
-                <Link to="/dashboard/store-table"><p className='custom-btn inline-block mx-2'>Store Table</p></Link>
-
+                <Link to="/dashboard/store-table"><p className='custom-btn inline-block mx-2 ml-0'>Store Table</p></Link>
                 <Link to="/dashboard/status-table"><p className='custom-btn inline-block mx-2'>Status Table</p></Link>
-
                 <Link to="/dashboard/product-table"><p className='custom-btn inline-block mx-2'>Product Table</p></Link>
 
-                <br />
-                <br />
-                {/* API DATA **/}
-                <h5>API Data</h5>
-                <hr></hr>
-                <GetInfoApi></GetInfoApi>
 
             </div>
 

@@ -3,7 +3,6 @@ import Dashboard from "./Screens/Dashboard";
 import UserContext from './UserContext';
 
 import { useState, useEffect } from "react";
-import ReactDOM from "react-dom/client";
 import { useNavigate } from 'react-router-dom';
 
 
@@ -21,9 +20,15 @@ const App = () => {
     isLogin = false;
   }
 
+  
   if( isLogin === true ) {
     if( !document.URL.includes("/dashboard/") ) {
       navigate("/dashboard/home");
+    }
+  }
+  else {
+    if( document.URL.includes("/dashboard/") ) {
+      navigate("/");
     }
   }
 

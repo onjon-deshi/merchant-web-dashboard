@@ -23,7 +23,7 @@ export default function detailsTable() {
                 </svg>
             </div>
 
-            <table id="details-table" className="custom-details-table w-full mt-1 mb-2">
+            <table id="details-table" className="custom-details-table w-full mt-0 mb-2">
                 <tbody>
                     <tr>
                         <td className="font-semibold text-base">Store ID</td>

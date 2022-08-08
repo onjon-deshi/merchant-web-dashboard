@@ -285,3 +285,39 @@ table.custom-details-table tr td:nth-child(2):hover {
 }
 
 
+.custom-alert-div {
+    width: 100%;
+    padding: 15px 0;
+    text-align: center;
+    font-family: "Montserrat";
+    font-weight: 600;
+    font-size: 15px;
+    line-height: 18px;
+}
+
+.custom-alert-div.warning {
+    background: #FFF3B4;
+    border-radius: 3px;
+    color: #A86B0F;
+}
+
+
+.incomplete-profile-steps {
+    display: flex;
+    padding: 15px;
+    background-color: #F5F5F5;
+}
+
+.incomplete-profile-steps:hover:not(.complete) {
+    background: #222;
+    color: white;
+}
+
+.incomplete-profile-steps:hover:not(.complete) > .arrow > svg > path {
+    stroke: white !important;
+}
+
+
+.incomplete-profile-steps.complete {
+    background: #E8F3EF;
+}

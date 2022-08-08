@@ -42,8 +42,7 @@ const home = () => {
 
                 <h6 className="mt-7 text-xl font-medium">Here’s your business at a glance</h6>
                 <h5 className="pt-3 pb-2 text-lg ">Today</h5>
-
-
+                
                 <div className="w-full flex overflow-hidden text-left ">
 
                     <div className="box hover-black-green w-[32%] h-[200px] mr-[1%] bg-[#FFFFFF] border-2 border-[#F5F5F5] text-[#222222] rounded-[5px] pt-10 pl-5 pr-5">
@@ -131,7 +130,6 @@ const home = () => {
 
                 </div>
 
-
                 <div className="mt-5 flex box w-full min-h-[200px] bg-[#FFFFFF] border-2 border-[#F5F5F5] text-[#222222] rounded-[5px] pt-5 pl-5 pr-5">
 
                     <div className="w-4/5 color-#222222">
@@ -168,7 +166,6 @@ const home = () => {
                     </div>
 
                 </div>
-
 
                 <div className="my-5 block box w-full min-h-[200px] bg-[#FFFFFF] border-2 border-[#F5F5F5] text-[#222222] rounded-[5px] p-5">
 
@@ -209,7 +206,6 @@ const home = () => {
                     </table>
 
                 </div>
-                <br />
 
             </div>
 

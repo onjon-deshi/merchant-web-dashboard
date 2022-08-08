@@ -67,7 +67,7 @@ const Login = (props) => {
         event.preventDefault();
 
         var mobileNumberFinal = input.mobileNumber.split(" ").join("");
-        mobileNumberFinal = mobileNumberFinal.replace(/_+/g, '');
+        
 
         if (mobileNumberFinal.length !== 14) {
             toast.error("Please enter valid phone number.");
@@ -116,7 +116,7 @@ const Login = (props) => {
                 <form onSubmit={handleSubmit} method="POST" className="form-body">
 
                     <div className="mb-4">
-                        <InputMask mask="+880 999 999 9999" value={input.mobileNumber} type={props.type} name={props.name1} onChange={(e) => handleInputChange(e.target)} className="w-full p-3 rounded-lg mb-4" min-length="16" autoComplete='off' placeholder={props.placeholder1} />
+                        <InputMask mask="+880 999 999 9999" value={input.mobileNumber} type={props.type} name={props.name1} onChange={(e) => handleInputChange(e.target)} className="w-full p-3 rounded-lg mb-4" min-length="16" autoComplete='off' label={props.placeholder1} placeholder={props.placeholder1} />
 
                         <input type={props.type2} value={input.password} name={props.name2} onChange={(e) => handleInputChange(e.target)} className="w-full p-3 rounded-lg border-none" placeholder={props.placeholder2} />
                     </div>
