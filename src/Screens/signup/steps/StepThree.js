@@ -10,6 +10,7 @@ const StepThree = () => {
 
     const onSubmit = (data) => {
         console.log(data);
+        sessionStorage.setItem("name", data.merchantAccountName);
         navigate('/signup/step-four')
     };
 

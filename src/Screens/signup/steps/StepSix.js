@@ -2,10 +2,18 @@ import React from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import { useForm } from 'react-hook-form';
 import Button from '../../../components/Button';
+import { useNavigate } from "react-router-dom";
 
 const StepSix = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
-    const onSubmit = data => console.log(data);
+    let navigate = useNavigate();
+
+    const onSubmit = data => {
+        console.log(data)
+        sessionStorage.setItem("type_of_org", data.typeOfOrg);
+        sessionStorage.setItem("business_category", data.businessCategory);
+        navigate('/signup/step-seven')
+    };
     return (
         <div className="w-3/5">
             <ToastContainer />
