@@ -1,7 +1,7 @@
 
 import React, {useEffect, useState, useRef} from "react";
 import { ReactComponent as CloseBtn } from './../../../../assets/icons/close.svg';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 
 import "./../../../../components/FileUpload/style.css";
 import FileUploadIcon from "./../../../../assets/icons/UploadFileIcon.png";
@@ -9,21 +9,28 @@ import FileUploadIcon from "./../../../../assets/icons/UploadFileIcon.png";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-const StepOne = () => {
+const StepThree = () => {
 
     const [pdf, setPdf] = useState([]);
     const [dragActive, setDragActive] = useState(false);
     const inputRef = useRef(null);
     
     let navigate = useNavigate();
+    let {state} = useLocation();
+
+    
 
     useEffect(()=>{
-        window.history.replaceState({}, "");
+        if (state === null || state.nid === undefined || state.nid === "" || state.nid === null) {
+            navigate("/dashboard/verify-identity-step-one");
+            return;
+        }
+
         if(pdf.length === 0) {
             return;
         }
 
-        navigate("/dashboard/verify-identity-step-two", {
+        navigate("/dashboard/verify-identity-step-four", {
             state: {
                 pdf: pdf[0].src
             }
@@ -35,7 +42,7 @@ const StepOne = () => {
     function handleFile(files) {
         var index = files.length-1;
 
-        if(files[index]["type"] !== "application/pdf") {
+        if( !files[index]["type"].includes("image/")) {
             toast.error("Invalid File Type. Please upload valid PDF File.");
             return;
         }
@@ -92,7 +99,7 @@ const StepOne = () => {
         <div className="font-medium h-[100vh] w-[100vw]">
             <header className="flex justify-between items-center p-4 border-b-2 border-dark-white mb-[60px]">
                 <Link to="/dashboard/home"><CloseBtn /></Link>
-                <p className="text-xl -mr-3">Upload Owner’s NID</p>
+                <p className="text-xl -mr-3">Upload Owner’s Photo</p>
                 <div className="mr-3">
                     Step <strong>1</strong> out of <strong>2</strong>
                 </div>
@@ -105,10 +112,10 @@ const StepOne = () => {
                         <label id="label-file-upload" htmlFor="input-file-upload" className={dragActive ? "drag-active" : "" }>
                             <div>
                                 <img src={FileUploadIcon} alt="Upload NID" style={{maxHeight:"230px", display: "block", margin: "0 auto 20px"}} />
-                                <p className="text-xl text-[#999999] font-medium">Drag & Drop Owner’s NID Here</p>
+                                <p className="text-xl text-[#999999] font-medium">Drag & Drop Owner’s Photo Here</p>
                                 <p> or </p>
                                 <button className="upload-kyb-button mt-2" onClick={onButtonClick}>Choose file</button>
-                                <p className="mt-5 text-base text-[#999999]">File format should be .pdf</p>
+                                <p className="mt-5 text-base text-[#999999]">File format should be .jpg/.jpeg/.png/.webp. File size should be <br/>minimum 500px X 500px and maximum 4000px X 4000px</p>
                             </div>
                         </label>
 
@@ -122,4 +129,4 @@ const StepOne = () => {
     );
 };
 
-export default StepOne;
+export default StepThree;

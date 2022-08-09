@@ -7,7 +7,7 @@ const refreshIconClick = (event) => {
 
 
 
-const home = () => {
+const Home = () => {
     return (
         <div className="custom-container w-full float-left px-8 py-10 flex font-montserrat">
 
@@ -288,10 +288,9 @@ const home = () => {
             </div>
         </div>
 
-
     );
 }
 
 
 
-export default home;
+export default Home;

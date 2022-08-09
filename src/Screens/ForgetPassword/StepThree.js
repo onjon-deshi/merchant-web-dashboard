@@ -61,14 +61,6 @@ export default function StepThree(props) {
     },[apiData, error, isLoaded, navigate, state]);
 
 
-    // Destroy OTP session and redirect to forget password step one page after 5 minutes
-    setTimeout(()=>{
-        window.history.replaceState({}, "");
-        navigate("/forget-password-step-one");
-        return;
-    }, 300000);
-
-
     async function fetchData() {
         await fetch(process.env.REACT_APP_API_BASE_URL + process.env.REACT_APP_API_PREFIX + "forgot-password/reset", {
             method: 'POST',

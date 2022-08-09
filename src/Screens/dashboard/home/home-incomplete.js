@@ -1,16 +1,37 @@
+import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import $ from "jquery";
+
 
 // Refresh Icon Click Event
 const refreshIconClick = (event) => {
     console.log("Clicked Refresh Button....");
 }
 
-
-const home = () => {
+const HomeIncomplete = () => {
     
+    const {state} = useLocation();
 
+    React.useEffect(()=>{
+        if(state !== null) {
+            if(state.message !== null && state.message !== "" && state.message !== undefined ) {
+                toast.success(state.message);
+                $("#verified-identity-incomplete").hide();
+                $("#verified-identity-complete").show();
+            }
+        }
+
+        window.history.replaceState({}, "");
+
+    },[state]);
+
+    
     return (
         <div className="custom-container w-full float-left px-8 py-10 flex font-montserrat">
+
+            <ToastContainer></ToastContainer>
 
             <div className="custom-container-left custom-scroll-auto float-left w-4/5 pb-10 pr-3 text-justify">
 
@@ -43,7 +64,7 @@ const home = () => {
                     <p className="float-right">1/4</p>
                 </div>
                 
-                <Link to={"/dashboard/verify-identity-step-one"} className="incomplete-profile-steps rounded-lg items-center cursor-pointer my-3">
+                <Link id="verified-identity-incomplete" to={"/dashboard/verify-identity-step-one"} className="incomplete-profile-steps rounded-lg items-center cursor-pointer my-3">
                     <svg width="50" height="50" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <rect width="50" height="50" rx="5" fill="white" />
                         <path d="M30.7811 18.7903C30.8075 21.9407 28.2008 24.5744 25.0123 24.5838C21.8443 24.5932 19.237 22.017 19.2188 18.8161C19.2006 15.6253 21.7668 13.0397 24.9747 13.0174C28.1738 12.995 30.7664 15.573 30.7811 18.7903ZM24.9647 23.1724C27.3301 23.2235 29.3597 21.245 29.3815 18.8326C29.4026 16.473 27.5022 14.4863 25.105 14.4258C22.6645 14.3642 20.6924 16.2646 20.6231 18.7157C20.5556 21.0958 22.5371 23.183 24.9647 23.1724Z" fill="#444444" />
@@ -57,6 +78,22 @@ const home = () => {
                         <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7.5 15L12.5 10L7.5 5" stroke="#222222" strokeWidth="3"  strokeLinecap="round" strokeLinejoin="round"></path></svg>
                     </div>
                 </Link>
+
+                {/* Complete Profile */}
+                <div id="verified-identity-complete" style={{display: "none"}} className="incomplete-profile-steps complete bg-[#E8F3EF] rounded-lg items-center cursor-pointer my-3">
+                    <svg width="50" height="50" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="50" height="50" rx="5" fill="#00C52A"/>
+                        <path d="M31.71 20.21C31.617 20.1163 31.5064 20.0419 31.3846 19.9911C31.2627 19.9403 31.132 19.9142 31 19.9142C30.868 19.9142 30.7373 19.9403 30.6154 19.9911C30.4936 20.0419 30.383 20.1163 30.29 20.21L22.84 27.67L19.71 24.53C19.6135 24.4367 19.4995 24.3634 19.3747 24.3142C19.2498 24.265 19.1165 24.2409 18.9823 24.2432C18.8482 24.2455 18.7157 24.2743 18.5927 24.3278C18.4696 24.3812 18.3582 24.4585 18.265 24.555C18.1718 24.6515 18.0985 24.7654 18.0493 24.8903C18.0001 25.0152 17.9759 25.1485 17.9782 25.2827C17.9806 25.4168 18.0093 25.5493 18.0628 25.6723C18.1163 25.7954 18.1935 25.9067 18.29 26L22.13 29.84C22.223 29.9337 22.3336 30.0081 22.4554 30.0589C22.5773 30.1096 22.708 30.1358 22.84 30.1358C22.972 30.1358 23.1027 30.1096 23.2246 30.0589C23.3464 30.0081 23.457 29.9337 23.55 29.84L31.71 21.68C31.8115 21.5863 31.8925 21.4727 31.9479 21.3462C32.0033 21.2197 32.0319 21.0831 32.0319 20.945C32.0319 20.8069 32.0033 20.6703 31.9479 20.5438C31.8925 20.4173 31.8115 20.3036 31.71 20.21Z" fill="white"/>
+                    </svg>
+
+                    <div className="grid pl-4 text-justify float-left w-full">
+                        <p className="font-semibold text-base w-full">Verify Identity</p>
+                        <p className="font-medium text-base color-[#8B8F97] w-full">You need to verify your identity. Please complete your profile.</p>
+                    </div>
+                    <div className="flex mr-2 arrow">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7.5 15L12.5 10L7.5 5" stroke="#222222" strokeWidth="3"  strokeLinecap="round" strokeLinejoin="round"></path></svg>
+                    </div>
+                </div>
 
                 <div className="incomplete-profile-steps rounded-lg items-center cursor-pointer my-3">
                     <svg width="50" height="50" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -121,25 +158,6 @@ const home = () => {
                 </div>
 
 
-
-
-                {/* Complete Profile */}
-                <div className="incomplete-profile-steps complete bg-[#E8F3EF] rounded-lg items-center cursor-pointer my-3">
-                    <svg width="50" height="50" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <rect width="50" height="50" rx="5" fill="#00C52A"/>
-                        <path d="M31.71 20.21C31.617 20.1163 31.5064 20.0419 31.3846 19.9911C31.2627 19.9403 31.132 19.9142 31 19.9142C30.868 19.9142 30.7373 19.9403 30.6154 19.9911C30.4936 20.0419 30.383 20.1163 30.29 20.21L22.84 27.67L19.71 24.53C19.6135 24.4367 19.4995 24.3634 19.3747 24.3142C19.2498 24.265 19.1165 24.2409 18.9823 24.2432C18.8482 24.2455 18.7157 24.2743 18.5927 24.3278C18.4696 24.3812 18.3582 24.4585 18.265 24.555C18.1718 24.6515 18.0985 24.7654 18.0493 24.8903C18.0001 25.0152 17.9759 25.1485 17.9782 25.2827C17.9806 25.4168 18.0093 25.5493 18.0628 25.6723C18.1163 25.7954 18.1935 25.9067 18.29 26L22.13 29.84C22.223 29.9337 22.3336 30.0081 22.4554 30.0589C22.5773 30.1096 22.708 30.1358 22.84 30.1358C22.972 30.1358 23.1027 30.1096 23.2246 30.0589C23.3464 30.0081 23.457 29.9337 23.55 29.84L31.71 21.68C31.8115 21.5863 31.8925 21.4727 31.9479 21.3462C32.0033 21.2197 32.0319 21.0831 32.0319 20.945C32.0319 20.8069 32.0033 20.6703 31.9479 20.5438C31.8925 20.4173 31.8115 20.3036 31.71 20.21Z" fill="white"/>
-                    </svg>
-
-                    <div className="grid pl-4 text-justify float-left w-full">
-                        <p className="font-semibold text-base w-full">Verify Identity</p>
-                        <p className="font-medium text-base color-[#8B8F97] w-full">You need to verify your identity. Please complete your profile.</p>
-                    </div>
-                    <div className="flex mr-2 arrow">
-                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7.5 15L12.5 10L7.5 5" stroke="#222222" strokeWidth="3"  strokeLinecap="round" strokeLinejoin="round"></path></svg>
-                    </div>
-                </div>
-
-
             </div>
 
 
@@ -158,6 +176,7 @@ const home = () => {
                         Send an Invoice
                     </a>
                 </div>
+                
 
                 <div className="box-full w-full min-h-[54px] bg-[#F5F5F5] text-[#222222] text-justify rounded-[5px] px-5 py-3 mt-4">
                     <svg className="display-revert float-left" width="30" height="30" viewBox="0 0 24 24" fill="none" strokeWidth={2} xmlns="http://www.w3.org/2000/svg">
@@ -177,7 +196,6 @@ const home = () => {
                     </a>
                 </div>
 
-
                 <h6 className="mt-7 text-xl font-medium">Last 30 days</h6>
                 <div className="mt-3 box w-full min-h-[69px] bg-[#FFFFFF] border-2 border-[#F5F5F5] text-[#222222] rounded-[5px] px-5 py-6 border-b-0 rounded-b-none">
                     <a href="#" className="block text-base font-normal text-[#444444]">
@@ -188,6 +206,7 @@ const home = () => {
                         <span className="float-right pr-1 text-base ">0</span>
                     </a>
                 </div>
+                
                 <div className="box w-full h-[69px] bg-[#FFFFFF] border-2 border-[#F5F5F5] text-[#222222] rounded-[5px] px-5 py-6 rounded-t-none border-b-0 rounded-b-none">
                     <a href="#" className="block text-base font-normal text-[#444444]">
                         New Connects
@@ -197,6 +216,7 @@ const home = () => {
                         <span className="float-right pr-1 text-base">0</span>
                     </a>
                 </div>
+                
                 <div className="box w-full min-h-[69px] bg-[#FFFFFF] border-2 border-[#F5F5F5] text-[#222222] rounded-[5px] px-5 py-6 rounded-t-none border-b-0 rounded-b-none">
                     <a href="#" className="block text-base font-normal text-[#444444]">
                         Returning Connects
@@ -206,6 +226,7 @@ const home = () => {
                         <span className="float-right pr-1 text-base">0</span>
                     </a>
                 </div>
+
 
                 <div className="flow-root w-full min-h-[69px] bg-[#FFFFFF] border-2 border-[#F5F5F5] text-[#222222] rounded-[5px] px-5 py-2 rounded-t-none">
                     <a href="#" className="block text-base font-normal text-[#444444]">
@@ -218,6 +239,7 @@ const home = () => {
                         <span className="float-right pr-2 text-base mt-3.5">৳</span>
                     </a>
                 </div>
+
             </div>
         </div>
 
@@ -227,4 +249,4 @@ const home = () => {
 
 
 
-export default home;
+export default HomeIncomplete;
