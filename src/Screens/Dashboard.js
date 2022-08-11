@@ -16,11 +16,18 @@ import { useLocation } from 'react-router-dom';
 
 
 
+
+
 // Verification Identity
 import StepOne from "./dashboard/home/verify-identity/step-one";
 import StepTwo from "./dashboard/home/verify-identity/step-two";
 import StepThree from "./dashboard/home/verify-identity/step-three";
 import StepFour from "./dashboard/home/verify-identity/step-four";
+
+
+//Submit Business Details
+import BusinessDetails from "./dashboard/home/business-details/business-details";
+import HomeIncomplete2 from "./dashboard/home/business-details/home-incomplete2";
 
 
 const DashboardNavigation = () => {
@@ -32,9 +39,15 @@ const DashboardNavigation = () => {
 
 
     var isComplete = false;
+    var isBusinessDetailsComplete = false;
 
     return (
         <>
+
+            {/* Business Details */}
+            <Routes>
+                <Route path="/dashboard/business-details" element={<BusinessDetails />}></Route>
+            </Routes>
             
             <Routes>
                 <Route path="/dashboard/invoice" element={<CreateInvoice />} />
@@ -49,6 +62,7 @@ const DashboardNavigation = () => {
                 <Route path="/dashboard/verify-identity-step-three" element={<StepThree />}></Route>
                 <Route path="/dashboard/verify-identity-step-four" element={<StepFour />}></Route>
             </Routes>
+            
             
 
             {/* TOP HEADER */}
@@ -76,11 +90,16 @@ const DashboardNavigation = () => {
 
 
                     <Routes>
+                    {
+                        isBusinessDetailsComplete ? <Route path="/dashboard/home" element={<Home />} />  
+                        : <Route path="/dashboard/home" element={<HomeIncomplete2 />}></Route>
+                    }
+
                     {isComplete
                         ? <Route path="/dashboard/home" element={<Home />} />
                         : <Route path="/dashboard/home" element={<HomeIncomplete />} />
                     }
-                    
+                  
 
                     <Route path="/dashboard/home2" element={<Home />} />
                     <Route path="/dashboard/store-details" element={<StoreDetails />} />
