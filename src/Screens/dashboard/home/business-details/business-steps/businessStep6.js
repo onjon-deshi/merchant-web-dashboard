@@ -1,42 +1,41 @@
 
 import React, {useEffect, useState} from "react";
-import { ReactComponent as CloseBtn } from './../../../../assets/icons/close.svg';
+import {ReactComponent as CloseBtn} from '../../../../../assets/icons/close.svg';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
+import "../../../../../components/FileUpload/style.css";
+import ArrowLeft from "../../../../../assets/icons/arrow-left.png";
 
-import "./../../../../components/FileUpload/style.css";
-import ArrowLeft from "./../../../../assets/icons/arrow-left.png";
+const BusinessStep6 = () => {
 
-const StepFour = () => {
-
-    let [pdf,setPdf] = useState([]);
+    let [businessLogoForPreview,setBusinessLogoForPreview] = useState([]);
 
     let navigate = useNavigate();
     const { state } = useLocation();
 
 
     useEffect(()=>{
-        if (state === null || state.pdf === undefined || state.pdf === "" || state.pdf === null) {
-            navigate("/dashboard/verify-identity-step-one");
+        if (state === null || state.businessLogo === undefined || state.businessLogo === "" || state.businessLogo === null) {
+            navigate("/dashboard/business-details-step-five");
             return;
         }
 
-        setPdf(state.pdf);
+        setBusinessLogoForPreview(state.businessLogo);
     },[]);
 
     
     var uploadPdf = () => {
         navigate("/dashboard/home", {
             state: {
-                message1: "Verified identity successfully."
+                message2: "Business Details verified successfully."
             }
         });
     }
 
 
     var backToUpload = () => {
-        navigate("/dashboard/verify-identity-step-three", {
+        navigate("/dashboard/business-details-step-five", {
             state: {
-                nid: "upload-done"
+                businessLogo: null
             }
         });
     }
@@ -45,20 +44,20 @@ const StepFour = () => {
     return (
         <div className="font-medium h-[100vh]">
             <header className="flex justify-between items-center p-4 border-b-2 border-dark-white mb-[40px]">
-                <Link to="/dashboard/home"><CloseBtn /></Link>
-                <p className="text-xl -mr-3">Upload Owner’s Photo</p>
+                <Link to="/dashboard/home"><CloseBtn /></Link> {/*will be modified later */}
+                <p className="text-xl -mr-3">Upload Business Logo</p>
                 <div className="mr-3">
-                    Step <strong>2</strong> out of <strong>2</strong>
+                    Step <strong>6</strong> out of <strong>6</strong>
                 </div>
             </header>
             <main className="m-auto">
                 <div className="block justify-center content-center text-center">
                     <div style={{height: "600px", display: "grid", alignItems: "center" }}>
-                        <img alt="Profile Pic" src={pdf} style={{maxHeight: "600px", display: "block", margin: "0 auto"}} />
+                        <img alt="Profile Pic" src={businessLogoForPreview} style={{maxHeight: "600px", display: "block", margin: "0 auto"}} />
                     </div>
 
                     <p className="mt-3 text-xl text-[#999999] font-medium">
-                        Wrong Photo? Drag & Drop Owner’s Photo 
+                        Wrong Photo? Drag & Drop Business Logo Here
                         <a onClick={backToUpload} className="text-[#158560] ml-2 cursor-pointer">
                             Again <img className="inline-block ml-1" src={ArrowLeft} alt="Arrow Left"></img>
                         </a>
@@ -72,4 +71,4 @@ const StepFour = () => {
 
 };
 
-export default StepFour;
+export default BusinessStep6;
